@@ -7,14 +7,14 @@
 You should have:
 
 1. Truecaller app installed
-2. App ID in the "Apple development portal". If you do not have App ID yet, then open you Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
+2. App ID in the "Apple development portal". If you do not have App ID yet, then open Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
 3. Sign up at https://developer.truecaller.com/sign-up
 
 ### Installation
 
 1. Download the framework zip file from [https://developer.truecaller.com](https://developer.truecaller.com/TrueSDK.framework-v0.1.0-.zip)
 2. Unzip the file
-3. Drag and drop the TrueSDK framework into your project (maybe in a dedicated Frameworks folder)
+3. Drag and drop the TrueSDK framework into your project (ie into the Frameworks folder)
 4. Add the TrueSDK framework into the Embedded Binaries section of the General tab of your target
 
 ### Usage
@@ -49,7 +49,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
 
-3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If this method call returns false, that means that some application other than Truecaller is opening your application and TrueSDK will not respond.
+3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
 
     ```swift
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
@@ -91,6 +91,8 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 	![Profile request button](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/profile-request-button.png)
 
+    Note: We also provide a custom button style which is the default one where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue.
+
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
     ```swift
@@ -113,7 +115,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
 
-3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If this method call returns false, that means that some application other than Truecaller is opening your application and TrueSDK will not respond.
+3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
 
     ```objectivec
     - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
@@ -162,8 +164,6 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
     Note: We also provide a custom button style which is the default one where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue.
 
-    We also provide a custom button style which is the default one where you can customise the appearance and get the functionality out of the box.
-
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
     ```objectivec
@@ -176,7 +176,7 @@ In case of error, didFailToReceiveTrueProfileWithError: will return an object of
 
 ### Optional verification steps
 
-TrueSDK provides two optional delegate methods to check the authenticity of the profile you receive. Note that TrueSDK verifies the content before forwarding it your app and readily offer a simplified way to request and receive a user profile via required delegate methods.
+TrueSDK provides two optional delegate methods to check the authenticity of the profile you receive. Note that TrueSDK readily offers a simplified way to request and receive a user profile via required delegate methods and verifies the content before forwarding it your app.
 
 #### i. Server side Truecaller Profile authenticity check
 
