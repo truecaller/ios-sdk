@@ -1,0 +1,36 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+
+# Xcode
+#######
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+*.moved-aside
+
+# User Informations
+# Shared profiles are being kept
+xcuserdata
+*/xcshareddata/
+
+# NB: slash on the end, so we only remove the FOLDER, not any files that were badly named "DerivedData"
+DerivedData/
+
+# AppCode
+*/.idea/workspace.xml
+*/.idea/Truecaller_iOS.iml
