@@ -64,7 +64,7 @@
 
 + (NSString *)getMaxSupportedAPIVersion
 {
-    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"TCMaxSupportedApiVersion"];
+    return [self getAPIVersion];
 }
 
 + (NSString *)getMinSupportedSDKVersion

@@ -4,6 +4,10 @@
 <dict>
 	<key>TCApiVersion</key>
 	<string>1.0</string>
+	<key>TCMinSupportedApiVersion</key>
+	<string>1.0</string>
+	<key>TCMinSupportedSdkVersion</key>
+	<string>0.1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
