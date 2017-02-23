@@ -117,7 +117,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 	![Profile request button](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/profile-request-button.png)
 
-    Note: We also provide a custom button style which is the default one where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue.
+    Note: We also provide a custom button style where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue (which is the default one).
 
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
@@ -188,7 +188,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 	![Profile request button](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/profile-request-button.png)
 
-    Note: We also provide a custom button style which is the default one where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue.
+    Note: We also provide a custom button style where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue (which is the default one).
 
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
