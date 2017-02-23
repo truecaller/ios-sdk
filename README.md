@@ -12,10 +12,36 @@ You should have:
 
 ### Installation
 
-1. Download the framework zip file from [https://developer.truecaller.com](https://developer.truecaller.com/TrueSDK.framework-v0.1.0-.zip)
+#### Manual Installation
+
+1. Download the framework zip file from [https://developer.truecaller.com](https://developer.truecaller.com/TrueSDK.framework-v0.1.0-.zip) or from the [release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
 3. Drag and drop the TrueSDK framework into your project (ie into the Frameworks folder)
 4. Add the TrueSDK framework into the Embedded Binaries section of the General tab of your target
+
+#### Installation with CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager which automates and simplifies the process of using 3rd-party libraries.
+
+You can install it with the following command:
+```bash
+$ gem install cocoapods
+```
+
+To integrate TrueSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+platform :ios, '8.0'
+use_frameworks!
+
+target 'TargetName' do
+pod 'TrueSDK'
+end
+```
+Then, run the following command:
+```bash
+$ pod install
+```
 
 ### Usage
 
