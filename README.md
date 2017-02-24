@@ -56,7 +56,11 @@ Add the entry truesdk under LSApplicationQueriesSchemes in into your Info.plist 
 
 ![Associated domains](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/associated-domains.png)
 
-Add the associated domain provided by Truecaller (for example applinks:si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com) in Your project -> Capabilities > Associated Domains. The prefix 'applinks:' is needed for universal links to function properly, hence replace the 'https://' part from the provided app link with "applinks:". ie https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com should become applinks:si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com while adding to entitlements.
+Add the associated domain provided by Truecaller (for example applinks:si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com) in Your project -> Capabilities > Associated Domains. The prefix 'applinks:' is needed for universal links to function properly. 
+
+**Important:** Replace the '**https://**' part from the provided app link with "**applinks:**". ie _`https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com`_ should become _`applinks:si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com`_ while adding to entitlements.
+
+(Note that there is **no** _http://_ or _https://_ prefix when setting up the applinks:)
 
 #### Swift
 
@@ -74,6 +78,8 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
         TCTrueSDK.sharedManager().setup(withAppKey: <#YOUR_APP_KEY#>, appLink: <#YOUR_APP_LINK#>)
     }
     ```
+	
+	Use the entire associated domain link provided by Truecaller for YOUR_APP_LINK. For example: `https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com` (including https://).
 
 3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
 
@@ -140,6 +146,8 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
         [[TCTrueSDK sharedManager] setupWithAppKey:<#YOUR_APP_KEY#> appLink:<#YOUR_APP_LINK#>];
     }
     ```
+	
+	Use the entire associated domain link provided by Truecaller for YOUR_APP_LINK. For example: `https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com` (including https://).
 
 3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
 
