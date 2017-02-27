@@ -13,6 +13,24 @@
  * @brief The True Profile info returned via delegate methods once the user accepts to continue the Autofill with Truecaller process
  */
 
+extern NSString *__nonnull const kTrueProfileFirstNameKey;
+extern NSString *__nonnull const kTrueProfileLastNameKey;
+extern NSString *__nonnull const kTrueProfilePhoneNumberKey;
+extern NSString *__nonnull const kTrueProfileGenderKey;
+extern NSString *__nonnull const kTrueProfileCountryCodeKey;
+extern NSString *__nonnull const kTrueProfileStreetKey;
+extern NSString *__nonnull const kTrueProfileCityKey;
+extern NSString *__nonnull const kTrueProfileZipCodeKey;
+extern NSString *__nonnull const kTrueProfileFacebookIdKey;
+extern NSString *__nonnull const kTrueProfileTwitterIdKey;
+extern NSString *__nonnull const kTrueProfileEmailKey;
+extern NSString *__nonnull const kTrueProfileUrlKey;
+extern NSString *__nonnull const kTrueProfileAvatarUrlKey;
+extern NSString *__nonnull const kTrueProfileJobTitleKey;
+extern NSString *__nonnull const kTrueProfileCompanyNameKey;
+extern NSString *__nonnull const kTrueProfileIsVerifiedKey;
+extern NSString *__nonnull const kTrueProfileIsAmbassadorKey;
+
 /*!
  * @typedef TCTrueSDKGender
  * @brief A list of gender types supported by TrueSDK
@@ -25,7 +43,6 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
     TCTrueSDKGenderMale, //
     TCTrueSDKGenderFemale, //
 };
-
 
 /*!
  * @class TCTrueProfile

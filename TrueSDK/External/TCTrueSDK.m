@@ -95,7 +95,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     profileRequest.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     profileRequest.requestNonce = requestNonce;
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
-    TCLog(@"Opening url %@", url);
     
     [TCUtils openUrl:url completionHandler:nil];
 }
