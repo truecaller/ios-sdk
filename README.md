@@ -66,13 +66,28 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 1. Import the TrueSDK framework in the class where you want to initialize it (for example AppDelegate) and in the class that you want to receive the profile response. Usually, this will be the ViewController responsible for displaying the True Profile info.
 
+	_Swift 2.3:_
+	```swift
+	import TrueSDK
+	```
+	
+	_Swift 3:_
 	```swift
 	import TrueSDK
 	```
 
 2. Check if the current device supports the use of TrueSDK and (if so) setup TrueSDK. We recommend this to be done in the application:didFinishLaunchingWithOptions:
 
+	_Swift 2.3:_
     ```swift
+    //Setup TrueSDK
+    if TCTrueSDK.sharedManager().isSupported() {
+        TCTrueSDK.sharedManager().setupWithAppKey(<#YOUR_APP_KEY#>, appLink:  <#YOUR_APP_LINK#>)
+    }
+    ```
+	
+	_Swift 3:_
+	```swift
     //Setup TrueSDK
     if TCTrueSDK.sharedManager().isSupported() {
         TCTrueSDK.sharedManager().setup(withAppKey: <#YOUR_APP_KEY#>, appLink: <#YOUR_APP_LINK#>)
@@ -83,7 +98,15 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
 
+	_Swift 2.3:_
     ```swift
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        return TCTrueSDK.sharedManager().application(application, continueUserActivity: userActivity, restorationHandler: restorationHandler)
+    }
+    ```
+	
+	_Swift 3:_
+	```swift
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
         return TCTrueSDK.sharedManager().application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
@@ -91,13 +114,30 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 4. Set the class where you want to receive TrueSDK events (the profile or errors) a TCTrueSDKDelegate
 
+	_Swift 2.3:_
     ```swift
+    class HostViewController: UIViewController, TCTrueSDKDelegate {
+    ```
+	
+	_Swift 3:_
+	```swift
     class HostViewController: UIViewController, TCTrueSDKDelegate {
     ```
 
 5. Implement the two TCTrueSDKDelegate methods
 
+	_Swift 2.3:_
     ```swift
+	func didFailToReceiveTrueProfileWithError(error: TCError) {
+        //Custom code here
+    }
+    func didReceiveTrueProfile(profile: TCTrueProfile) {
+        //Custom code here
+    }
+    ```
+	
+	_Swift 3:_
+	```swift
     func didFailToReceiveTrueProfileWithError(_ error: TCError) {
         //Custom code here
     }
@@ -108,7 +148,13 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 6. Set the delegate property of the TCTrueSDK.sharedManager(). Make sure you do this before you request the True Profile.
 
+	_Swift 2.3:_
     ```swift
+    TCTrueSDK.sharedManager().delegate = self
+    ```
+	
+	_Swift 3:_
+	```swift
     TCTrueSDK.sharedManager().delegate = self
     ```
 
@@ -117,7 +163,13 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
      a. The TCProfileRequestButton does the True Profile Request automatically. To use the predefined buttons you need to set the Button Type to Custom and set auto-layout constraints for the button.
   You can then choose the True button style of the button in code or in Interface Builder using TCProfileRequestButton property buttonStyle:
 
+	_Swift 2.3:_
     ```swift
+    self.button.buttonStyle = TCButtonStyleBlue
+    ```
+	
+	_Swift 3:_
+	```swift
     self.button.buttonStyle = TCButtonStyle.blue.rawValue
     ```
 
@@ -127,7 +179,13 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
+	_Swift 2.3:_
     ```swift
+    TCTrueSDK.sharedManager().requestTrueProfile()
+    ```
+	
+	_Swift 3:_
+	```swift
     TCTrueSDK.sharedManager().requestTrueProfile()
     ```
 
