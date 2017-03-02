@@ -241,7 +241,7 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     open func didReceive(_ profileResponse : TCTrueProfileResponse) {
         // Response signature and signature algorithm can be fetched from profileResponse
         // Nonce can also be retrieved from response and checked against the one received in willRequestProfile method
-        print("profileResponse: \(profileResponse)")
+        print("ProfileResponse payload: \(profileResponse.payload ?? "")")
     }
 }
 

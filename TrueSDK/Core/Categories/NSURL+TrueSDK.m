@@ -23,13 +23,11 @@ NSString *kErrorKey = @"error";
 
 -(id <NSCoding>) parseArchivedObjectWithKey:(NSString *)key
 {
-    TCLog(@"Parsing object: %@", key);
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:self resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
     NSString *objectString = [self valueForKey:key
                                 fromQueryItems:queryItems];
     if (objectString == nil) {
-        TCLog(@"No object: %@", key);
         return nil;
     }
     

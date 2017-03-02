@@ -8,23 +8,23 @@
 
 #import "TCTrueProfile.h"
 
-NSString *const kFirstNameKey = @"firstName";
-NSString *const kLastNameKey = @"lastName";
-NSString *const kPhoneNumberKey = @"phoneNumber";
-NSString *const kGenderKey = @"gender";
-NSString *const kCountryCodeKey = @"countryCode";
-NSString *const kStreetKey = @"street";
-NSString *const kCityKey = @"city";
-NSString *const kZipCodeKey = @"zipcode";
-NSString *const kFacebookIdKey = @"facebookID";
-NSString *const kTwitterIdKey = @"twitterID";
-NSString *const kEmailKey = @"email";
-NSString *const kUrlKey = @"url";
-NSString *const kAvatarUrlKey = @"avatarUrl";
-NSString *const kJobTitleKey = @"jobTitle";
-NSString *const kCompanyNameKey = @"companyName";
-NSString *const kIsVerifiedKey = @"isTrueName";
-NSString *const kIsAmbassadorKey = @"isAmbassador";
+NSString *const kTrueProfileFirstNameKey = @"firstName";
+NSString *const kTrueProfileLastNameKey = @"lastName";
+NSString *const kTrueProfilePhoneNumberKey = @"phoneNumber";
+NSString *const kTrueProfileGenderKey = @"gender";
+NSString *const kTrueProfileCountryCodeKey = @"countryCode";
+NSString *const kTrueProfileStreetKey = @"street";
+NSString *const kTrueProfileCityKey = @"city";
+NSString *const kTrueProfileZipCodeKey = @"zipcode";
+NSString *const kTrueProfileFacebookIdKey = @"facebookID";
+NSString *const kTrueProfileTwitterIdKey = @"twitterID";
+NSString *const kTrueProfileEmailKey = @"email";
+NSString *const kTrueProfileUrlKey = @"url";
+NSString *const kTrueProfileAvatarUrlKey = @"avatarUrl";
+NSString *const kTrueProfileJobTitleKey = @"jobTitle";
+NSString *const kTrueProfileCompanyNameKey = @"companyName";
+NSString *const kTrueProfileIsVerifiedKey = @"isTrueName";
+NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
 
 @interface TCTrueProfile()
 
@@ -73,46 +73,46 @@ NSString *const kIsAmbassadorKey = @"isAmbassador";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.firstName forKey:kFirstNameKey];
-    [aCoder encodeObject:self.lastName forKey:kLastNameKey];
-    [aCoder encodeObject:self.phoneNumber forKey:kPhoneNumberKey];
-    [aCoder encodeObject:self.genderValue forKey:kGenderKey];
-    [aCoder encodeObject:self.countryCode forKey:kCountryCodeKey];
-    [aCoder encodeObject:self.street forKey:kStreetKey];
-    [aCoder encodeObject:self.city forKey:kCityKey];
-    [aCoder encodeObject:self.zipCode forKey:kZipCodeKey];
-    [aCoder encodeObject:self.facebookID forKey:kFacebookIdKey];
-    [aCoder encodeObject:self.twitterID forKey:kTwitterIdKey];
-    [aCoder encodeObject:self.email forKey:kEmailKey];
-    [aCoder encodeObject:self.url forKey:kUrlKey];
-    [aCoder encodeObject:self.avatarURL forKey:kAvatarUrlKey];
-    [aCoder encodeObject:self.jobTitle forKey:kJobTitleKey];
-    [aCoder encodeObject:self.companyName forKey:kCompanyNameKey];
-    [aCoder encodeBool:self.isVerified forKey:kIsVerifiedKey];
-    [aCoder encodeBool:self.isAmbassador forKey:kIsAmbassadorKey];
+    [aCoder encodeObject:self.firstName forKey:kTrueProfileFirstNameKey];
+    [aCoder encodeObject:self.lastName forKey:kTrueProfileLastNameKey];
+    [aCoder encodeObject:self.phoneNumber forKey:kTrueProfilePhoneNumberKey];
+    [aCoder encodeObject:self.genderValue forKey:kTrueProfileGenderKey];
+    [aCoder encodeObject:self.countryCode forKey:kTrueProfileCountryCodeKey];
+    [aCoder encodeObject:self.street forKey:kTrueProfileStreetKey];
+    [aCoder encodeObject:self.city forKey:kTrueProfileCityKey];
+    [aCoder encodeObject:self.zipCode forKey:kTrueProfileZipCodeKey];
+    [aCoder encodeObject:self.facebookID forKey:kTrueProfileFacebookIdKey];
+    [aCoder encodeObject:self.twitterID forKey:kTrueProfileTwitterIdKey];
+    [aCoder encodeObject:self.email forKey:kTrueProfileEmailKey];
+    [aCoder encodeObject:self.url forKey:kTrueProfileUrlKey];
+    [aCoder encodeObject:self.avatarURL forKey:kTrueProfileAvatarUrlKey];
+    [aCoder encodeObject:self.jobTitle forKey:kTrueProfileJobTitleKey];
+    [aCoder encodeObject:self.companyName forKey:kTrueProfileCompanyNameKey];
+    [aCoder encodeBool:self.isVerified forKey:kTrueProfileIsVerifiedKey];
+    [aCoder encodeBool:self.isAmbassador forKey:kTrueProfileIsAmbassadorKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
     if (self != nil) {
-        _firstName = [aDecoder decodeObjectForKey:kFirstNameKey];
-        _lastName = [aDecoder decodeObjectForKey:kLastNameKey];
-        _phoneNumber = [aDecoder decodeObjectForKey:kPhoneNumberKey];
-        _genderValue = [aDecoder decodeObjectForKey:kGenderKey];
-        _countryCode = [aDecoder decodeObjectForKey:kCountryCodeKey];
-        _street = [aDecoder decodeObjectForKey:kStreetKey];
-        _city = [aDecoder decodeObjectForKey:kCityKey];
-        _zipCode = [aDecoder decodeObjectForKey:kZipCodeKey];
-        _facebookID = [aDecoder decodeObjectForKey:kFacebookIdKey];
-        _twitterID = [aDecoder decodeObjectForKey:kTwitterIdKey];
-        _email = [aDecoder decodeObjectForKey:kEmailKey];
-        _url = [aDecoder decodeObjectForKey:kUrlKey];
-        _avatarURL = [aDecoder decodeObjectForKey:kAvatarUrlKey];
-        _jobTitle = [aDecoder decodeObjectForKey:kJobTitleKey];
-        _companyName = [aDecoder decodeObjectForKey:kCompanyNameKey];
-        _isVerified = [aDecoder decodeBoolForKey:kIsVerifiedKey];
-        _isAmbassador = [aDecoder decodeBoolForKey:kIsAmbassadorKey];
+        _firstName = [aDecoder decodeObjectForKey:kTrueProfileFirstNameKey];
+        _lastName = [aDecoder decodeObjectForKey:kTrueProfileLastNameKey];
+        _phoneNumber = [aDecoder decodeObjectForKey:kTrueProfilePhoneNumberKey];
+        _genderValue = [aDecoder decodeObjectForKey:kTrueProfileGenderKey];
+        _countryCode = [aDecoder decodeObjectForKey:kTrueProfileCountryCodeKey];
+        _street = [aDecoder decodeObjectForKey:kTrueProfileStreetKey];
+        _city = [aDecoder decodeObjectForKey:kTrueProfileCityKey];
+        _zipCode = [aDecoder decodeObjectForKey:kTrueProfileZipCodeKey];
+        _facebookID = [aDecoder decodeObjectForKey:kTrueProfileFacebookIdKey];
+        _twitterID = [aDecoder decodeObjectForKey:kTrueProfileTwitterIdKey];
+        _email = [aDecoder decodeObjectForKey:kTrueProfileEmailKey];
+        _url = [aDecoder decodeObjectForKey:kTrueProfileUrlKey];
+        _avatarURL = [aDecoder decodeObjectForKey:kTrueProfileAvatarUrlKey];
+        _jobTitle = [aDecoder decodeObjectForKey:kTrueProfileJobTitleKey];
+        _companyName = [aDecoder decodeObjectForKey:kTrueProfileCompanyNameKey];
+        _isVerified = [aDecoder decodeBoolForKey:kTrueProfileIsVerifiedKey];
+        _isAmbassador = [aDecoder decodeBoolForKey:kTrueProfileIsAmbassadorKey];
     }
     return self;
 }
@@ -121,23 +121,23 @@ NSString *const kIsAmbassadorKey = @"isAmbassador";
 {
     self = [super init];
     if (self != nil) {
-        _firstName = dict[kFirstNameKey];
-        _lastName = dict[kLastNameKey];
-        _phoneNumber = dict[kPhoneNumberKey];
-        _genderValue = dict[kGenderKey];
-        _countryCode = dict[kCountryCodeKey];
-        _street = dict[kStreetKey];
-        _city = dict[kCityKey];
-        _zipCode = dict[kZipCodeKey];
-        _facebookID = dict[kFacebookIdKey];
-        _twitterID = dict[kTwitterIdKey];
-        _email = dict[kEmailKey];
-        _url = dict[kUrlKey];
-        _avatarURL = dict[kAvatarUrlKey];
-        _jobTitle = dict[kJobTitleKey];
-        _companyName = dict[kCompanyNameKey];
-        _isVerified = [dict[kIsVerifiedKey] boolValue];
-        _isAmbassador = [dict[kIsAmbassadorKey] boolValue];
+        _firstName = dict[kTrueProfileFirstNameKey];
+        _lastName = dict[kTrueProfileLastNameKey];
+        _phoneNumber = dict[kTrueProfilePhoneNumberKey];
+        _genderValue = dict[kTrueProfileGenderKey];
+        _countryCode = dict[kTrueProfileCountryCodeKey];
+        _street = dict[kTrueProfileStreetKey];
+        _city = dict[kTrueProfileCityKey];
+        _zipCode = dict[kTrueProfileZipCodeKey];
+        _facebookID = dict[kTrueProfileFacebookIdKey];
+        _twitterID = dict[kTrueProfileTwitterIdKey];
+        _email = dict[kTrueProfileEmailKey];
+        _url = dict[kTrueProfileUrlKey];
+        _avatarURL = dict[kTrueProfileAvatarUrlKey];
+        _jobTitle = dict[kTrueProfileJobTitleKey];
+        _companyName = dict[kTrueProfileCompanyNameKey];
+        _isVerified = [dict[kTrueProfileIsVerifiedKey] boolValue];
+        _isAmbassador = [dict[kTrueProfileIsAmbassadorKey] boolValue];
     }
     
     return self;

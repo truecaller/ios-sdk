@@ -56,8 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02B344C61E0CA05D00671AB9 /* TCTrueProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCTrueProfileRequest.h; path = ../Internal/TCTrueProfileRequest.h; sourceTree = "<group>"; };
-		02B344C71E0CA05D00671AB9 /* TCTrueProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCTrueProfileRequest.m; path = ../Internal/TCTrueProfileRequest.m; sourceTree = "<group>"; };
+		02B344C61E0CA05D00671AB9 /* TCTrueProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueProfileRequest.h; sourceTree = "<group>"; };
+		02B344C71E0CA05D00671AB9 /* TCTrueProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTrueProfileRequest.m; sourceTree = "<group>"; };
 		02B981F41E0D5E7D0016DFD2 /* TCProfileRequestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCProfileRequestButton.h; sourceTree = "<group>"; };
 		02B981F51E0D5E7D0016DFD2 /* TCProfileRequestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCProfileRequestButton.m; sourceTree = "<group>"; };
 		02B981F81E0D60120016DFD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
