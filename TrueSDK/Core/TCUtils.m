@@ -9,8 +9,16 @@
 #import "TCUtils.h"
 #import <UIKit/UIKit.h>
 #import "TCTrueSDKLogger.h"
+#import "TCVersion.h"
 
 @implementation TCUtils
+
++ (void) initialize
+{
+    //Version plist fetching for pod installations
+    NSBundle *bundle = [self resourcesBundle];
+    NSURL *dictUrl = [bundle URLForResource:@"TrueSDK" withExtension:@"plist"];
+}
 
 + (BOOL)isOperatingSystemSupported
 {
@@ -47,29 +55,23 @@
     }
 }
 
++ (NSBundle *)resourcesBundle
+{
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
+    NSURL *bundleUrl = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"TrueSDK.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleUrl];
+    
+    return bundle ?: frameworkBundle;
+}
+
 + (NSString *)getAPIVersion
 {
-    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"TCApiVersion"];
+    return TrueSDKApiVersion;
 }
 
 + (NSString *)getSDKVersion
 {
-    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-}
-
-+ (NSString *)getMinSupportedAPIVersion
-{
-    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"TCMinSupportedApiVersion"];
-}
-
-+ (NSString *)getMaxSupportedAPIVersion
-{
-    return [self getAPIVersion];
-}
-
-+ (NSString *)getMinSupportedSDKVersion
-{
-    return [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"TCMinSupportedSdkVersion"];
+    return TrueSDKVersion;
 }
 
 @end
