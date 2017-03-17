@@ -31,6 +31,8 @@
  */
 + (void)openUrl:(NSURL*)url completionHandler:(void (^)(BOOL success))completion;
 
++ (NSBundle *)resourcesBundle;
+
 /*!
  * @brief Get the API version of the TrueSDK
  * @return version
@@ -43,21 +45,4 @@
  */
 + (NSString *)getSDKVersion;
 
-/*!
- * @brief Get the Minimum Supported API version of the TrueSDK
- * @return version
- */
-+ (NSString *)getMinSupportedAPIVersion;
-
-/*!
- * @brief Get the Maximum Supported API version of the TrueSDK
- * @return version
- */
-+ (NSString *)getMaxSupportedAPIVersion;
-
-/*!
- * @brief Get the Minimum Supported SDK version of the TrueSDK
- * @return version
- */
-+ (NSString *)getMinSupportedSDKVersion;
 @end
