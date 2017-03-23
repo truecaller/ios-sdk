@@ -8,16 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for TrueSDK.
-FOUNDATION_EXPORT double TrueSDKVersionNumber;
-
-//! Project version string for TrueSDK.
-FOUNDATION_EXPORT const unsigned char TrueSDKVersionString[];
-
 // Main headers
 #import <TrueSDK/TCTrueSDK.h>
 #import <TrueSDK/TCProfileRequestButton.h>
 // Helper headers
+#import <TrueSDK/TCVersion.h>
 #import <TrueSDK/NSURL+TrueSDK.h>
 #import <TrueSDK/TCTrueProfileRequest.h>
 #import <TrueSDK/TCTrueSDKLogger.h>
