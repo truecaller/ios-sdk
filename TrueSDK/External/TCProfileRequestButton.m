@@ -139,7 +139,7 @@
     //Prepare the title text
     NSString *message = NSLocalizedStringFromTableInBundle(@"truebutton.title",
                                                           @"Localizable",
-                                                          [NSBundle bundleForClass:[self class]],
+                                                          [TCUtils resourcesBundle],
                                                           @"TrueSDK button title");
     
     UIColor *textColorNormal = [TCProfileRequestButton textColorForType:buttonStyle];

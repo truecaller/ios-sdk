@@ -13,6 +13,13 @@
 
 @implementation TCUtils
 
++ (void) initialize
+{
+    //Version plist fetching for pod installations
+    NSBundle *bundle = [self resourcesBundle];
+    NSURL *dictUrl = [bundle URLForResource:@"TrueSDK" withExtension:@"plist"];
+}
+
 + (BOOL)isOperatingSystemSupported
 {
     NSString *requiredSystemVersion = @"9.0";
@@ -46,6 +53,15 @@
             });
         }
     }
+}
+
++ (NSBundle *)resourcesBundle
+{
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
+    NSURL *bundleUrl = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"TrueSDK.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleUrl];
+    
+    return bundle ?: frameworkBundle;
 }
 
 + (NSString *)getAPIVersion
