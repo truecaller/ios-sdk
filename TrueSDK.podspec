@@ -28,6 +28,6 @@ Pod::Spec.new do |s|
   s.resources = [ "TrueSDK/**/Assets.xcassets"]
 
   #TODO: Move to resource bundles
-  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/External/Languages/*", "TrueSDK/TrueSDK.plist"] }
+  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/**/Languages/*" ] }
 
 end

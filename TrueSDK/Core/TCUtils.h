@@ -32,12 +32,6 @@
 + (void)openUrl:(NSURL*)url completionHandler:(void (^)(BOOL success))completion;
 
 /*!
- * @brief Get the resource bundle for TrueSDK
- * @return bundle
- */
-+ (NSBundle *)resourcesBundle;
-
-/*!
  * @brief Get the API version of the TrueSDK
  * @return version
  */
