@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TrueSDK"
-  s.version      = "0.2.0"
+  s.version      = "0.1.0"
   s.summary      = "Official Truecaller SDK for iOS for one tap verified phone number based sign up/login."
 
   s.description  = <<-DESC
@@ -24,10 +24,9 @@ Pod::Spec.new do |s|
 
   s.source_files  = "TrueSDK/*.{h,m}", "TrueSDK/**/*.{h,m}"
   s.public_header_files = "TrueSDK/*.{h}", "TrueSDK/**/*.{h}"
-
-  s.resources = [ "TrueSDK/**/Assets.xcassets"]
+  s.resources = [ "TrueSDK/**/Assets.xcassets", "TrueSDK/**/Languages/*" ]
 
   #TODO: Move to resource bundles
-  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/External/Languages/*" ] }
+  #s.resource_bundles = { "TrueSDK" => [ "TrueSDK/**/Assets.xcassets", "TrueSDK/**/Languages" ] }
 
 end

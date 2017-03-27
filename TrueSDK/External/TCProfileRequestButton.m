@@ -8,7 +8,6 @@
 
 #import "TCProfileRequestButton.h"
 #import "TCTrueSDK.h"
-#import "TCUtils.h"
 
 @implementation TCProfileRequestButton
 
@@ -135,11 +134,11 @@
         self.currentAttributedTitle != nil) {
         return;
     }
-
+    
     //Prepare the title text
     NSString *message = NSLocalizedStringFromTableInBundle(@"truebutton.title",
                                                           @"Localizable",
-                                                          [TCUtils resourcesBundle],
+                                                          [NSBundle bundleForClass:[self class]],
                                                           @"TrueSDK button title");
     
     UIColor *textColorNormal = [TCProfileRequestButton textColorForType:buttonStyle];
