@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TrueSDK"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "Official Truecaller SDK for iOS for one tap verified phone number based sign up/login."
 
   s.description  = <<-DESC
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                   * Truecaller autofill to easily fill form data.
                    DESC
 
-  s.homepage     = "https://developer.truecaller.com/implement"
+  s.homepage     = "https://developer.truecaller.com"
   s.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
   s.author             = { "Truecaller" => "truecallerdevelopers@truecaller.com" }
   s.social_media_url   = "http://twitter.com/Truecaller"
