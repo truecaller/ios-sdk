@@ -95,6 +95,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     ```
 	
 	Use the entire associated domain link provided by Truecaller for YOUR_APP_LINK. For example: `https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com` (including https://).
+	
 	IMPORTANT: Make sure you type the YOUR_APP_KEY and YOUR_APP_LINK fields correctly. If you mistype the YOUR_APP_LINK field, the permission screen in Truecaller will be shown and immediatelly dismissed. In this case, the SDK will not be able to send a corresponding error back to your app.
 
 3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
@@ -207,6 +208,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     ```
 	
 	Use the entire associated domain link provided by Truecaller for YOUR_APP_LINK. For example: `https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com` (including https://).
+	
 	IMPORTANT: Make sure you type the YOUR_APP_KEY and YOUR_APP_LINK fields correctly. If you mistype the YOUR_APP_LINK field, the permission screen in Truecaller will be shown and immediatelly dismissed. In this case, the SDK will not be able to send a corresponding error back to your app.
 
 3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
