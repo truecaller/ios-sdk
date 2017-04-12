@@ -179,10 +179,8 @@
     UIImage *image = nil;
     
     TCButtonStyle buttonStyleLowercase = buttonStyle.lowercaseString;
-    if ([buttonStyleLowercase isEqualToString:TCButtonStyleBlue]) {
-        imageName = @"tc_logo_white";
-    } else if ([buttonStyleLowercase isEqualToString:TCButtonStyleWhite]) {
-        imageName = @"tc_logo_blue";
+    if ([buttonStyleLowercase isEqualToString:TCButtonStyleBlue] || [buttonStyleLowercase isEqualToString:TCButtonStyleWhite]) {
+        imageName = @"tc_logo";
     }
     
     if (imageName != nil) {
