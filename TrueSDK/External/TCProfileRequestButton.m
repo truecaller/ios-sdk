@@ -18,6 +18,7 @@
     self = [super init];
     if (self != nil) {
         self.buttonStyle = TCButtonStyleBlue;
+        self.buttonCornersStyle = TCButtonCornersStyleRounded;
         [self setup];
     }
     return self;
@@ -47,6 +48,10 @@
     if (self.buttonStyle == nil) {
         self.buttonStyle = TCButtonStyleBlue;
     }
+    
+    if (self.buttonCornersStyle == nil) {
+        self.buttonCornersStyle = TCButtonCornersStyleRounded;
+    }
 }
 
 - (void)setup
@@ -64,6 +69,16 @@
     _buttonStyle = buttonStyle;
     [self setStyle:buttonStyle];
     
+}
+
+-(void)setButtonCornersStyle:(NSString *)buttonCornersStyle {
+    _buttonCornersStyle = buttonCornersStyle;
+    
+    if ([_buttonCornersStyle isEqualToString:TCButtonCornersStyleRounded]) {
+        self.layer.cornerRadius = 6.0;
+    } else {
+        self.layer.cornerRadius = 0.0;
+    }
 }
 
 - (void)setStyle:(TCButtonStyle)buttonStyle
