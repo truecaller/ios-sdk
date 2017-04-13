@@ -22,6 +22,17 @@ static TCButtonStyle const TCButtonStyleWhite = @"white";
 static TCButtonStyle const TCButtonStyleBlue = @"blue";
 
 /*!
+ * @typedef TCButtonCornersStyle
+ * @brief A list of available button corners styles. Default is TCButtonCornersStyleRounded.
+ * @constant TCButtonCornersStyleRounded The corners of the button are rounded (radius = 6.0)
+ * @constant TCButtonCornersStyleFlat The corners of the button are flat (radius = 0.0)
+ */
+typedef NSString *TCButtonCornersStyle NS_STRING_ENUM;
+
+static TCButtonCornersStyle const TCButtonCornersStyleRounded = @"rounded";
+static TCButtonCornersStyle const TCButtonCornersStyleFlat = @"flat";
+
+/*!
  * @header TCProfileRequestButton.h
  * @brief Out-of-the box TrueSDK button which automatically sends True Profile Request when pressed by the user
  */
@@ -35,6 +46,13 @@ IB_DESIGNABLE
  * If a value is set out of the allowed range the default value is applied.
  */
 @property(nonatomic) IBInspectable NSString *buttonStyle;
+
+/*!
+ * @discussion Use TCButtonCornersStyle enum values. Default value is TCButtonCornersStyleRounded.
+ * NSString is used instead of TCButtonCornersStyle so it can be set from IB.
+ * If a value is set out of the allowed range the default value is applied.
+ */
+@property(nonatomic) IBInspectable NSString *buttonCornersStyle;
 
 /*!
  * @brief Returns an icon image with Truecaller logo
