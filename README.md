@@ -27,6 +27,10 @@ You can install it with the following command:
 ```bash
 $ gem install cocoapods
 ```
+You can create your Podfile using the command (in case you do not already have it):
+```bash
+$ pod init
+```
 
 To integrate TrueSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -162,23 +166,23 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 7. Requesting the True Profile data can be done automatically or manually (either in code or in the Interface Builder):
 
-     a. The TCProfileRequestButton does the True Profile Request automatically. To use the predefined buttons you need to set the Button Type to Custom and set auto-layout constraints for the button.
-  You can then choose the True button style of the button in code or in Interface Builder using TCProfileRequestButton property buttonStyle:
+     a. The TCProfileRequestButton does the True Profile Request automatically. To use the predefined buttons you need to **set the Button Type to Custom** and set auto-layout constraints for the button.
+  You can then choose the True button style and corners style of the button in code or in Interface Builder using TCProfileRequestButton property buttonStyle and buttonCornersStyle:
 
 	_Swift 2.3:_
     ```swift
     self.button.buttonStyle = TCButtonStyleBlue
+    self.button.buttonCornersStyle = TCButtonCornersStyleRounded
     ```
 	
 	_Swift 3:_
 	```swift
     self.button.buttonStyle = TCButtonStyle.blue.rawValue
+    self.button.buttonCornersStyle = TCButtonCornersStyle.rounded.rawValue
     ```
 
 	![Profile request button](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/profile-request-button.png)
-
-    Note: We also provide a custom button style where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue (which is the default one).
-
+	
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
 	_Swift 2.3:_
@@ -249,16 +253,15 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 7. Requesting the True Profile data can be done automatically or manually (either in code or in the Interface Builder):
 
-    a. The TCProfileRequestButton does the True Profile Request automatically. To use the predefined buttons you need to set the Button Type to Custom and set auto-layout constraints for the button.
-    You can then choose the True button style of the button in code or in Interface Builder using TCProfileRequestButton property buttonStyle:
+    a. The TCProfileRequestButton does the True Profile Request automatically. To use the predefined buttons you need to **set the Button Type to Custom** and set auto-layout constraints for the button.
+  You can then choose the True button style and corners style of the button in code or in Interface Builder using TCProfileRequestButton property buttonStyle and buttonCornersStyle:
 
     ```objectivec
     self.button.buttonStyle = TCButtonStyleBlue;
+    self.button.buttonCornersStyle = TCButtonCornersStyleRounded;
     ```
 
 	![Profile request button](https://raw.githubusercontent.com/truecaller/ios-sdk/master/documentation/images/profile-request-button.png)
-
-    Note: We also provide a custom button style where you can customise the appearance and get the functionality out of the box. Predefined styles available are: white and blue (which is the default one).
 
     b. If you prefer to do it yourself, you can use the method requestTrueProfile.
 
