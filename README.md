@@ -14,18 +14,6 @@ You should have:
 
 #### Manual Installation
 
-##### Directly adding the framework
-
-1. Download the framework zip file from the [release section](https://github.com/truecaller/ios-sdk/releases)
-2. Unzip the file
-3. Drag and drop the TruecallerSDK framework into your project (ie into the Frameworks folder)
-4. Add the TruecallerSDK framework into the Embedded Binaries section of the General tab of your target
-5. Using TruecallerSDK this way will require for you to [run a build script](https://github.com/truecaller/ios-sdk/wiki/Stripping-Unwanted-Architectures-From-Dynamic-Libraries-In-Xcode) during archiving in order to remove unsupported architectures used only for the simulator (i386, x86_64)
-
-NOTE: We recommend using the CocoaPods integration.
-
-##### Embedding the XCode project
-
 1. Download the project zip file from the [release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
 3. Copy the TruecallerSDK project files into your project (TrueSDK directory, TrueSDKTests directory and TrueSDK.xcodeproj)
