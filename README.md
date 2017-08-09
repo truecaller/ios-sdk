@@ -14,10 +14,14 @@ You should have:
 
 #### Manual Installation
 
-1. Download the framework zip file from [https://developer.truecaller.com](https://developer.truecaller.com/TrueSDK.framework-v0.1.0-.zip) or from the [release section](https://github.com/truecaller/ios-sdk/releases)
+1. Download the project zip file from the [release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
-3. Drag and drop the TrueSDK framework into your project (ie into the Frameworks folder)
-4. Add the TrueSDK framework into the Embedded Binaries section of the General tab of your target
+3. Copy the TruecallerSDK project files into your project (TrueSDK directory, TrueSDKTests directory and TrueSDK.xcodeproj)
+4. Drag and drop TrueSDK.xcodeproj into your project (ie add it as a subproject to your main project).
+Embedding it this way will not require any additional script to be run.
+5. Add the TruecallerSDK framework (from Products output of TrueSDK.xcodeproj) into the Embedded Binaries section of the General tab of your target
+
+NOTE: We recommend using the CocoaPods integration.
 
 #### Installation with CocoaPods
 
@@ -32,7 +36,7 @@ You can create your Podfile using the command (in case you do not already have i
 $ pod init
 ```
 
-To integrate TrueSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate TruecallerSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 platform :ios, '8.0'
@@ -68,7 +72,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 #### Swift
 
-1. Import the TrueSDK framework in the class where you want to initialize it (for example AppDelegate) and in the class that you want to receive the profile response. Usually, this will be the ViewController responsible for displaying the True Profile info.
+1. Import the TruecallerSDK framework in the class where you want to initialize it (for example AppDelegate) and in the class that you want to receive the profile response. Usually, this will be the ViewController responsible for displaying the True Profile info.
 
 	_Swift 2.3:_
 	```swift
@@ -80,11 +84,11 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 	import TrueSDK
 	```
 
-2. Check if the current device supports the use of TrueSDK and (if so) setup TrueSDK. We recommend this to be done in the application:didFinishLaunchingWithOptions:
+2. Check if the current device supports the use of TruecallerSDK and (if so) setup TruecallerSDK. We recommend this to be done in the application:didFinishLaunchingWithOptions:
 
 	_Swift 2.3:_
     ```swift
-    //Setup TrueSDK
+    //Setup TruecallerSDK
     if TCTrueSDK.sharedManager().isSupported() {
         TCTrueSDK.sharedManager().setupWithAppKey(<#YOUR_APP_KEY#>, appLink:  <#YOUR_APP_LINK#>)
     }
@@ -92,7 +96,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 	
 	_Swift 3:_
 	```swift
-    //Setup TrueSDK
+    //Setup TruecallerSDK
     if TCTrueSDK.sharedManager().isSupported() {
         TCTrueSDK.sharedManager().setup(withAppKey: <#YOUR_APP_KEY#>, appLink: <#YOUR_APP_LINK#>)
     }
@@ -102,7 +106,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 	
 	**Important:** Make sure you type the YOUR_APP_KEY and YOUR_APP_LINK fields correctly. If you mistype the YOUR_APP_LINK field, the permission screen in Truecaller will be shown and immediatelly dismissed. In this case, the SDK will not be able to send a corresponding error back to your app.
 
-3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
+3. In AppDelegate implement the method application(application: continue userActivity: restorationHandler:) -> Bool and call the corresponding method of TCTrueSDK.sharedManager(). If the method returns false that means the activity need not be addressed by TruecallerSDK and you can handle it as desired.
 
 	_Swift 2.3:_
     ```swift
@@ -118,7 +122,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
 
-4. Set the class where you want to receive TrueSDK events (the profile or errors) a TCTrueSDKDelegate
+4. Set the class where you want to receive TruecallerSDK events (the profile or errors) a TCTrueSDKDelegate
 
 	_Swift 2.3:_
     ```swift
@@ -197,13 +201,13 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 
 #### Objective-C
 
-1. Import the TrueSDK framework in the class where you want to initialize it (for example AppDelegate) and in the class that you want to receive the profile response. Usually, this will be the ViewController responsible for displaying the True Profile info.
+1. Import the TruecallerSDK framework in the class where you want to initialize it (for example AppDelegate) and in the class that you want to receive the profile response. Usually, this will be the ViewController responsible for displaying the True Profile info.
 
     ```objectivec
     #import <TrueSDK/TrueSDK.h>
     ```
 
-2. Check if the current device supports the use of TrueSDK and (if so) setup TrueSDK. We recommend this to be done in the application:didFinishLaunchingWithOptions:
+2. Check if the current device supports the use of TruecallerSDK and (if so) setup TruecallerSDK. We recommend this to be done in the application:didFinishLaunchingWithOptions:
 
     ```objectivec
     if ([[TCTrueSDK sharedManager] isSupported]) {
@@ -215,7 +219,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 	
 	**Important:** Make sure you type the YOUR_APP_KEY and YOUR_APP_LINK fields correctly. If you mistype the YOUR_APP_LINK field, the permission screen in Truecaller will be shown and immediatelly dismissed. In this case, the SDK will not be able to send a corresponding error back to your app.
 
-3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If the method returns false that means the activity need not be addressed by TrueSDK and you can handle it as desired.
+3. In AppDelegate implement the method application:continueUserActivity:restorationHandler: and call the corresponding method of the [TCTrueSDK sharedManager]. If the method returns false that means the activity need not be addressed by TruecallerSDK and you can handle it as desired.
 
     ```objectivec
     - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
@@ -223,7 +227,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
 
-4. Set the class where you want to receive TrueSDK events (the profile or errors) a TCTrueSDKDelegate
+4. Set the class where you want to receive TruecallerSDK events (the profile or errors) a TCTrueSDKDelegate
 
     ```objectivec
     #import <UIKit/UIKit.h>
@@ -275,7 +279,7 @@ In case of error, didFailToReceiveTrueProfileWithError: will return an object of
 
 ### Optional verification steps
 
-TrueSDK provides two optional delegate methods to check the authenticity of the profile you receive. Note that TrueSDK readily offers a simplified way to request and receive a user profile via required delegate methods and verifies the content before forwarding it your app.
+TruecallerSDK provides two optional delegate methods to check the authenticity of the profile you receive. Note that TruecallerSDK readily offers a simplified way to request and receive a user profile via required delegate methods and verifies the content before forwarding it your app.
 
 #### i. Server side Truecaller Profile authenticity check
 
@@ -286,7 +290,7 @@ The delegate method didReceiveTrueProfileResponse: will return a TCTrueProfileRe
 
 #### ii. Request-Response correlation check
 
-Every request created with TrueSDK has a unique identifier namely 'requestNonce'. This identifier is bundled into the response for assuring a correlation between a request and a response. If you want you can check this correlation yourself by:
+Every request created with TruecallerSDK has a unique identifier namely 'requestNonce'. This identifier is bundled into the response for assuring a correlation between a request and a response. If you want you can check this correlation yourself by:
 
 1. Get the request nonce at willRequestProfileWithNonce: method
 2. In didReceiveTrueProfileResponse: verify that the previously retrieved identifier matches the one in TCTrueProfileResponse.requestNonce.
