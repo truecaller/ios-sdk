@@ -285,7 +285,7 @@ TruecallerSDK provides two optional delegate methods to check the authenticity o
 
 The delegate method didReceiveTrueProfileResponse: will return a TCTrueProfileResponse instance. Inside TCTrueProfileResponse class there are 3 important fields, payload, signature and signatureAlgorithm. Payload is a Base64 encoding of the json object containing all profile info of the user. Signature contains the payload's signature. You can forward these fields along with the signing algorithm back to your backend and verify the authenticity of the information by doing the following:
 
-1. Fetch Truecaller public keys using this api: http://api4.truecaller.com/v1/key (we recommend you cache these keys for future use and refresh the cache only if you cannot verify the signature);
+1. Fetch Truecaller public keys using this api: https://api4.truecaller.com/v1/key (we recommend you cache these keys for future use and refresh the cache only if you cannot verify the signature);
 2. Loop through the public keys and try to verify the signature and payload;
 
 #### ii. Request-Response correlation check
