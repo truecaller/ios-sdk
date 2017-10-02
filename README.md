@@ -156,7 +156,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
     
-The profile object is of type TCTrueProfile (written in Objective C) which has a lot of fields providing user data:
+The profile object is of type TCTrueProfile (written in Objective C) which offers the following user data:
 
 ```
 typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
@@ -299,7 +299,7 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
         //Custom code
     }
     ```
-The profile object is of type TCTrueProfile (written in Objective C) which has a lot of fields providing user data:
+The profile object is of type TCTrueProfile (written in Objective C) which offers the following user data:
 
 ```
 typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
