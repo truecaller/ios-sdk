@@ -158,7 +158,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     
 The profile object is of type TCTrueProfile which has a lot of fields providing user data:
 
-typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
+```typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
     TCTrueSDKGenderNotSpecified = 0, //
     TCTrueSDKGenderMale, //
     TCTrueSDKGenderFemale, //
@@ -205,7 +205,7 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
 @property (nonatomic, assign, readonly) BOOL isVerified;
 /*! @property isAmbassador @brief Is the user a Truecaller ambasador */
 @property (nonatomic, assign, readonly) BOOL isAmbassador;
-
+```
 6. Set the delegate property of the TCTrueSDK.sharedManager(). Make sure you do this before you request the True Profile.
 
 	_Swift 2.3:_
