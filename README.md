@@ -249,6 +249,7 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
 	```swift
     TCTrueSDK.sharedManager().requestTrueProfile()
     ```
+    **Important:** Do not use both approaches a. and b. at the same time. Doing so will request the Truecaller profile 2 times in a row. You do not need to call requestTrueProfile if you use TCProfileRequestButton. This button includes the request in itself.
 
 #### Objective-C
 
@@ -374,6 +375,7 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
     ```objectivec
     [[TCTrueSDK sharedManager] requestTrueProfile];
     ```
+    **Important:** Do not use both approaches a. and b. at the same time. Doing so will request the Truecaller profile 2 times in a row. You do not need to call requestTrueProfile if you use TCProfileRequestButton. This button includes the request in itself.
 
 ### Errors
 
