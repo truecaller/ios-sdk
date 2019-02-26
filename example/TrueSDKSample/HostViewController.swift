@@ -19,6 +19,7 @@ enum TrueUserProperties: Int {
     case countryCode
     case gender
     case url
+    case time
     
     func title() -> String {
         switch self {
@@ -40,11 +41,24 @@ enum TrueUserProperties: Int {
                 return "Gender"
             case .url:
                 return "Url"
+            case .time:
+                return "Date-Time"
         }
     }
 }
 
 typealias userDataModelType = [(String, String)] //Used as an ordered key,value store
+
+func dateString(from timeStamp: Double) -> String {
+    let date = Date(timeIntervalSince1970: timeStamp)
+    let dateFormatter = DateFormatter()
+//    dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+    dateFormatter.locale = NSLocale.current
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+    let strDate = dateFormatter.string(from: date)
+    
+    return strDate
+}
 
 extension TCTrueProfile {
     func tupleList() -> userDataModelType {
@@ -68,6 +82,7 @@ extension TCTrueProfile {
         retVal.append((TrueUserProperties.address.title(), address))
         retVal.append((TrueUserProperties.email.title(), self.email ?? ""))
         retVal.append((TrueUserProperties.job.title(), self.jobTitle ?? ""))
+        retVal.append((TrueUserProperties.time.title(), dateString(from: self.requestTime)))
 
         //Optional values for display
         if let companyName = self.companyName {

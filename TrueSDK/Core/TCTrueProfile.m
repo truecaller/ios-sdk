@@ -25,6 +25,8 @@ NSString *const kTrueProfileJobTitleKey = @"jobTitle";
 NSString *const kTrueProfileCompanyNameKey = @"companyName";
 NSString *const kTrueProfileIsVerifiedKey = @"isTrueName";
 NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
+NSString *const kTrueProfileRequestTimeKey = @"requestTime";
+
 
 @interface TCTrueProfile()
 
@@ -53,6 +55,7 @@ NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
 @property (nonatomic, strong, nullable, readwrite) NSString *companyName;
 @property (nonatomic, assign, readwrite) BOOL isVerified;
 @property (nonatomic, assign, readwrite) BOOL isAmbassador;
+@property (nonatomic, assign, readwrite) double requestTime;
 
 @end
 
@@ -90,6 +93,7 @@ NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
     [aCoder encodeObject:self.companyName forKey:kTrueProfileCompanyNameKey];
     [aCoder encodeBool:self.isVerified forKey:kTrueProfileIsVerifiedKey];
     [aCoder encodeBool:self.isAmbassador forKey:kTrueProfileIsAmbassadorKey];
+    [aCoder encodeBool:self.requestTime forKey:kTrueProfileRequestTimeKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -113,6 +117,7 @@ NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
         _companyName = [aDecoder decodeObjectForKey:kTrueProfileCompanyNameKey];
         _isVerified = [aDecoder decodeBoolForKey:kTrueProfileIsVerifiedKey];
         _isAmbassador = [aDecoder decodeBoolForKey:kTrueProfileIsAmbassadorKey];
+        _requestTime = [aDecoder decodeBoolForKey:kTrueProfileRequestTimeKey];
     }
     return self;
 }
@@ -138,6 +143,7 @@ NSString *const kTrueProfileIsAmbassadorKey = @"isAmbassador";
         _companyName = dict[kTrueProfileCompanyNameKey];
         _isVerified = [dict[kTrueProfileIsVerifiedKey] boolValue];
         _isAmbassador = [dict[kTrueProfileIsAmbassadorKey] boolValue];
+        _requestTime = [dict[kTrueProfileRequestTimeKey] doubleValue];
     }
     
     return self;

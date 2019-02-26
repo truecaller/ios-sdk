@@ -30,6 +30,7 @@ extern NSString *__nonnull const kTrueProfileJobTitleKey;
 extern NSString *__nonnull const kTrueProfileCompanyNameKey;
 extern NSString *__nonnull const kTrueProfileIsVerifiedKey;
 extern NSString *__nonnull const kTrueProfileIsAmbassadorKey;
+extern NSString *__nonnull const kTrueProfileRequestTimeKey;
 
 /*!
  * @typedef TCTrueSDKGender
@@ -85,6 +86,8 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKGender) {
 @property (nonatomic, assign, readonly) BOOL isVerified;
 /*! @property isAmbassador @brief Is the user a Truecaller ambasador */
 @property (nonatomic, assign, readonly) BOOL isAmbassador;
+/*! @property isAmbassador @brief user's profile request date time */
+@property (nonatomic, assign, readonly) double requestTime;
 
 - (nullable instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
