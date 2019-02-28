@@ -15,7 +15,7 @@
 
 + (BOOL)isOperatingSystemSupported
 {
-    NSString *requiredSystemVersion = @"9.0";
+    NSString *requiredSystemVersion = @"10.0";
     NSString *currentSystemVersion = [[UIDevice currentDevice] systemVersion];
     TCLog(@"Current Operating System Version: %@", currentSystemVersion);
     TCLog(@"Required Operating System Version: %@", requiredSystemVersion);
