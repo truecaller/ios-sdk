@@ -77,6 +77,16 @@
                 appLink:(nonnull NSString *)appLink;
 
 /*!
+* @brief Setup by providing the Partner Key and the App Link. SDK needs to be set up before any request.
+* @param appKey Your App Key provided by Truecaller
+* @param appLink Your App Link url string provided by Truecaller
+* @param requestNonce Your App generrated custom nonce
+*/
+- (void)setupWithAppKey:(nonnull NSString *)appKey
+                appLink:(nonnull NSString *)appLink
+           requestNonce:(nonnull NSString *)requestNonce;
+
+/*!
  * @brief Call this method to request the True Profile for a user. Make sure you set the delegate first.
  */
 - (void)requestTrueProfile;
