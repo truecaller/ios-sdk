@@ -45,7 +45,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
                 appLink:(nonnull NSString *)appLink
-                requestNonce:(NSString *)requestNonce
+                requestNonce:(nonnull NSString *)requestNonce
 {
     self.appKey = appKey;
     self.appLink = appLink;
