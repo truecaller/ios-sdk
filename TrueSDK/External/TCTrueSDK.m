@@ -20,6 +20,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *appLink;
+@property (nonatomic, strong) NSString *requestNonce;
 
 @end
 
@@ -40,6 +41,15 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 {
     self.appKey = appKey;
     self.appLink = appLink;
+}
+
+- (void)setupWithAppKey:(nonnull NSString *)appKey
+                appLink:(nonnull NSString *)appLink
+                requestNonce:(nonnull NSString *)requestNonce
+{
+    self.appKey = appKey;
+    self.appLink = appLink;
+    self.requestNonce = requestNonce;
 }
 
 + (NSURL *)buildTruecallerMessageWithItem:(id<NSCoding>)item forKey:(NSString *)key
@@ -80,7 +90,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         return;
     }
     
-    NSString *requestNonce = [NSUUID UUID].UUIDString;
+    NSString *requestNonce = self.requestNonce ?: [NSUUID UUID].UUIDString;
     
     if ([[TCTrueSDK sharedManager].delegate respondsToSelector:@selector(willRequestProfileWithNonce:)]) {
         [[TCTrueSDK sharedManager].delegate willRequestProfileWithNonce:requestNonce];
