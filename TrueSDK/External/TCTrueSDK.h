@@ -80,7 +80,7 @@
 * @brief Setup by providing the Partner Key and the App Link. SDK needs to be set up before any request.
 * @param appKey Your App Key provided by Truecaller
 * @param appLink Your App Link url string provided by Truecaller
-* @param requestNonce Your App generrated custom nonce
+* @param requestNonce Your App generated custom nonce
 */
 - (void)setupWithAppKey:(nonnull NSString *)appKey
                 appLink:(nonnull NSString *)appLink

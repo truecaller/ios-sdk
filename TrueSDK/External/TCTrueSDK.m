@@ -90,7 +90,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         return;
     }
     
-    NSString *requestNonce = self.requestNonce != nil ? self.requestNonce : [NSUUID UUID].UUIDString;
+    NSString *requestNonce = self.requestNonce ?: [NSUUID UUID].UUIDString;
     
     if ([[TCTrueSDK sharedManager].delegate respondsToSelector:@selector(willRequestProfileWithNonce:)]) {
         [[TCTrueSDK sharedManager].delegate willRequestProfileWithNonce:requestNonce];
