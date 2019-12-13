@@ -11,6 +11,7 @@
 #import "TCTrueProfile.h"
 #import "TCError.h"
 #import "TCTrueProfileResponse.h"
+#import "TCTrueProfileRequest.h"
 
 @protocol TCTrueSDKDelegate <NSObject>
 
@@ -90,6 +91,13 @@
  * @brief Call this method to request the True Profile for a user. Make sure you set the delegate first.
  */
 - (void)requestTrueProfile;
+
+/*!
+ * @brief Call this method to display a different type of title other than "Login to", which is the default.
+ * @param titleType Your preferred title type. 
+ */
+- (void)setTitleType:(TitleType)titleType;
+
 
 /*!
  * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.

@@ -21,6 +21,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *appLink;
 @property (nonatomic, strong) NSString *requestNonce;
+@property (nonatomic) TitleType titleType;
 
 @end
 
@@ -41,6 +42,11 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 {
     self.appKey = appKey;
     self.appLink = appLink;
+    self.titleType = TitleTypeDefault;
+}
+
+- (void)setTitleType:(enum TitleType)titleType {
+    self.titleType = titleType;
 }
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
@@ -50,6 +56,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.appKey = appKey;
     self.appLink = appLink;
     self.requestNonce = requestNonce;
+    self.titleType = TitleTypeDefault;
 }
 
 + (NSURL *)buildTruecallerMessageWithItem:(id<NSCoding>)item forKey:(NSString *)key
@@ -104,6 +111,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     profileRequest.sdkVersion = [TCUtils getSDKVersion];
     profileRequest.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     profileRequest.requestNonce = requestNonce;
+    profileRequest.titleType = self.titleType;
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
     
     [TCUtils openUrl:url completionHandler:nil];
