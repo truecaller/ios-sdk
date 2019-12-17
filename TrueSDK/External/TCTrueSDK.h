@@ -56,6 +56,7 @@
 @interface TCTrueSDK : NSObject
 
 @property (nonatomic, weak, nullable) id<TCTrueSDKDelegate> delegate;
+@property (nonatomic) TitleType titleType;
 
 + (nonnull TCTrueSDK *)sharedManager;
 
@@ -91,13 +92,6 @@
  * @brief Call this method to request the True Profile for a user. Make sure you set the delegate first.
  */
 - (void)requestTrueProfile;
-
-/*!
- * @brief Call this method to display a different type of title other than "Login to", which is the default.
- * @param titleType Your preferred title type. 
- */
-- (void)setTitleType:(TitleType)titleType;
-
 
 /*!
  * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.

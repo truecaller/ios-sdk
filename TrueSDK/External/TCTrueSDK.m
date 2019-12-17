@@ -21,7 +21,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *appLink;
 @property (nonatomic, strong) NSString *requestNonce;
-@property (nonatomic) TitleType titleType;
 
 @end
 
