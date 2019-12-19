@@ -44,10 +44,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.titleType = TitleTypeDefault;
 }
 
-- (void)setTitleType:(enum TitleType)titleType {
-    self.titleType = titleType;
-}
-
 - (void)setupWithAppKey:(nonnull NSString *)appKey
                 appLink:(nonnull NSString *)appLink
                 requestNonce:(nonnull NSString *)requestNonce
