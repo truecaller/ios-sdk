@@ -140,11 +140,17 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                     [self.delegate didReceiveTrueProfileResponse:response];
                 }
                 
-                NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:response.payload options:0];
-                NSError *serializationError = nil;
-                NSDictionary *profileDict = [NSJSONSerialization JSONObjectWithData:decodedData options:0 error:&serializationError];
-                TCTrueProfile *profile = [[TCTrueProfile alloc] initWithDictionary:profileDict];
-                [self.delegate didReceiveTrueProfile:profile];
+                // Case added for response nil when the login button is fired before fetching details of user
+                if (response != nil) {
+                    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:response.payload options:0];
+                    NSError *serializationError = nil;
+                    NSDictionary *profileDict = [NSJSONSerialization JSONObjectWithData:decodedData options:0 error:&serializationError];
+                    TCTrueProfile *profile = [[TCTrueProfile alloc] initWithDictionary:profileDict];
+                    [self.delegate didReceiveTrueProfile:profile];
+                } else {
+                    retValue = NO;
+                }
+                
             }
             
             retValue = YES;
