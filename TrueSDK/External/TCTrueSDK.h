@@ -11,6 +11,7 @@
 #import "TCTrueProfile.h"
 #import "TCError.h"
 #import "TCTrueProfileResponse.h"
+#import "TCTrueProfileRequest.h"
 
 @protocol TCTrueSDKDelegate <NSObject>
 
@@ -55,6 +56,7 @@
 @interface TCTrueSDK : NSObject
 
 @property (nonatomic, weak, nullable) id<TCTrueSDKDelegate> delegate;
+@property (nonatomic) TitleType titleType;
 
 + (nonnull TCTrueSDK *)sharedManager;
 

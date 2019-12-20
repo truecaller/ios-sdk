@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, TitleType) {
+    TitleTypeDefault = 0,
+    TitleTypeLoginTo,
+    TitleTypeSignUpWith,
+    TitleTypeSigninTo,
+    TitleTypeVerifyWith,
+    TitleTypeGetStartedWith,
+    TitleTypeRegisterWith
+};
+
 @interface TCTrueProfileRequest : NSObject <NSCoding>
 
 @property (nonatomic, strong, nullable) NSString *appId;
@@ -17,5 +27,6 @@
 @property (nonatomic, strong, nullable) NSString *requestNonce;
 @property (nonatomic, strong, nullable) NSString *apiVersion;
 @property (nonatomic, strong, nullable) NSString *sdkVersion;
+@property (nonatomic, assign) enum TitleType titleType;
 
 @end
