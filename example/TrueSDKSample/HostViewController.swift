@@ -66,14 +66,14 @@ extension TCTrueProfile {
         
         //Parse full name
         var fullname = self.firstName ?? ""
-        fullname = fullname.characters.count > 0 ? "\(self.firstName ?? "") \(self.lastName ?? "")" : (self.lastName ?? "")
+        fullname = fullname.count > 0 ? "\(self.firstName ?? "") \(self.lastName ?? "")" : (self.lastName ?? "")
         
         //Parse address
         var address = self.street ?? ""
         var zipcity = self.zipCode ?? ""
         let city = self.city ?? ""
-        zipcity = zipcity.characters.count > 0 ? "\(zipcity)\(city.characters.count > 0 ? " " : "")\(city)" : city
-        address = zipcity.characters.count > 0 ? "\(address)\(address.characters.count > 0 ? ", " : "")\(zipcity)" : address
+        zipcity = zipcity.count > 0 ? "\(zipcity)\(city.count > 0 ? " " : "")\(city)" : city
+        address = zipcity.count > 0 ? "\(address)\(address.count > 0 ? ", " : "")\(zipcity)" : address
         
         //Fill user data model
         //Non-optional values for display
@@ -122,7 +122,7 @@ class ErrorToast: UIView {
     
     var error: Error? {
         didSet {
-            if let nserror = error as? NSError {
+            if let nserror = error as NSError? {
                 DispatchQueue.main.async { [weak self] in
                     self?.errorCode.text = "\(nserror.domain): \(nserror.code)"
                     self?.errorDescription.text = nserror.localizedDescription
@@ -173,10 +173,34 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         userDataHeightConstraint.constant = CGFloat(userDataModel.count) * propertyRowHeight
         
         TCTrueSDK.sharedManager().delegate = self
+        TCTrueSDK.sharedManager().titleType = .default
+        changeTitleTypeOnNotification()
     }
     
     override func viewWillLayoutSubviews() {
         avatarImageView.layer.cornerRadius = avatarImageView.layer.bounds.height / 2
+    }
+    
+    private func changeTitleTypeOnNotification() {
+        NotificationCenter.default.addObserver(forName: .titleChanged, object: nil, queue: nil) { [weak self] (notification) in
+            self?.setTilteType(from: notification)
+        }
+    }
+    
+    private func setTilteType(from notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: Any],
+            let titleType = userInfo["titleType"] as? TitleType else {
+            return
+        }
+        
+        TCTrueSDK.sharedManager().titleType = titleType
+    }
+    
+    @IBAction func openTitleSelection() {
+        let controller = QATitleSelectionTableViewController()
+        controller.title = "Select Title"
+        let navigationControlelr = UINavigationController(rootViewController: controller)
+        present(navigationControlelr, animated: true, completion: nil)
     }
 
     //MARK: - Private

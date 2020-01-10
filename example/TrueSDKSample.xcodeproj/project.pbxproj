@@ -19,6 +19,7 @@
 		60E9DA1A1E11E6FD002985BC /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9DA191E11E6FD002985BC /* LogTableViewCell.swift */; };
 		60FC74891E55E2F600665BB7 /* TrueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC74881E55E2F600665BB7 /* TrueSDK.framework */; };
 		60FC748A1E55E2F700665BB7 /* TrueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC74881E55E2F600665BB7 /* TrueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		634AB7FC23BDD7A60063CBFD /* QATitleSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AB7FB23BDD7A60063CBFD /* QATitleSelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		60E9DA171E11D9CB002985BC /* HostLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostLogs.swift; sourceTree = "<group>"; };
 		60E9DA191E11E6FD002985BC /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		60FC74881E55E2F600665BB7 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		634AB7FB23BDD7A60063CBFD /* QATitleSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QATitleSelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				60E9DA151E11D746002985BC /* LogViewController.swift */,
 				60E9DA171E11D9CB002985BC /* HostLogs.swift */,
 				60E9DA191E11E6FD002985BC /* LogTableViewCell.swift */,
+				634AB7FB23BDD7A60063CBFD /* QATitleSelectionTableViewController.swift */,
 			);
 			path = TrueSDKSample;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -188,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60E9DA1A1E11E6FD002985BC /* LogTableViewCell.swift in Sources */,
+				634AB7FC23BDD7A60063CBFD /* QATitleSelectionTableViewController.swift in Sources */,
 				60DE88F91E044F170061C060 /* HostViewController.swift in Sources */,
 				6049DF7C1E0C040D0005230D /* TrueUserPropertyTableViewCell.swift in Sources */,
 				60E9DA181E11D9CB002985BC /* HostLogs.swift in Sources */,
