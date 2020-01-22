@@ -1,5 +1,5 @@
 //
-//  QATitleSelectionTableViewController.swift
+//  TitleSelectionTableViewController.swift
 //  TrueSDKSample
 //
 //  Created by Sreedeepkesav M S on 02/01/20.
@@ -9,30 +9,27 @@
 import UIKit
 import TrueSDK
 
-extension Notification.Name {
-    static let titleChanged = Notification.Name("loginTitleChanged")
+protocol TitleSelectionTableViewControllerDelegate: class {
+    func didSet(title: TitleType)
 }
 
-private var titles : [String] {
-    return ["Default",
-            "Login to",
-            "Sign up with",
-            "Sign in to",
-            "Verify with",
-            "Get started with",
-            "Register with"]
-}
-
-class QATitleSelectionTableViewController: UITableViewController {
+class TitleSelectionTableViewController: UITableViewController {
+    private let titles = ["Default",
+                          "Login to",
+                          "Sign up with",
+                          "Sign in to",
+                          "Verify with",
+                          "Get started with",
+                          "Register with"]
+    
+    weak var delegate: TitleSelectionTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -48,26 +45,21 @@ class QATitleSelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let title = titleType(for: indexPath.row)
-        postNotificationForTitleChange(with: title, titleName: titles[indexPath.row])
+        presentAlertForTitleChange(with: title, titleName: titles[indexPath.row])
     }
-}
-
-extension QATitleSelectionTableViewController {
-    private func postNotificationForTitleChange(with title: TitleType, titleName: String) {
-        NotificationCenter.default.post(name: .titleChanged,
-                                        object: nil,
-                                        userInfo: ["titleType": title])
-        
+    
+    private func presentAlertForTitleChange(with title: TitleType, titleName: String) {
         let alert = UIAlertController(title: "",
                                       message: "Title set to: \(titleName)",
             preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK",
                                       style: .default,
-                                      handler: { action in
-            self.dismiss(animated: true, completion: nil)
+                                      handler: { [weak self] action in
+                                        self?.delegate?.didSet(title: title)
+                                        self?.dismiss(animated: true, completion: nil)
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     private func titleType(for index: Int) -> TitleType {

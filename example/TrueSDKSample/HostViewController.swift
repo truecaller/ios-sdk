@@ -174,30 +174,15 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         TCTrueSDK.sharedManager().delegate = self
         TCTrueSDK.sharedManager().titleType = .default
-        changeTitleTypeOnNotification()
     }
     
     override func viewWillLayoutSubviews() {
         avatarImageView.layer.cornerRadius = avatarImageView.layer.bounds.height / 2
     }
     
-    private func changeTitleTypeOnNotification() {
-        NotificationCenter.default.addObserver(forName: .titleChanged, object: nil, queue: nil) { [weak self] (notification) in
-            self?.setTilteType(from: notification)
-        }
-    }
-    
-    private func setTilteType(from notification: Notification) {
-        guard let userInfo = notification.userInfo as? [String: Any],
-            let titleType = userInfo["titleType"] as? TitleType else {
-            return
-        }
-        
-        TCTrueSDK.sharedManager().titleType = titleType
-    }
-    
     @IBAction func openTitleSelection() {
-        let controller = QATitleSelectionTableViewController()
+        let controller = TitleSelectionTableViewController()
+        controller.delegate = self
         controller.title = "Select Title"
         let navigationControlelr = UINavigationController(rootViewController: controller)
         present(navigationControlelr, animated: true, completion: nil)
@@ -284,3 +269,8 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 }
 
+extension HostViewController: TitleSelectionTableViewControllerDelegate {
+    func didSet(title: TitleType) {
+        TCTrueSDK.sharedManager().titleType = title
+    }
+}
