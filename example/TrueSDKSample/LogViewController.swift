@@ -15,7 +15,7 @@ open class LogViewController: UIViewController, UITableViewDataSource {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        logsTable.rowHeight = UITableViewAutomaticDimension
+        logsTable.rowHeight = UITableView.automaticDimension
         logsTable.estimatedRowHeight = 60
     }
 

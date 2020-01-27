@@ -13,9 +13,8 @@ import TrueSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //Setup TrueSDK
@@ -24,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              IMPORTANT!!!
              SET THE APP_LINK VALUE IN THE ENTITLEMENTS FILE AS WELL!!!
              UPDATE THE APPID (BUNDLE IDENTIFIER) IN YOUR PROJECT SETTINGS!!!
-            */
-             TCTrueSDK.sharedManager().setup(withAppKey: "I7ViZ490028736bba408881687123b4cec49f", appLink: "https://si9f1dc18a1d0041efa219162d27d1c865.truecallerdevs.com")
+             */
+            TCTrueSDK.sharedManager().setup(withAppKey: "I7ViZ490028736bba408881687123b4cec49f", appLink: "https://si9f1dc18a1d0041efa219162d27d1c865.truecallerdevs.com")
         }
         
         return true
@@ -53,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    private func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
         return TCTrueSDK.sharedManager().application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
 }
