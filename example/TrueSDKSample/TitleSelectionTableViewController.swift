@@ -13,7 +13,7 @@ protocol TitleSelectionTableViewControllerDelegate: class {
     func didSet(title: TitleType)
 }
 
-class TitleSelectionTableViewController: UITableViewController {
+final class TitleSelectionTableViewController: UITableViewController {
     private let titles = ["Default",
                           "Login to",
                           "Sign up with",
