@@ -42,16 +42,15 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.appKey = appKey;
     self.appLink = appLink;
     self.titleType = TitleTypeDefault;
+    self.locale = "en_US";
 }
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
                 appLink:(nonnull NSString *)appLink
                 requestNonce:(nonnull NSString *)requestNonce
 {
-    self.appKey = appKey;
-    self.appLink = appLink;
+    [self setupWithAppKey:appKey appLink:appLink];
     self.requestNonce = requestNonce;
-    self.titleType = TitleTypeDefault;
 }
 
 + (NSURL *)buildTruecallerMessageWithItem:(id<NSCoding>)item forKey:(NSString *)key
@@ -107,6 +106,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     profileRequest.appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     profileRequest.requestNonce = requestNonce;
     profileRequest.titleType = self.titleType;
+    profileRequest.locale = self.locale;
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
     
     [TCUtils openUrl:url completionHandler:nil];
