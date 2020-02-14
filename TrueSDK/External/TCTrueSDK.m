@@ -42,7 +42,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.appKey = appKey;
     self.appLink = appLink;
     self.titleType = TitleTypeDefault;
-    self.locale = "en_US";
+    self.locale = @"en_US";
 }
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
