@@ -57,6 +57,7 @@
 
 @property (nonatomic, weak, nullable) id<TCTrueSDKDelegate> delegate;
 @property (nonatomic) TitleType titleType;
+@property (nonatomic, nullable) NSString* locale;
 
 + (nonnull TCTrueSDK *)sharedManager;
 
