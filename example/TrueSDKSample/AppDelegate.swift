@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    private func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
-        return TCTrueSDK.sharedManager().application(application, continue: userActivity, restorationHandler: restorationHandler)
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        return TCTrueSDK.sharedManager().application(application, continue: userActivity, restorationHandler: restorationHandler as? ([Any]?) -> Void)
     }
 }
 
