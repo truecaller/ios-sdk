@@ -121,6 +121,15 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 continueUserActivity:(nonnull NSUserActivity *)userActivity
  restorationHandler:(nullable void (^)(NSArray * _Nullable restorableObjects))restorationHandler
 {
+    BOOL retValue = [self continueUserActivity:userActivity];
+    return retValue;
+}
+
+- (void)scene:(nonnull UIScene *)scene continueUserActivity:(nonnull NSUserActivity *)userActivity {
+    BOOL retValue = [self continueUserActivity:userActivity];
+}
+
+-(BOOL)continueUserActivity:(nonnull NSUserActivity *)userActivity {
     BOOL retValue = NO;
     if ([userActivity.activityType isEqualToString: NSUserActivityTypeBrowsingWeb]) {
         NSURL *url = userActivity.webpageURL;
