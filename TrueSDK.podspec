@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TrueSDK"
-  s.version      = "0.1.5"
+  s.version      = "0.1.6"
   s.summary      = "Official Truecaller SDK for iOS for one tap verified phone number based sign up/login."
 
   s.description  = <<-DESC
