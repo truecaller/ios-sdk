@@ -17,3 +17,4 @@
 #import <TrueSDK/TCTrueProfileRequest.h>
 #import <TrueSDK/TCTrueSDKLogger.h>
 #import <TrueSDK/TCUtils.h>
+#import <TrueSDK/TCVerificationState.h>
