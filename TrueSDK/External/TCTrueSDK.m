@@ -159,7 +159,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         } else {
             [_delegate didReceiveVerificationError:[TCVerificationError errorWithError:error]];
         }
-    }]
+    }];
 }
 
 - (BOOL)isSupported
