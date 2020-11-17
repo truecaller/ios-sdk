@@ -12,6 +12,8 @@
 #import "TCError.h"
 #import "TCTrueProfileResponse.h"
 #import "TCTrueProfileRequest.h"
+#import "TCVerificationState.h"
+#import "TCVerificationError.h"
 
 @protocol TCTrueSDKDelegate <NSObject>
 
@@ -30,6 +32,18 @@
  * @param profileResponse The profile response which contains the payload, signature and nonce
  */
 - (void)didReceiveTrueProfileResponse:(nonnull TCTrueProfileResponse *)profileResponse;
+
+/*!
+ * @brief Use this optional delegate method to get the  status updates while verifying non truecaller users. OTP based verification.
+ * @param verificationState The profile response which contains the payload, signature and nonce
+ */
+- (void)verificationStatusChangedTo:(TCVerificationState)verificationState;
+
+/*!
+ * @brief Use this optional delegate method to get the error for verification of non truecaller users.
+ * @param error Corrsponsding custom errors in verification if any.
+ */
+- (void)didReceiveVerificationError:(nonnull TCVerificationError *)error;
 
 @required
 
@@ -98,7 +112,25 @@
  * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.
  * @return true if TrueSDK can handle the URL request
  */
-- (BOOL)application:(nonnull UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nullable void (^)(NSArray * _Nullable restorableObjects))restorationHandler;
+- (BOOL)application:(nonnull UIApplication *)application
+continueUserActivity:(nonnull NSUserActivity *)userActivity
+ restorationHandler:(nullable void (^)(NSArray * _Nullable restorableObjects))restorationHandler;
+
+/*!
+ * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.
+ * @param phone Phone number you want to get the login code in.
+ * @param countryCode Country code as String (eg: "in" for india "sv" for sweden) of the phone number passed.
+ */
+
+- (void)requestOTPForPhone: (nonnull NSString *)phone
+               countryCode: (nonnull NSString *)countryCode;
+
+/*!
+ * @brief Call this method after receiving one time code with the code.
+ * @param code One time password received.
+ */
+
+- (void)verifySecurityCode: (nonnull NSString *)code;
 
 /*!
  * @brief Call this method in scene:continueUserActivity of the Scene Delegate class.
