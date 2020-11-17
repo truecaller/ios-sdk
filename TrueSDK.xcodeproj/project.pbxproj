@@ -56,6 +56,10 @@
 		63793EC1255C378700E41C02 /* TCVerificationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793EBF255C378700E41C02 /* TCVerificationState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63793EEC255D8FA800E41C02 /* TCVerifyCodeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */; };
 		63793EED255D8FA800E41C02 /* TCVerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */; };
+		638EE2242562D938001B12B6 /* TCUrlProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 638EE2222562D938001B12B6 /* TCUrlProvider.h */; };
+		638EE2252562D938001B12B6 /* TCUrlProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2232562D938001B12B6 /* TCUrlProvider.m */; };
+		638EE22B2562DDE3001B12B6 /* TCUpdateProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */; };
+		638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +113,10 @@
 		63793EBF255C378700E41C02 /* TCVerificationState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerificationState.h; sourceTree = "<group>"; };
 		63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerifyCodeRequest.h; sourceTree = "<group>"; };
 		63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCVerifyCodeRequest.m; sourceTree = "<group>"; };
+		638EE2222562D938001B12B6 /* TCUrlProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCUrlProvider.h; sourceTree = "<group>"; };
+		638EE2232562D938001B12B6 /* TCUrlProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCUrlProvider.m; sourceTree = "<group>"; };
+		638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCUpdateProfileRequest.h; sourceTree = "<group>"; };
+		638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCUpdateProfileRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +235,8 @@
 				63793EF1255D8FAF00E41C02 /* Requests */,
 				63793ED2255C417300E41C02 /* Error */,
 				63793E7D255BF00700E41C02 /* Models */,
+				638EE2222562D938001B12B6 /* TCUrlProvider.h */,
+				638EE2232562D938001B12B6 /* TCUrlProvider.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -258,6 +268,8 @@
 				63793E71255B3C0000E41C02 /* TCLoginCodeRequest.m */,
 				63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */,
 				63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */,
+				638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */,
+				638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -269,6 +281,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638EE2242562D938001B12B6 /* TCUrlProvider.h in Headers */,
 				2694D3371E0AB5BF0066A991 /* TCTrueSDK.h in Headers */,
 				262A41401E0BF2F70074A117 /* TCTrueProfile.h in Headers */,
 				02D576801E266ECC00ABE908 /* TCTrueProfileResponse.h in Headers */,
@@ -276,6 +289,7 @@
 				2663E54D1E1BBA3B00620B5C /* TCError.h in Headers */,
 				600526101E082BBF00159A08 /* TCUtils.h in Headers */,
 				63793E68255AD87400E41C02 /* TCBaseRequest.h in Headers */,
+				638EE22B2562DDE3001B12B6 /* TCUpdateProfileRequest.h in Headers */,
 				266F5FC91E1B9E5700E7B90C /* TCTrueSDKLogger.h in Headers */,
 				02AE115A1E1E417B003E7A48 /* TCTrueProfileRequest.h in Headers */,
 				63793EC1255C378700E41C02 /* TCVerificationState.h in Headers */,
@@ -422,6 +436,8 @@
 				02D576821E266ECC00ABE908 /* TCTrueProfileResponse.m in Sources */,
 				600526121E082BBF00159A08 /* TCUtils.m in Sources */,
 				63793E73255B3C0000E41C02 /* TCLoginCodeRequest.m in Sources */,
+				638EE2252562D938001B12B6 /* TCUrlProvider.m in Sources */,
+				638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */,
 				63793EED255D8FA800E41C02 /* TCVerifyCodeRequest.m in Sources */,
 				2663E54F1E1BBA3B00620B5C /* TCError.m in Sources */,
 				02B981F71E0D5E7D0016DFD2 /* TCProfileRequestButton.m in Sources */,

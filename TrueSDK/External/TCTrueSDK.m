@@ -15,6 +15,7 @@
 #import "TCTrueProfileResponse.h"
 #import "TCLoginCodeRequest.h"
 #import "TCVerifyCodeRequest.h"
+#import "TCUpdateProfileRequest.h"
 
 NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
@@ -28,6 +29,9 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 @property (nonatomic, strong) TCLoginCodeResponse *loginCodeResponse;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *countryCode;
+
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
 
 @end
 
@@ -145,7 +149,9 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     }
 }
 
-- (void)verifySecurityCode: (NSString *)code {
+- (void)verifySecurityCode: (nonnull NSString *)code
+        andUpdateFirstname: (nonnull NSString *)firstName
+                  lastName: (nonnull NSString *)lastName {
     TCVerifyCodeRequest *request = [[TCVerifyCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
     [request verifyLoginCodeForPhoneNumber:_phone
                                countryCode:_countryCode
@@ -154,12 +160,23 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
                                 completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
         if (error == nil) {
             if (response.accessToken != nil) {
+                [self updateProfileDetails:response];
                 [_delegate verificationStatusChangedTo:TCVerificationStateVerificationComplete];
             }
         } else {
             [_delegate didReceiveVerificationError:[TCVerificationError errorWithError:error]];
         }
     }];
+}
+
+//Failures od this is not handled as of now
+- (void)updateProfileDetails: (TCLoginCodeResponse *)response {
+    TCUpdateProfileRequest *request = [[TCUpdateProfileRequest alloc] initWithappKey:self.appKey
+                                                                             appLink:self.appLink
+                                                                         countryCode: self.countryCode
+                                                                                auth: response.accessToken];
+    
+    [request updateFirstName:self.firstName lastName:self.lastName];
 }
 
 - (BOOL)isSupported
