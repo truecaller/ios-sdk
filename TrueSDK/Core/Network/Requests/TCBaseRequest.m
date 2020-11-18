@@ -7,6 +7,7 @@
 //
 
 #import "TCBaseRequest.h"
+#import <UIKit/UIKit.h>
 
 @interface TCBaseRequest ()
 
@@ -72,18 +73,15 @@
 
 // TODO: - Change once decides on saving logic -
 - (NSString *)getUniqueIdentifierForDevice {
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    NSString *timeIntervalString = [NSString stringWithFormat:@"%f", time];
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    NSString *randomString =  [NSString stringWithFormat:@"%@%@", uuid, timeIntervalString];
-    return randomString;
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    return idfv;
 }
 
 - (void)makeAuthorisedRequestWithParemeters: (NSDictionary *)parameters
                                        auth: (NSString *)auth
                                  completion: (APICompletionBlock)completion {
     NSMutableURLRequest *request = [self makeAuthorisedRequestWithToken:auth];
-    [self performRequestWithParemeterss:request parameters:parameters completion:completion];
+    [self performRequestWithParemeters:request parameters:parameters completion:completion];
 }
 
 - (void)makeRequestWithParemeters: (NSDictionary *)parameters
@@ -96,10 +94,10 @@
     }
     
     NSMutableURLRequest *request = [self makeRequestWithHeaders];
-    [self performRequestWithParemeterss:request parameters:parameters completion:completion];
+    [self performRequestWithParemeters:request parameters:params completion:completion];
 }
 
-- (void)performRequestWithParemeterss: (NSMutableURLRequest *) request
+- (void)performRequestWithParemeters: (NSMutableURLRequest *) request
                            parameters: (NSDictionary *)parameters
                            completion: (APICompletionBlock)completion {
     NSError *error;

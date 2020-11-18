@@ -9,7 +9,7 @@
 #import "TCVerifyCodeRequest.h"
 #import "TCVerificationError.h"
 
-NSString *const verifyCodeUrl = @"https://api4.truecaller.com//v1/otp/installation/verify";
+NSString *const verifyCodeUrl = @"https://api4.truecaller.com/v1/otp/installation/verify";
 
 @implementation TCVerifyCodeRequest
 

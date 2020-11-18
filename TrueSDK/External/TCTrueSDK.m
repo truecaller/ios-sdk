@@ -134,7 +134,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
                                     countryCode:countryCode
                                      completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
             if (error == nil) {
-                if (response.method == nil) {
+                if ([response.method isEqual:@"sms"]) {
                     _loginCodeResponse = response;
                     [_delegate verificationStatusChangedTo:TCVerificationStateOTPInitiated];
                 } else if (response.accessToken != nil && [response.status intValue] == 1) {
