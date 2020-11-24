@@ -71,7 +71,6 @@
     return dictionary;
 }
 
-// TODO: - Change once decides on saving logic -
 - (NSString *)getUniqueIdentifierForDevice {
     NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     return idfv;

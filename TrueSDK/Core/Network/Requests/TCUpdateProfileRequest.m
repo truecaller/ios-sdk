@@ -7,7 +7,7 @@
 //
 
 #import "TCUpdateProfileRequest.h"
-#import "TCUrlProvider.h"
+#import "NSURL+TrueSDK.h"
 
 @interface TCUpdateProfileRequest()
 
@@ -21,7 +21,7 @@
                        appLink: (NSString *)appLink
                    countryCode: (NSString *)countryCode
                           auth: (NSString *)auth {
-    NSURL *url = [TCUrlProvider baseUrlForCountryCode:countryCode];
+    NSURL *url = [NSURL baseUrlForCountryCode:countryCode];
     self = [super initWithappKey:appKey
                          appLink:appLink
                       httpMethod:@"POST"
