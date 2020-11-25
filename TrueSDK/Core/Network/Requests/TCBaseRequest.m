@@ -7,6 +7,7 @@
 //
 
 #import "TCBaseRequest.h"
+#import <UIKit/UIKit.h>
 
 @interface TCBaseRequest ()
 
@@ -41,6 +42,20 @@
     return request;
 }
 
+- (NSMutableURLRequest *)makeAuthorisedRequestWithToken: (NSString *)token {
+    NSURL *url = [NSURL URLWithString:self.urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    [request addValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPMethod:self.httpMethod];
+    
+    return request;
+}
+
 - (NSDictionary *)commonParameters {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setValue:[NSNumber numberWithInt:16] forKey:@"clientId"];
@@ -56,13 +71,16 @@
     return dictionary;
 }
 
-// TODO: - Change once decides on saving logic -
 - (NSString *)getUniqueIdentifierForDevice {
-    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    NSString *timeIntervalString = [NSString stringWithFormat:@"%f", time];
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    NSString *randomString =  [NSString stringWithFormat:@"%@%@", uuid, timeIntervalString];
-    return randomString;
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    return idfv;
+}
+
+- (void)makeAuthorisedRequestWithParemeters: (NSDictionary *)parameters
+                                       auth: (NSString *)auth
+                                 completion: (APICompletionBlock)completion {
+    NSMutableURLRequest *request = [self makeAuthorisedRequestWithToken:auth];
+    [self performRequestWithParemeters:request parameters:parameters completion:completion];
 }
 
 - (void)makeRequestWithParemeters: (NSDictionary *)parameters
@@ -74,18 +92,24 @@
         [params addEntriesFromDictionary:self.commonParameters];
     }
     
+    NSMutableURLRequest *request = [self makeRequestWithHeaders];
+    [self performRequestWithParemeters:request parameters:params completion:completion];
+}
+
+- (void)performRequestWithParemeters: (NSMutableURLRequest *) request
+                           parameters: (NSDictionary *)parameters
+                           completion: (APICompletionBlock)completion {
     NSError *error;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSMutableURLRequest *request = [self makeRequestWithHeaders];
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-    [request setHTTPBody:postData];
-
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request
-                                                    completionHandler:^(NSData *data,
-                                                                        NSURLResponse *response,
-                                                                        NSError *error) {
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
+    [request setHTTPBody:requestData];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data,
+                                                                    NSURLResponse *response,
+                                                                    NSError *error) {
         if (error == nil) {
             NSMutableDictionary *responseJson = [NSJSONSerialization JSONObjectWithData: data
                                                                                 options: kNilOptions
@@ -95,8 +119,8 @@
             completion(nil, error);
         }
     }];
-
-    [postDataTask resume];
+    
+    [dataTask resume];
 }
 
 @end

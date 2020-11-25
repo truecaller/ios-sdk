@@ -39,8 +39,9 @@ NSString *const loginCodeUrl = @"https://api4.truecaller.com/v1/otp/installation
             if (verificationError == nil) {
                 TCLoginCodeResponse *loginCodeResponse = [[TCLoginCodeResponse alloc] initWithDictionary:response];
                 completionBlock(loginCodeResponse, nil);
+            } else {
+                completionBlock(nil, verificationError);
             }
-            completionBlock(nil, verificationError);
         } else {
             completionBlock(nil, error);
         }

@@ -130,7 +130,9 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
  * @param code One time password received.
  */
 
-- (void)verifySecurityCode: (nonnull NSString *)code;
+- (void)verifySecurityCode: (nonnull NSString *)code
+        andUpdateFirstname: (nonnull NSString *)firstName
+                  lastName: (nonnull NSString *)lastName;
 
 /*!
  * @brief Call this method in scene:continueUserActivity of the Scene Delegate class.

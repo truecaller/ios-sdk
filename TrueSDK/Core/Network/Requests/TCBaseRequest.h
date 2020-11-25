@@ -28,6 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
                   useCommonParams: (BOOL)useParams
                        completion: (APICompletionBlock)completion;
 
+- (void)makeAuthorisedRequestWithParemeters: (NSDictionary *)parameters
+                                       auth: (NSString *)auth
+                                 completion: (APICompletionBlock)completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

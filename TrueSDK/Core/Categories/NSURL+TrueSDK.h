@@ -19,5 +19,6 @@ FOUNDATION_EXPORT NSString *kErrorKey;
 
 - (TCError *)tryParseError;
 - (id <NSCoding>)parseArchivedObjectWithKey:(NSString *)key;
++ (NSURL *)baseUrlForCountryCode: (NSString *)countrycode;
 
 @end
