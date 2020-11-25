@@ -96,6 +96,12 @@
     [self performRequestWithParemeters:request parameters:params completion:completion];
 }
 
+- (void)makeGetRequest: (NSString *)auth
+            completion: (APICompletionBlock)completion {
+    NSMutableURLRequest *request = [self makeAuthorisedRequestWithToken:auth];
+    [self performRequestWithParemeters:request parameters:nil completion:completion];
+}
+
 - (void)performRequestWithParemeters: (NSMutableURLRequest *) request
                            parameters: (NSDictionary *)parameters
                            completion: (APICompletionBlock)completion {
@@ -103,8 +109,10 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
-    [request setHTTPBody:requestData];
+    if(parameters != nil) {
+        NSData *requestData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
+        [request setHTTPBody:requestData];
+    }
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                 completionHandler:^(NSData *data,
