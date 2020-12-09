@@ -7,7 +7,7 @@
 //
 
 #import "TCLoginCodeRequest.h"
-#import "TCVerificationError.h"
+#import "TCError.h"
 
 NSString *const loginCodeUrl = @"https://api4.truecaller.com/v1/otp/installation/create";
 
@@ -35,7 +35,7 @@ NSString *const loginCodeUrl = @"https://api4.truecaller.com/v1/otp/installation
                          completion:^(NSDictionary * _Nullable response,
                                                             NSError * _Nullable error) {
         if (error == nil) {
-            TCVerificationError *verificationError = [TCVerificationError errorWithDictionary:response];
+            TCError *verificationError = [TCError errorWithDictionary:response];
             if (verificationError == nil) {
                 TCLoginCodeResponse *loginCodeResponse = [[TCLoginCodeResponse alloc] initWithDictionary:response];
                 completionBlock(loginCodeResponse, nil);

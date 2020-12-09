@@ -22,10 +22,11 @@
                    countryCode: (NSString *)countryCode
                           auth: (NSString *)auth {
     NSURL *url = [NSURL baseUrlForCountryCode:countryCode];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", url.absoluteString, @"/v1/profile"];
     self = [super initWithappKey:appKey
                          appLink:appLink
                       httpMethod:@"POST"
-                       urlString:url.absoluteString];
+                       urlString:urlString];
     self.auth = auth;
     return self;
 }
@@ -40,6 +41,7 @@
                                          auth:self.auth
                                    completion:^(NSDictionary * _Nullable response,
                                                 NSError * _Nullable error) {
+        NSLog(@"Update profile response - %@", response);
         //Do nothing as of now
     }];
 }

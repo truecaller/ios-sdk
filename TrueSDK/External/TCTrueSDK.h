@@ -13,7 +13,7 @@
 #import "TCTrueProfileResponse.h"
 #import "TCTrueProfileRequest.h"
 #import "TCVerificationState.h"
-#import "TCVerificationError.h"
+#import "TCError.h"
 
 @protocol TCTrueSDKDelegate <NSObject>
 
@@ -38,12 +38,6 @@
  * @param verificationState The profile response which contains the payload, signature and nonce
  */
 - (void)verificationStatusChangedTo:(TCVerificationState)verificationState;
-
-/*!
- * @brief Use this optional delegate method to get the error for verification of non truecaller users.
- * @param error Corrsponsding custom errors in verification if any.
- */
-- (void)didReceiveVerificationError:(nonnull TCVerificationError *)error;
 
 @required
 
@@ -122,8 +116,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
  * @param countryCode Country code as String (eg: "in" for india "sv" for sweden) of the phone number passed.
  */
 
-- (void)requestOTPForPhone: (nonnull NSString *)phone
-               countryCode: (nonnull NSString *)countryCode;
+- (void)requestVerificationForPhone: (nonnull NSString *)phone
+                        countryCode: (nonnull NSString *)countryCode;
 
 /*!
  * @brief Call this method after receiving one time code with the code.

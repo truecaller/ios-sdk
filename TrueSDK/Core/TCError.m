@@ -79,6 +79,26 @@
                                 userInfo:@{kTrueSDKErrorDescription : errorDescription ? errorDescription : @""}];
 }
 
++ (TCError *)errorWithDictionary: (NSDictionary *)dictionary
+{
+    if (dictionary[@"code"] == nil) {
+        return nil;
+    }
+    
+    NSInteger code = (NSInteger)dictionary[@"code"];
+    NSString *message = (NSString *)dictionary[@"message"];
+    return [[self class] errorWithDomain:kTrueSDKErrorDomain
+                                    code:code
+                                userInfo:@{kTrueSDKErrorDescription : message ? message : @""}];
+}
+
++ (TCError *)errorWithError: (NSError *)error {
+    return [[self class] errorWithDomain:kTrueSDKErrorDomain
+                                    code:error.code
+                                userInfo:@{kTrueSDKErrorDescription : error.localizedDescription ? error.localizedDescription : @""}];
+}
+
+
 - (TCTrueSDKErrorCode)getErrorCode
 {
     return (TCTrueSDKErrorCode)self.code;

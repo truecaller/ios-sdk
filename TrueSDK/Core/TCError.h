@@ -75,4 +75,9 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
  */
 + (TCError *)errorWithCode:(TCTrueSDKErrorCode)code
                description:(NSString *)errorDescription;
+
++ (TCError *)errorWithDictionary: (NSDictionary *)dictionary;
+
++ (TCError *)errorWithError: (NSError *)error;
+
 @end

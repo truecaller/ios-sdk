@@ -5,7 +5,6 @@
 //  Created by Sreedeepkesav M S on 10/11/20.
 //  Copyright © 2020 True Software Scandinavia AB. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 
 typedef void(^APICompletionBlock)(NSDictionary * _Nullable response, NSError * _Nullable error);
@@ -31,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)makeAuthorisedRequestWithParemeters: (NSDictionary *)parameters
                                        auth: (NSString *)auth
                                  completion: (APICompletionBlock)completion;
+
+- (void)makeGetRequest: (NSString *)auth
+            completion: (APICompletionBlock)completion;
 
 @end
 

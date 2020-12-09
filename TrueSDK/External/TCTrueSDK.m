@@ -16,6 +16,7 @@
 #import "TCLoginCodeRequest.h"
 #import "TCVerifyCodeRequest.h"
 #import "TCUpdateProfileRequest.h"
+#import "TCGetProfileRequest.h"
 
 NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
@@ -58,7 +59,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
                 appLink:(nonnull NSString *)appLink
-                requestNonce:(nonnull NSString *)requestNonce
+           requestNonce:(nonnull NSString *)requestNonce
 {
     [self setupWithAppKey:appKey appLink:appLink];
     self.requestNonce = requestNonce;
@@ -75,6 +76,8 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     
     return url;
 }
+
+//MARK: - Truecaller flow -
 
 - (void)requestTrueProfile
 {    
@@ -121,62 +124,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
     
     [TCUtils openUrl:url completionHandler:nil];
-}
-
-- (void)requestOTPForPhone: (NSString *)phone
-               countryCode: (NSString *)countryCode {
-    _phone = phone;
-    _countryCode = countryCode;
-    
-    if ((![TCUtils isTruecallerInstalled]) || (self.userCancelledAuth == true)) {
-        TCLoginCodeRequest *request = [[TCLoginCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
-        [request requestLoginCodeForPhoneNumber:phone
-                                    countryCode:countryCode
-                                     completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
-            if (error == nil) {
-                if ([response.method isEqual:@"sms"]) {
-                    _loginCodeResponse = response;
-                    [_delegate verificationStatusChangedTo:TCVerificationStateOTPInitiated];
-                } else if (response.accessToken != nil && [response.status intValue] == 1) {
-                    [_delegate verificationStatusChangedTo:TCVerificationStateVerifiedBefore];
-                }
-            } else {
-                [_delegate didReceiveVerificationError:[TCVerificationError errorWithError:error]];
-            }
-        }];
-    } else {
-        [self requestTrueProfile];
-    }
-}
-
-- (void)verifySecurityCode: (nonnull NSString *)code
-        andUpdateFirstname: (nonnull NSString *)firstName
-                  lastName: (nonnull NSString *)lastName {
-    TCVerifyCodeRequest *request = [[TCVerifyCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
-    [request verifyLoginCodeForPhoneNumber:_phone
-                               countryCode:_countryCode
-                          verificationCode:code
-                         verificationToken:_loginCodeResponse.verificationToken
-                                completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
-        if (error == nil) {
-            if (response.accessToken != nil) {
-                [self updateProfileDetails:response];
-                [_delegate verificationStatusChangedTo:TCVerificationStateVerificationComplete];
-            }
-        } else {
-            [_delegate didReceiveVerificationError:[TCVerificationError errorWithError:error]];
-        }
-    }];
-}
-
-//Failures od this is not handled as of now
-- (void)updateProfileDetails: (TCLoginCodeResponse *)response {
-    TCUpdateProfileRequest *request = [[TCUpdateProfileRequest alloc] initWithappKey:self.appKey
-                                                                             appLink:self.appLink
-                                                                         countryCode: self.countryCode
-                                                                                auth: response.accessToken];
-    
-    [request updateFirstName:self.firstName lastName:self.lastName];
 }
 
 - (BOOL)isSupported
@@ -245,6 +192,91 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeUserProfileContentNotValid];
         [self.delegate didFailToReceiveTrueProfileWithError:error];
     }
+}
+
+//MARK: - Non Truecaller flow -
+
+- (void)requestVerificationForPhone: (nonnull NSString *)phone
+                        countryCode: (nonnull NSString *)countryCode {
+    _phone = phone;
+    _countryCode = countryCode;
+    
+    if ((![TCUtils isTruecallerInstalled]) || (self.userCancelledAuth == true)) {
+        TCLoginCodeRequest *request = [[TCLoginCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
+        [request requestLoginCodeForPhoneNumber:phone
+                                    countryCode:countryCode
+                                     completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
+            if (error == nil) {
+                TCLog(@"Non truecaller flow - Request OTP success");
+                if ([response.method isEqual:@"sms"]) {
+                    _loginCodeResponse = response;
+                    TCLog(@"Non truecaller flow - OTP initiated");
+                    [_delegate verificationStatusChangedTo:TCVerificationStateOTPInitiated];
+                } else if (response.accessToken != nil && [response.status intValue] == 1) {
+                    TCLog(@"Non truecaller flow - Already verified");
+                    [self getProfileForResponse:response];
+                    [_delegate verificationStatusChangedTo:TCVerificationStateVerifiedBefore];
+                }
+            } else {
+                TCLog(@"Non truecaller flow - Request OTP error");
+                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+            }
+        }];
+    } else {
+        TCLog(@"Non truecaller flow - Default fallback to truecaller");
+        [self requestTrueProfile];
+    }
+}
+
+- (void)getProfileForResponse:(TCLoginCodeResponse *)response {
+    TCGetProfileRequest *request = [[TCGetProfileRequest alloc] initWithappKey:self.appKey
+                                                                       appLink:self.appLink
+                                                                   countryCode:self.countryCode
+                                                                          auth:response.accessToken];
+    
+    [request getProfileWithCompletion:^(TCTrueProfile * _Nullable profile, NSError * _Nullable error) {
+        if (error == nil) {
+            TCLog(@"Non truecaller flow - Get profile Success");
+            [self.delegate didReceiveTrueProfile:profile];
+        } else {
+            TCLog(@"Non truecaller flow - Get profile Error");
+            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+        }
+    }];
+}
+
+- (void)verifySecurityCode: (nonnull NSString *)code
+        andUpdateFirstname: (nonnull NSString *)firstName
+                  lastName: (nonnull NSString *)lastName {
+    _firstName = firstName;
+    _lastName = lastName;
+    
+    TCVerifyCodeRequest *request = [[TCVerifyCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
+    [request verifyLoginCodeForPhoneNumber:_phone
+                               countryCode:_countryCode
+                          verificationCode:code
+                         verificationToken:_loginCodeResponse.verificationToken
+                                completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            if (response.accessToken != nil) {
+                TCLog(@"Non truecaller flow - Verification Complete");
+                [self updateProfileDetails:response];
+                [_delegate verificationStatusChangedTo:TCVerificationStateVerificationComplete];
+            }
+        } else {
+            TCLog(@"Non truecaller flow - Verification OTP Error");
+            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+        }
+    }];
+}
+
+- (void)updateProfileDetails: (TCLoginCodeResponse *)response {
+    TCLog(@"Profile update call");
+    TCUpdateProfileRequest *request = [[TCUpdateProfileRequest alloc] initWithappKey:self.appKey
+                                                                             appLink:self.appLink
+                                                                         countryCode:self.countryCode
+                                                                                auth:response.accessToken];
+    [request updateFirstName:self.firstName lastName:self.lastName];
 }
 
 @end
