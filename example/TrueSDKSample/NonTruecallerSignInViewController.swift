@@ -19,9 +19,13 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
     @IBOutlet weak var otpField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
+    
+    //Default india since the market now is only india
+    let defaultCountryCode = "in"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         TCTrueSDK.sharedManager().delegate = self
         
         otpView.isHidden = true
@@ -31,7 +35,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
     @IBAction func signUp() {
         view.endEditing(true)
         TCTrueSDK.sharedManager().requestVerification(forPhone: phoneNumberField.text ?? "",
-                                                      countryCode: "in")
+                                                      countryCode: defaultCountryCode)
     }
 
     @IBAction func continueWithOTP() {
@@ -56,7 +60,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
                                       message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - TCTrueSDKDelegate -
@@ -72,13 +76,22 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
     
     func verificationStatusChanged(to verificationState: TCVerificationState) {
         DispatchQueue.main.async {
-            if verificationState == .otpInitiated {
-                self.otpView.isHidden = false
-                self.phoneNumberView.isHidden = true
-            } else if verificationState == .verificationComplete {
-                self.showAlert(with: "Sign up successful",
-                               message: "Your otp is validated and profile created.")
-            }
+            self.handle(verificationState: verificationState)
+        }
+    }
+    
+    private func handle(verificationState: TCVerificationState) {
+        switch verificationState {
+        case .otpInitiated:
+            self.otpView.isHidden = false
+            self.phoneNumberView.isHidden = true
+        case .verificationComplete:
+            self.showAlert(with: "Sign up successful",
+                           message: "Your otp is validated and profile created.")
+        case .otpReceived, .verifiedBefore:
+            break
+        @unknown default:
+            break;
         }
     }
 }
