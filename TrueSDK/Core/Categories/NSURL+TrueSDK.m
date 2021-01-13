@@ -55,7 +55,7 @@ NSString *kErrorKey = @"error";
     return [self URLWithString:@"https://outline-noneu.truecaller.com"];
 }
 
-- (NSArray *)euCountryCodes
++ (NSArray *)euCountryCodes
 {
     static NSArray *_euCountryCodes;
     static dispatch_once_t onceToken;

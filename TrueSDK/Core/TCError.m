@@ -64,6 +64,9 @@
         case TCTrueSDKErrorCodeRequestNonceMismatch:
             errorDescription = @"The request's nonce does not match the nonce in response";
             break;
+        case TCTrueSDKErrorCodeViewDelegateNil:
+            errorDescription = @"View delegate is nil. You have to set a view delegate";
+            break;
         default:
             break;
     }

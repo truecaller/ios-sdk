@@ -9,7 +9,7 @@
 import UIKit
 import TrueSDK
 
-class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
+class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
 
     @IBOutlet weak var errorToast: ErrorToast!
     @IBOutlet weak var phoneNumberView: UIView!
@@ -27,6 +27,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate {
         super.viewDidLoad()
         
         TCTrueSDK.sharedManager().delegate = self
+        TCTrueSDK.sharedManager().viewDelegate = self
         
         otpView.isHidden = true
         phoneNumberView.isHidden = false

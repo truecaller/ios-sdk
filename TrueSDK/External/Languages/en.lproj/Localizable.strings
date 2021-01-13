@@ -7,3 +7,5 @@
 */
 
 "truebutton.title" = "AUTOFILL WITH TRUECALLER";
+"truecaller.tandc.text" = "By proceeding, your phone number will be verified by Truecaller and you thereby accept to the Terms of Service";
+"truecaller.tandc.buttonText" = "Terms of Service";
