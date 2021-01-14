@@ -15,6 +15,10 @@
 #import "TCVerificationState.h"
 #import "TCError.h"
 
+@protocol TCTrueSDKViewDelegate <NSObject>
+
+@end
+
 @protocol TCTrueSDKDelegate <NSObject>
 
 @optional
@@ -66,6 +70,7 @@
 @property (nonatomic, weak, nullable) id<TCTrueSDKDelegate> delegate;
 @property (nonatomic) TitleType titleType;
 @property (nonatomic, nullable) NSString* locale;
+@property (nonatomic, weak, nullable) UIViewController<TCTrueSDKViewDelegate> *viewDelegate;
 
 + (nonnull TCTrueSDK *)sharedManager;
 
