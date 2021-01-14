@@ -13,6 +13,7 @@ NSString *const kTCLoginCodeResponseAccessToken = @"accessToken";
 NSString *const kTCLoginCodeResponseStatus = @"status";
 NSString *const kTCLoginCodeResponseMessage = @"message";
 NSString *const kTCLoginCodeResponseMethod = @"method";
+NSString *const kTCLoginCodeResponseTokenTtl = @"tokenTtl";
 
 @interface TCLoginCodeResponse ()
 
@@ -21,6 +22,7 @@ NSString *const kTCLoginCodeResponseMethod = @"method";
 @property (nonatomic, strong, readwrite) NSNumber *status;
 @property (nonatomic, strong, readwrite) NSString *message;
 @property (nonatomic, strong, readwrite) NSString *method;
+@property (nonatomic, strong, readwrite) NSNumber *tokenTtl;
 
 @end
 
@@ -33,6 +35,7 @@ NSString *const kTCLoginCodeResponseMethod = @"method";
     [aCoder encodeObject:self.status forKey:kTCLoginCodeResponseStatus];
     [aCoder encodeObject:self.message forKey:kTCLoginCodeResponseMessage];
     [aCoder encodeObject:self.method forKey:kTCLoginCodeResponseMethod];
+    [aCoder encodeObject:self.tokenTtl forKey:kTCLoginCodeResponseTokenTtl];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -44,6 +47,7 @@ NSString *const kTCLoginCodeResponseMethod = @"method";
         _status = [aDecoder decodeObjectForKey:kTCLoginCodeResponseStatus];
         _message = [aDecoder decodeObjectForKey:kTCLoginCodeResponseMessage];
         _method = [aDecoder decodeObjectForKey:kTCLoginCodeResponseMethod];
+        _tokenTtl = [aDecoder decodeObjectForKey:kTCLoginCodeResponseTokenTtl];
     }
     return self;
 }
@@ -56,6 +60,7 @@ NSString *const kTCLoginCodeResponseMethod = @"method";
         self.status = dictionary[kTCLoginCodeResponseStatus];
         self.message = dictionary[kTCLoginCodeResponseMessage];
         self.method = dictionary[kTCLoginCodeResponseMethod];
+        self.tokenTtl = dictionary[kTCLoginCodeResponseTokenTtl];
     }
     
     return self;

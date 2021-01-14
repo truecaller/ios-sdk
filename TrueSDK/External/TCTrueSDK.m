@@ -273,6 +273,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     _phone = phone;
     _countryCode = countryCode;
     
+    self.userCancelledAuth = true;
+    
     if ((![TCUtils isTruecallerInstalled]) || (self.userCancelledAuth == true)) {
         TCLoginCodeRequest *request = [[TCLoginCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
         [request requestLoginCodeForPhoneNumber:phone
@@ -349,6 +351,14 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                                                                          countryCode:self.countryCode
                                                                                 auth:response.accessToken];
     [request updateFirstName:self.firstName lastName:self.lastName];
+}
+
+- (NSString *)accessTokenForOTPVerification {
+    return _loginCodeResponse.accessToken;
+}
+
+- (NSNumber *)tokenTtl {
+    return  _loginCodeResponse.tokenTtl;
 }
 
 @end

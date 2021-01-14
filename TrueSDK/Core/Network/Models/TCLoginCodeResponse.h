@@ -13,6 +13,7 @@ extern NSString *__nonnull const kTCLoginCodeResponseAccessToken;
 extern NSString *__nonnull const kTCLoginCodeResponseStatus;
 extern NSString *__nonnull const kTCLoginCodeResponseMessage;
 extern NSString *__nonnull const kTCLoginCodeResponseMethod;
+extern NSString *__nonnull const kTCLoginCodeResponseTokenTtl;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable, readonly) NSNumber *status;
 @property (nonatomic, nullable, readonly) NSString *message;
 @property (nonatomic, nullable, readonly) NSString *method;
+@property (nonatomic, nullable, readonly) NSNumber *tokenTtl;
 
 - (nullable instancetype)initWithDictionary:(nullable NSDictionary *) dictionary;
 
