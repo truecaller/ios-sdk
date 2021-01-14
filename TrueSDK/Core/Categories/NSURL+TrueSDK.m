@@ -48,14 +48,14 @@ NSString *kErrorKey = @"error";
 }
 
 + (NSURL *)baseUrlForCountryCode: (NSString *)countrycode {
-    if([[[self class] euCountryCodes] containsObject:countrycode]) {
+    if([[self euCountryCodes] containsObject:countrycode]) {
         return [self URLWithString: @"https://outline-eu.truecaller.com"];
     }
     
     return [self URLWithString:@"https://outline-noneu.truecaller.com"];
 }
 
-- (NSArray *)euCountryCodes
++ (NSArray *)euCountryCodes
 {
     static NSArray *_euCountryCodes;
     static dispatch_once_t onceToken;

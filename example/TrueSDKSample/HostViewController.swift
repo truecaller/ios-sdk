@@ -144,7 +144,7 @@ class ErrorToast: UIView {
 }
 
 //MARK: User profile display
-class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate {
+class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var profileRequestButton : TCProfileRequestButton!

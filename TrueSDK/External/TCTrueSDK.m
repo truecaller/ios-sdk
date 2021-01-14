@@ -19,6 +19,7 @@
 #import "TCGetProfileRequest.h"
 
 NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
+NSString *const kTCTermsURL = @"https://developer.truecaller.com/phone-number-verification/privacy-notice";
 
 @interface TCTrueSDK ()
 
@@ -191,8 +192,79 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 
 //MARK: - Non Truecaller flow -
 
+- (void)setViewDelegate:(UIViewController<TCTrueSDKViewDelegate> *)viewDelegate {
+    _viewDelegate = viewDelegate;
+    [self addTermsAndConditionsView];
+}
+
+- (void)addTermsAndConditionsView {
+    UIViewController *controller = self.viewDelegate;
+    
+    NSInteger bottomPadding = 0;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+        bottomPadding = window.safeAreaInsets.bottom;
+    }
+    
+    NSInteger viewHeight = 50;
+    
+    UIView *view = [[UIView alloc] init];
+    [view setFrame:CGRectMake(0,
+                              ([UIScreen mainScreen].bounds.size.height - viewHeight - bottomPadding),
+                              controller.view.frame.size.width,
+                              viewHeight)];
+    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3]];
+    
+    [self addTermsAndConditionsLabelTo:view];
+    [controller.view addSubview:view];
+}
+
+-(void)addTermsAndConditionsLabelTo:(UIView *)view {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, view.frame.size.width - 16,
+                                                               view.frame.size.height - 16)];
+    [label setTextColor:UIColor.whiteColor];
+    
+    NSString *termsString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.text",
+                                                          @"Localizable",
+                                                          [TCUtils resourcesBundle],
+                                                          @"TrueSDK T&C string");
+    
+    NSString *termsButtonString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.buttonText",
+                                                          @"Localizable",
+                                                          [TCUtils resourcesBundle],
+                                                          @"TrueSDK T&C button title");
+    
+    NSRange termsRange = [termsString rangeOfString:termsButtonString];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: termsString attributes:nil];
+    [attributedString addAttribute: NSLinkAttributeName value: kTCTermsURL range: termsRange];
+    
+    UITapGestureRecognizer *tap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openTermsAndConditions:)];
+    label.userInteractionEnabled= YES;
+    [label addGestureRecognizer:tap];
+
+    // Assign attributedText to UILabel
+    label.attributedText = attributedString;
+    label.font = [UIFont systemFontOfSize:12.0];
+    label.numberOfLines = 3;
+    label.userInteractionEnabled = YES;
+    
+    [view addSubview:label];
+}
+
+-(void)openTermsAndConditions:(id)sender{
+    NSURL *termsUrl = [NSURL URLWithString:kTCTermsURL];
+    [[UIApplication sharedApplication] openURL: termsUrl];
+}
+
 - (void)requestVerificationForPhone: (nonnull NSString *)phone
                         countryCode: (nonnull NSString *)countryCode {
+    
+    if (_viewDelegate == nil) {
+        [_delegate didFailToReceiveTrueProfileWithError:[TCError errorWithCode:TCTrueSDKErrorCodeViewDelegateNil]];
+        return;
+    }
+    
     _phone = phone;
     _countryCode = countryCode;
     
@@ -273,6 +345,14 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                                                                          countryCode:self.countryCode
                                                                                 auth:response.accessToken];
     [request updateFirstName:self.firstName lastName:self.lastName];
+}
+
+- (NSString *)accessTokenForOTPVerification {
+    return _loginCodeResponse.accessToken;
+}
+
+- (NSNumber *)tokenTtl {
+    return  _loginCodeResponse.tokenTtl;
 }
 
 @end

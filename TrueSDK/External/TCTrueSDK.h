@@ -15,6 +15,10 @@
 #import "TCVerificationState.h"
 #import "TCError.h"
 
+@protocol TCTrueSDKViewDelegate <NSObject>
+
+@end
+
 @protocol TCTrueSDKDelegate <NSObject>
 
 @optional
@@ -66,6 +70,7 @@
 @property (nonatomic, weak, nullable) id<TCTrueSDKDelegate> delegate;
 @property (nonatomic) TitleType titleType;
 @property (nonatomic, nullable) NSString* locale;
+@property (nonatomic, weak, nullable) UIViewController<TCTrueSDKViewDelegate> *viewDelegate;
 
 + (nonnull TCTrueSDK *)sharedManager;
 
@@ -127,6 +132,18 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 - (void)verifySecurityCode: (nonnull NSString *)code
         andUpdateFirstname: (nonnull NSString *)firstName
                   lastName: (nonnull NSString *)lastName;
+
+/*!
+ * @discussion Access token for back end verification of the data received
+ * @return Access token provided by truecaller backend on succesfull verification
+ */
+- (nullable NSString *)accessTokenForOTPVerification;
+
+/*!
+ * @discussion TTL(Time To Live) for the otp received. In seconds.
+ * @return TTL provided by the backend for OTP
+ */
+- (nullable NSNumber*)tokenTtl;
 
 /*!
  * @brief Call this method in scene:continueUserActivity of the Scene Delegate class.
