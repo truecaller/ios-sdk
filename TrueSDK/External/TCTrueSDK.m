@@ -27,7 +27,7 @@ NSString *const kTCTermsURL = @"https://developer.truecaller.com/phone-number-ve
 @property (nonatomic, strong) NSString *appLink;
 @property (nonatomic, strong) NSString *requestNonce;
 
-@property (nonatomic) BOOL userCancelledAuth;
+@property (nonatomic) BOOL userShownTruecallerFlow;
 @property (nonatomic, strong) TCLoginCodeResponse *loginCodeResponse;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *countryCode;
@@ -168,11 +168,6 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 - (void)processError: (TCError *)tcError url: (NSURL *)url {
     TCLog(@"Error: %@", tcError);
     TCError *error = (TCError *) [url parseArchivedObjectWithKey:kErrorKey];
-    
-    if (error.getErrorCode == TCTrueSDKErrorCodeUserCancelled) {
-        _userCancelledAuth = true;
-    }
-    
     [_delegate didFailToReceiveTrueProfileWithError:error];
 }
 
@@ -273,9 +268,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     _phone = phone;
     _countryCode = countryCode;
     
-    self.userCancelledAuth = true;
-    
-    if ((![TCUtils isTruecallerInstalled]) || (self.userCancelledAuth == true)) {
+    if ((![TCUtils isTruecallerInstalled]) || (self.userShownTruecallerFlow == true)) {
         TCLoginCodeRequest *request = [[TCLoginCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
         [request requestLoginCodeForPhoneNumber:phone
                                     countryCode:countryCode
@@ -298,6 +291,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         }];
     } else {
         TCLog(@"Non truecaller flow - Default fallback to truecaller");
+        self.userShownTruecallerFlow = true;
         [self requestTrueProfile];
     }
 }
