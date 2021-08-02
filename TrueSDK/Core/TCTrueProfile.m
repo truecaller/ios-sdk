@@ -7,6 +7,7 @@
 //
 
 #import "TCTrueProfile.h"
+#import "NSDictionary+TrueSDK.h"
 
 NSString *const kTrueProfileFirstNameKey = @"firstName";
 NSString *const kTrueProfileLastNameKey = @"lastName";
@@ -126,21 +127,21 @@ NSString *const kTrueProfileRequestTimeKey = @"requestTime";
 {
     self = [super init];
     if (self != nil) {
-        _firstName = dict[kTrueProfileFirstNameKey];
-        _lastName = dict[kTrueProfileLastNameKey];
-        _phoneNumber = [dict[kTrueProfilePhoneNumberKey] stringValue];
-        _genderValue = dict[kTrueProfileGenderKey];
-        _countryCode = dict[kTrueProfileCountryCodeKey];
-        _street = dict[kTrueProfileStreetKey];
-        _city = dict[kTrueProfileCityKey];
-        _zipCode = dict[kTrueProfileZipCodeKey];
-        _facebookID = dict[kTrueProfileFacebookIdKey];
-        _twitterID = dict[kTrueProfileTwitterIdKey];
-        _email = dict[kTrueProfileEmailKey];
-        _url = dict[kTrueProfileUrlKey];
-        _avatarURL = dict[kTrueProfileAvatarUrlKey];
-        _jobTitle = dict[kTrueProfileJobTitleKey];
-        _companyName = dict[kTrueProfileCompanyNameKey];
+        _firstName = [dict stringForKey:kTrueProfileFirstNameKey];
+        _lastName = [dict stringForKey:kTrueProfileLastNameKey];
+        _phoneNumber = [dict stringForKey:kTrueProfilePhoneNumberKey];
+        _genderValue = [dict stringForKey:kTrueProfileGenderKey];
+        _countryCode = [dict stringForKey:kTrueProfileCountryCodeKey];
+        _street = [dict stringForKey:kTrueProfileStreetKey];
+        _city = [dict stringForKey:kTrueProfileCityKey];
+        _zipCode = [dict stringForKey:kTrueProfileZipCodeKey];
+        _facebookID = [dict stringForKey:kTrueProfileFacebookIdKey];
+        _twitterID = [dict stringForKey:kTrueProfileTwitterIdKey];
+        _email = [dict stringForKey:kTrueProfileEmailKey];
+        _url = [dict stringForKey:kTrueProfileUrlKey];
+        _avatarURL = [dict stringForKey:kTrueProfileAvatarUrlKey];
+        _jobTitle = [dict stringForKey:kTrueProfileJobTitleKey];
+        _companyName = [dict stringForKey:kTrueProfileCompanyNameKey];
         _isVerified = [dict[kTrueProfileIsVerifiedKey] boolValue];
         _isAmbassador = [dict[kTrueProfileIsAmbassadorKey] boolValue];
         _requestTime = [dict[kTrueProfileRequestTimeKey] doubleValue];
