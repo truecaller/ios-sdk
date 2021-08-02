@@ -58,6 +58,8 @@
 		638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */; };
 		638EE24725653AD2001B12B6 /* TCGetProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 638EE24525653AD2001B12B6 /* TCGetProfileRequest.h */; };
 		638EE24825653AD2001B12B6 /* TCGetProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */; };
+		750ECADF26B8391A001DECFF /* NSDictionary+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */; };
+		750ECAE026B8391A001DECFF /* NSDictionary+TrueSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCUpdateProfileRequest.m; sourceTree = "<group>"; };
 		638EE24525653AD2001B12B6 /* TCGetProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCGetProfileRequest.h; sourceTree = "<group>"; };
 		638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCGetProfileRequest.m; sourceTree = "<group>"; };
+		750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TrueSDK.h"; sourceTree = "<group>"; };
+		750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TrueSDK.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 			children = (
 				262A41451E0C20060074A117 /* NSURL+TrueSDK.h */,
 				262A41461E0C20060074A117 /* NSURL+TrueSDK.m */,
+				750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */,
+				750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -268,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				638EE24725653AD2001B12B6 /* TCGetProfileRequest.h in Headers */,
-				638EE2242562D938001B12B6 /* TCUrlProvider.h in Headers */,
 				2694D3371E0AB5BF0066A991 /* TCTrueSDK.h in Headers */,
 				262A41401E0BF2F70074A117 /* TCTrueProfile.h in Headers */,
 				02D576801E266ECC00ABE908 /* TCTrueProfileResponse.h in Headers */,
@@ -285,6 +290,7 @@
 				02B981F61E0D5E7D0016DFD2 /* TCProfileRequestButton.h in Headers */,
 				601A0F831E83F6CA00F4760E /* TCVersion.h in Headers */,
 				60DE88CD1E044CC30061C060 /* TrueSDK.h in Headers */,
+				750ECADF26B8391A001DECFF /* NSDictionary+TrueSDK.h in Headers */,
 				63793E80255BF12200E41C02 /* TCLoginCodeResponse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +427,7 @@
 				02D576821E266ECC00ABE908 /* TCTrueProfileResponse.m in Sources */,
 				638EE24825653AD2001B12B6 /* TCGetProfileRequest.m in Sources */,
 				600526121E082BBF00159A08 /* TCUtils.m in Sources */,
+				750ECAE026B8391A001DECFF /* NSDictionary+TrueSDK.m in Sources */,
 				63793E73255B3C0000E41C02 /* TCLoginCodeRequest.m in Sources */,
 				638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */,
 				63793EED255D8FA800E41C02 /* TCVerifyCodeRequest.m in Sources */,
