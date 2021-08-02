@@ -67,8 +67,10 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     // MARK: - TCTrueSDKDelegate -
     
     func didReceive(_ profile: TCTrueProfile) {
-        showAlert(with: "Profile already verified",
-                  message: "Already verified profile with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")")
+        DispatchQueue.main.async { [weak self] in
+            self?.showAlert(with: "Profile already verified",
+                      message: "Already verified profile with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")")
+        }
     }
     
     func didFailToReceiveTrueProfileWithError(_ error: TCError) {
