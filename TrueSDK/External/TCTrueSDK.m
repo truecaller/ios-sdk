@@ -201,7 +201,6 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     UIViewController *controller = self.viewDelegate;
     
     NSInteger bottomPadding = 0;
-    NSInteger viewHeight = 50;
     
     UIView *view = [[UIView alloc] init];
     [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3]];
@@ -211,7 +210,6 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     [view.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
     [view.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
-    [view.heightAnchor constraintEqualToConstant:viewHeight].active = YES;
     if (@available(iOS 11.0, *)) {
         [view.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
     } else {
@@ -225,6 +223,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     [label setTextColor:UIColor.whiteColor];
+    
+    NSInteger labelPadding = 8;
     
     NSString *termsString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.text",
                                                                @"Localizable",
@@ -252,10 +252,10 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     label.userInteractionEnabled = YES;
     
     [view addSubview:label];
-    [label.leftAnchor constraintEqualToAnchor:view.leftAnchor constant:8].active = YES;
-    [label.rightAnchor constraintEqualToAnchor:view.rightAnchor constant:-8].active = YES;
-    [label.topAnchor constraintEqualToAnchor:view.topAnchor constant:2].active = YES;
-    [label.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:-2].active = YES;
+    [label.leftAnchor constraintEqualToAnchor:view.leftAnchor constant:labelPadding].active = YES;
+    [label.rightAnchor constraintEqualToAnchor:view.rightAnchor constant:-labelPadding].active = YES;
+    [label.topAnchor constraintEqualToAnchor:view.topAnchor constant:labelPadding].active = YES;
+    [label.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:-labelPadding].active = YES;
 }
 
 -(void)openTermsAndConditions:(id)sender{
