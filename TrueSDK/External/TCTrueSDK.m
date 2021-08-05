@@ -203,7 +203,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     NSInteger bottomPadding = 0;
     
     UIView *view = [[UIView alloc] init];
-    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3]];
+    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     view.clipsToBounds = YES;
     [controller.view addSubview:view];
