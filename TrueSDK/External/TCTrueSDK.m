@@ -201,38 +201,40 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     UIViewController *controller = self.viewDelegate;
     
     NSInteger bottomPadding = 0;
-    if (@available(iOS 11.0, *)) {
-        UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
-        bottomPadding = window.safeAreaInsets.bottom;
-    }
-    
-    NSInteger viewHeight = 50;
     
     UIView *view = [[UIView alloc] init];
-    [view setFrame:CGRectMake(0,
-                              ([UIScreen mainScreen].bounds.size.height - viewHeight - bottomPadding),
-                              controller.view.frame.size.width,
-                              viewHeight)];
-    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3]];
+    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    view.clipsToBounds = YES;
+    [controller.view addSubview:view];
+    
+    [view.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
+    [view.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
+    if (@available(iOS 11.0, *)) {
+        [view.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
+    } else {
+        [view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:bottomPadding].active = YES;
+    }
     
     [self addTermsAndConditionsLabelTo:view];
-    [controller.view addSubview:view];
 }
 
 -(void)addTermsAndConditionsLabelTo:(UIView *)view {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, view.frame.size.width - 16,
-                                                               view.frame.size.height - 16)];
+    UILabel *label = [UILabel new];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
     [label setTextColor:UIColor.whiteColor];
     
+    NSInteger labelPadding = 8;
+    
     NSString *termsString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.text",
-                                                          @"Localizable",
-                                                          [TCUtils resourcesBundle],
-                                                          @"TrueSDK T&C string");
+                                                               @"Localizable",
+                                                               [TCUtils resourcesBundle],
+                                                               @"TrueSDK T&C string");
     
     NSString *termsButtonString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.buttonText",
-                                                          @"Localizable",
-                                                          [TCUtils resourcesBundle],
-                                                          @"TrueSDK T&C button title");
+                                                                     @"Localizable",
+                                                                     [TCUtils resourcesBundle],
+                                                                     @"TrueSDK T&C button title");
     
     NSRange termsRange = [termsString rangeOfString:termsButtonString];
     
@@ -250,6 +252,10 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     label.userInteractionEnabled = YES;
     
     [view addSubview:label];
+    [label.leftAnchor constraintEqualToAnchor:view.leftAnchor constant:labelPadding].active = YES;
+    [label.rightAnchor constraintEqualToAnchor:view.rightAnchor constant:-labelPadding].active = YES;
+    [label.topAnchor constraintEqualToAnchor:view.topAnchor constant:labelPadding].active = YES;
+    [label.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:-labelPadding].active = YES;
 }
 
 -(void)openTermsAndConditions:(id)sender{
