@@ -35,6 +35,7 @@ NSString *const kTCTermsURL = @"https://developer.truecaller.com/phone-number-ve
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 
+@property (strong, nonatomic) UIView *termsAndConditionsView;
 @end
 
 @implementation TCTrueSDK
@@ -202,24 +203,24 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     NSInteger bottomPadding = 0;
     
-    UIView *view = [[UIView alloc] init];
-    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    view.clipsToBounds = YES;
-    [controller.view addSubview:view];
+    self.termsAndConditionsView = [[UIView alloc] init];
+    [self.termsAndConditionsView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
+    self.termsAndConditionsView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.termsAndConditionsView.clipsToBounds = YES;
+    [controller.view addSubview:self.termsAndConditionsView];
     
-    [view.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
-    [view.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
+    [self.termsAndConditionsView.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
+    [self.termsAndConditionsView.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
     if (@available(iOS 11.0, *)) {
-        [view.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
+        [self.termsAndConditionsView.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
     } else {
-        [view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:bottomPadding].active = YES;
+        [self.termsAndConditionsView.bottomAnchor constraintEqualToAnchor:controller.view.bottomAnchor constant:bottomPadding].active = YES;
     }
     
-    [self addTermsAndConditionsLabelTo:view];
+    [self addTermsAndConditionsSubViews:self.termsAndConditionsView];
 }
 
--(void)addTermsAndConditionsLabelTo:(UIView *)view {
+-(void)addTermsAndConditionsSubViews:(UIView *)view {
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     [label setTextColor:UIColor.whiteColor];
@@ -253,9 +254,30 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     [view addSubview:label];
     [label.leftAnchor constraintEqualToAnchor:view.leftAnchor constant:labelPadding].active = YES;
-    [label.rightAnchor constraintEqualToAnchor:view.rightAnchor constant:-labelPadding].active = YES;
     [label.topAnchor constraintEqualToAnchor:view.topAnchor constant:labelPadding].active = YES;
     [label.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:-labelPadding].active = YES;
+    
+    UIButton *mButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [mButton setImage:[self closeImage] forState:UIControlStateNormal];
+    mButton.translatesAutoresizingMaskIntoConstraints = NO;
+    mButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [mButton addTarget:self action:@selector(removeDisclaimer) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:mButton];
+    [mButton.rightAnchor constraintEqualToAnchor:view.rightAnchor].active = YES;
+    [mButton.leftAnchor constraintEqualToAnchor:label.rightAnchor].active = YES;
+    [mButton.centerYAnchor constraintEqualToAnchor:label.centerYAnchor].active = YES;
+    [mButton.widthAnchor constraintEqualToConstant:50].active = YES;
+}
+
+- (void)removeDisclaimer {
+    [self.termsAndConditionsView setHidden:YES];
+}
+
+- (UIImage *)closeImage {
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
+    NSString *imageName = @"ic_close_disclaimer";
+    UIImage *image = [UIImage imageNamed:imageName inBundle:frameworkBundle compatibleWithTraitCollection:nil];
+    return image;
 }
 
 -(void)openTermsAndConditions:(id)sender{
