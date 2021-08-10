@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvt-89-ptk" customClass="TCProfileRequestButton">
-                                <rect key="frame" x="19" y="363.5" width="337.5" height="56"/>
+                                <rect key="frame" x="19" y="363.5" width="337.5" height="35"/>
                                 <color key="backgroundColor" red="0.80392156859999997" green="0.25098039220000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
@@ -43,7 +43,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrueUserPropertyTableViewCellIdentifier" id="Q51-Pl-uFq" userLabel="User Property" customClass="TrueUserPropertyTableViewCell" customModule="TrueSDKSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q51-Pl-uFq" id="87w-L2-HlC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -188,7 +188,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-s0-S6W">
-                                <rect key="frame" x="19" y="435.5" width="337.5" height="56"/>
+                                <rect key="frame" x="19" y="414.5" width="337.5" height="35"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="OTP Flow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -280,7 +280,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogTableViewCellIdentifier" rowHeight="79" id="ICr-OO-pvD" customClass="LogTableViewCell" customModule="TrueSDKSample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ICr-OO-pvD" id="sdf-0A-VLC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
@@ -433,12 +433,12 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2Z-Bo-FTo">
                                         <rect key="frame" x="16" y="66" width="279" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LastName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-mK-oLA">
                                         <rect key="frame" x="16" y="117.5" width="279" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -461,7 +461,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXL-AG-O37" userLabel="ErrorDisplay" customClass="ErrorToast" customModule="TrueSDKSample" customModuleProvider="target">
-                                <rect key="frame" x="16" y="573" width="343" height="58"/>
+                                <rect key="frame" x="16" y="16" width="343" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ErrorCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFF-6w-14T">
                                         <rect key="frame" x="8" y="8" width="71" height="17"/>
@@ -511,10 +511,10 @@
                         <constraints>
                             <constraint firstItem="60h-ad-RyV" firstAttribute="leading" secondItem="t4h-Bx-bUD" secondAttribute="leadingMargin" constant="16" id="0Ed-lS-i1D"/>
                             <constraint firstItem="anR-wC-W7F" firstAttribute="width" secondItem="60h-ad-RyV" secondAttribute="width" id="542-f9-M6e"/>
-                            <constraint firstItem="865-sA-VJ9" firstAttribute="top" secondItem="JXL-AG-O37" secondAttribute="bottom" constant="16" id="6Jm-0h-UXw"/>
                             <constraint firstItem="anR-wC-W7F" firstAttribute="centerX" secondItem="60h-ad-RyV" secondAttribute="centerX" id="7U8-Nh-L4m"/>
                             <constraint firstItem="60h-ad-RyV" firstAttribute="centerY" secondItem="t4h-Bx-bUD" secondAttribute="centerY" id="Ebx-9D-wMR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="60h-ad-RyV" secondAttribute="trailing" constant="16" id="OCz-TG-XKv"/>
+                            <constraint firstItem="JXL-AG-O37" firstAttribute="top" secondItem="tqK-oM-iSp" secondAttribute="bottom" constant="16" id="XKs-s1-W7V"/>
                             <constraint firstAttribute="trailing" secondItem="JXL-AG-O37" secondAttribute="trailing" constant="16" id="ZEq-7d-VVC"/>
                             <constraint firstItem="60h-ad-RyV" firstAttribute="centerX" secondItem="t4h-Bx-bUD" secondAttribute="centerX" id="ehl-Iu-6t9"/>
                             <constraint firstItem="anR-wC-W7F" firstAttribute="centerY" secondItem="60h-ad-RyV" secondAttribute="centerY" id="u6b-KV-j8l"/>
