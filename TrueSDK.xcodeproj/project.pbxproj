@@ -60,6 +60,7 @@
 		638EE24825653AD2001B12B6 /* TCGetProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */; };
 		750ECADF26B8391A001DECFF /* NSDictionary+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */; };
 		750ECAE026B8391A001DECFF /* NSDictionary+TrueSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */; };
+		7573F4B226C2BAC7008FEC93 /* DislaimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7573F4B126C2BAC7008FEC93 /* DislaimerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCGetProfileRequest.m; sourceTree = "<group>"; };
 		750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TrueSDK.h"; sourceTree = "<group>"; };
 		750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TrueSDK.m"; sourceTree = "<group>"; };
+		7573F4B026C2BAAE008FEC93 /* DislaimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DislaimerView.h; sourceTree = "<group>"; };
+		7573F4B126C2BAC7008FEC93 /* DislaimerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DislaimerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 				601A0F811E83F6CA00F4760E /* TCVersion.h */,
 				601A0F821E83F6CA00F4760E /* TCVersion.m */,
 				63793EBF255C378700E41C02 /* TCVerificationState.h */,
+				7573F4B026C2BAAE008FEC93 /* DislaimerView.h */,
+				7573F4B126C2BAC7008FEC93 /* DislaimerView.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				750ECAE026B8391A001DECFF /* NSDictionary+TrueSDK.m in Sources */,
 				63793E73255B3C0000E41C02 /* TCLoginCodeRequest.m in Sources */,
 				638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */,
+				7573F4B226C2BAC7008FEC93 /* DislaimerView.m in Sources */,
 				63793EED255D8FA800E41C02 /* TCVerifyCodeRequest.m in Sources */,
 				2663E54F1E1BBA3B00620B5C /* TCError.m in Sources */,
 				02B981F71E0D5E7D0016DFD2 /* TCProfileRequestButton.m in Sources */,
