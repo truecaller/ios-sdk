@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          SET THE APP_LINK VALUE IN THE ENTITLEMENTS FILE AS WELL!!!
          UPDATE THE APPID (BUNDLE IDENTIFIER) IN YOUR PROJECT SETTINGS!!!
          */
-        TCTrueSDK.sharedManager().setup(withAppKey: "37Eryd960c95e93eb419bbb26af69c7103974", appLink: "https://si2d7433ec645e45b994a8e2eecd4de2e3.truecallerdevs.com")
+        TCTrueSDK.sharedManager().setup(withAppKey: "I7ViZ490028736bba408881687123b4cec49f", appLink: "https://si9f1dc18a1d0041efa219162d27d1c865.truecallerdevs.com")
         
         return true
     }

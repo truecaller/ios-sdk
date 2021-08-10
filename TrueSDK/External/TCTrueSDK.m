@@ -296,7 +296,6 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     _phone = phone;
     _countryCode = countryCode;
     
-    if ((![TCUtils isTruecallerInstalled]) || (self.userShownTruecallerFlow == true)) {
         TCLoginCodeRequest *request = [[TCLoginCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
         [request requestLoginCodeForPhoneNumber:phone
                                     countryCode:countryCode
@@ -317,11 +316,6 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
             }
         }];
-    } else {
-        TCLog(@"Non truecaller flow - Default fallback to truecaller");
-        self.userShownTruecallerFlow = true;
-        [self requestTrueProfile];
-    }
 }
 
 - (void)getProfileForResponse:(TCLoginCodeResponse *)response {
