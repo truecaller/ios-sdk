@@ -17,9 +17,9 @@
 #import "TCVerifyCodeRequest.h"
 #import "TCUpdateProfileRequest.h"
 #import "TCGetProfileRequest.h"
+#import "DisclaimerView.h"
 
 NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
-NSString *const kTCTermsURL = @"https://developer.truecaller.com/phone-number-verification/privacy-notice";
 
 @interface TCTrueSDK ()
 
@@ -202,7 +202,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     NSInteger bottomPadding = 0;
     
-    UIView *view = [[UIView alloc] init];
+    UIView *view = [[DisclaimerView alloc] init];
     [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     view.clipsToBounds = YES;
@@ -213,54 +213,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     if (@available(iOS 11.0, *)) {
         [view.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
     } else {
-        [view.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:bottomPadding].active = YES;
+        [view.bottomAnchor constraintEqualToAnchor:controller.view.bottomAnchor constant:bottomPadding].active = YES;
     }
-    
-    [self addTermsAndConditionsLabelTo:view];
-}
-
--(void)addTermsAndConditionsLabelTo:(UIView *)view {
-    UILabel *label = [UILabel new];
-    label.translatesAutoresizingMaskIntoConstraints = NO;
-    [label setTextColor:UIColor.whiteColor];
-    
-    NSInteger labelPadding = 8;
-    
-    NSString *termsString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.text",
-                                                               @"Localizable",
-                                                               [TCUtils resourcesBundle],
-                                                               @"TrueSDK T&C string");
-    
-    NSString *termsButtonString = NSLocalizedStringFromTableInBundle(@"truecaller.tandc.buttonText",
-                                                                     @"Localizable",
-                                                                     [TCUtils resourcesBundle],
-                                                                     @"TrueSDK T&C button title");
-    
-    NSRange termsRange = [termsString rangeOfString:termsButtonString];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: termsString attributes:nil];
-    [attributedString addAttribute: NSLinkAttributeName value: kTCTermsURL range: termsRange];
-    
-    UITapGestureRecognizer *tap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openTermsAndConditions:)];
-    label.userInteractionEnabled= YES;
-    [label addGestureRecognizer:tap];
-
-    // Assign attributedText to UILabel
-    label.attributedText = attributedString;
-    label.font = [UIFont systemFontOfSize:12.0];
-    label.numberOfLines = 3;
-    label.userInteractionEnabled = YES;
-    
-    [view addSubview:label];
-    [label.leftAnchor constraintEqualToAnchor:view.leftAnchor constant:labelPadding].active = YES;
-    [label.rightAnchor constraintEqualToAnchor:view.rightAnchor constant:-labelPadding].active = YES;
-    [label.topAnchor constraintEqualToAnchor:view.topAnchor constant:labelPadding].active = YES;
-    [label.bottomAnchor constraintEqualToAnchor:view.bottomAnchor constant:-labelPadding].active = YES;
-}
-
--(void)openTermsAndConditions:(id)sender{
-    NSURL *termsUrl = [NSURL URLWithString:kTCTermsURL];
-    [[UIApplication sharedApplication] openURL: termsUrl];
 }
 
 - (void)requestVerificationForPhone: (nonnull NSString *)phone
