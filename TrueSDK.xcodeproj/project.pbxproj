@@ -214,6 +214,7 @@
 		60DE88E71E044E870061C060 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				752800AA26C3B84900C5CA7E /* Views */,
 				63793E5B255AD02100E41C02 /* Network */,
 				262A41441E0C1FCF0074A117 /* Categories */,
 				262A413E1E0BF2F70074A117 /* TCTrueProfile.h */,
@@ -230,8 +231,6 @@
 				601A0F811E83F6CA00F4760E /* TCVersion.h */,
 				601A0F821E83F6CA00F4760E /* TCVersion.m */,
 				63793EBF255C378700E41C02 /* TCVerificationState.h */,
-				7573F4B026C2BAAE008FEC93 /* DisclaimerView.h */,
-				7573F4B126C2BAC7008FEC93 /* DisclaimerView.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -269,6 +268,15 @@
 				638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		752800AA26C3B84900C5CA7E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7573F4B026C2BAAE008FEC93 /* DisclaimerView.h */,
+				7573F4B126C2BAC7008FEC93 /* DisclaimerView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
