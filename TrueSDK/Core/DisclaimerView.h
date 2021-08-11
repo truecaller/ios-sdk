@@ -1,5 +1,5 @@
 //
-//  DislaimerView.h
+//  DisclaimerView.h
 //  TrueSDK
 //
 //  Created by Ashutosh Roy on 10/08/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DislaimerView : UIView
+@interface DisclaimerView : UIView
 
 @end

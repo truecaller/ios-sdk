@@ -1,17 +1,17 @@
 //
-//  DislaimerView.m
+//  DisclaimerView.m
 //  TrueSDK
 //
 //  Created by Ashutosh Roy on 10/08/21.
 //  Copyright © 2021 True Software Scandinavia AB. All rights reserved.
 //
 
-#import "DislaimerView.h"
+#import "DisclaimerView.h"
 #import "TCUtils.h"
 
 NSString *const kTCTermsURL = @"https://developer.truecaller.com/phone-number-verification/privacy-notice";
 
-@implementation DislaimerView
+@implementation DisclaimerView
 
 - (instancetype)init
 {

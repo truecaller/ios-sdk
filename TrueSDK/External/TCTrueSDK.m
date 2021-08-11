@@ -17,7 +17,7 @@
 #import "TCVerifyCodeRequest.h"
 #import "TCUpdateProfileRequest.h"
 #import "TCGetProfileRequest.h"
-#import "DislaimerView.h"
+#import "DisclaimerView.h"
 
 NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
@@ -202,7 +202,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     NSInteger bottomPadding = 0;
     
-    UIView *view = [[DislaimerView alloc] init];
+    UIView *view = [[DisclaimerView alloc] init];
     [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     view.clipsToBounds = YES;
