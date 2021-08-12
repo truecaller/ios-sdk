@@ -144,7 +144,7 @@ class ErrorToast: UIView {
 }
 
 //MARK: User profile display
-class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
+class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate, TCTrueSDKViewDelegate, NonTrueCallerDelegate {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var profileRequestButton : TCProfileRequestButton!
@@ -186,6 +186,13 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         controller.title = "Select Title"
         let navigationControlelr = UINavigationController(rootViewController: controller)
         present(navigationControlelr, animated: true, completion: nil)
+    }
+    
+    @IBAction func openNonTCFlow(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nonTcSignInViewController = storyboard.instantiateViewController(withIdentifier: "NonTruecallerSignInViewController") as! NonTruecallerSignInViewController
+        nonTcSignInViewController.delegate = self
+        present(nonTcSignInViewController, animated: true, completion: nil)
     }
 
     //MARK: - Private
@@ -266,6 +273,12 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Response signature and signature algorithm can be fetched from profileResponse
         // Nonce can also be retrieved from response and checked against the one received in willRequestProfile method
         print("ProfileResponse payload: \(profileResponse.payload ?? "")")
+    }
+    
+    func didReceiveNonTC(profileResponse: TCTrueProfile) {
+        errorToast.error = nil
+        parseUserData(profileResponse)
+        userDataTableView.reloadData()
     }
 }
 

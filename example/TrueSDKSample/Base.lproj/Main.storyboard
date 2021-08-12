@@ -199,7 +199,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="BP9-TN-1s5" kind="presentation" id="maY-iJ-jdd"/>
+                                    <action selector="openNonTCFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G7s-Fg-utL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -346,22 +346,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvH-Lo-U20" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470.625" y="36.25"/>
+            <point key="canvasLocation" x="566" y="36"/>
         </scene>
         <!--Non Truecaller Sign In View Controller-->
         <scene sceneID="ijh-iH-16r">
             <objects>
-                <viewController id="BP9-TN-1s5" customClass="NonTruecallerSignInViewController" customModule="TrueSDKSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NonTruecallerSignInViewController" id="BP9-TN-1s5" customClass="NonTruecallerSignInViewController" customModule="TrueSDKSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tqK-oM-iSp"/>
                         <viewControllerLayoutGuide type="bottom" id="865-sA-VJ9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t4h-Bx-bUD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60h-ad-RyV">
-                                <rect key="frame" x="32" y="259.5" width="311" height="128"/>
+                                <rect key="frame" x="32" y="94" width="311" height="128"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwF-Bl-7Vk">
                                         <rect key="frame" x="16" y="86.5" width="279" height="44"/>
@@ -406,7 +406,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anR-wC-W7F">
-                                <rect key="frame" x="32" y="211" width="311" height="225"/>
+                                <rect key="frame" x="32" y="94" width="311" height="225"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmJ-da-eK4">
                                         <rect key="frame" x="16" y="167.5" width="279" height="44"/>
@@ -512,12 +512,12 @@
                             <constraint firstItem="60h-ad-RyV" firstAttribute="leading" secondItem="t4h-Bx-bUD" secondAttribute="leadingMargin" constant="16" id="0Ed-lS-i1D"/>
                             <constraint firstItem="anR-wC-W7F" firstAttribute="width" secondItem="60h-ad-RyV" secondAttribute="width" id="542-f9-M6e"/>
                             <constraint firstItem="anR-wC-W7F" firstAttribute="centerX" secondItem="60h-ad-RyV" secondAttribute="centerX" id="7U8-Nh-L4m"/>
-                            <constraint firstItem="60h-ad-RyV" firstAttribute="centerY" secondItem="t4h-Bx-bUD" secondAttribute="centerY" id="Ebx-9D-wMR"/>
+                            <constraint firstItem="60h-ad-RyV" firstAttribute="top" secondItem="JXL-AG-O37" secondAttribute="bottom" constant="20" id="CVI-Xt-TIG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="60h-ad-RyV" secondAttribute="trailing" constant="16" id="OCz-TG-XKv"/>
                             <constraint firstItem="JXL-AG-O37" firstAttribute="top" secondItem="tqK-oM-iSp" secondAttribute="bottom" constant="16" id="XKs-s1-W7V"/>
                             <constraint firstAttribute="trailing" secondItem="JXL-AG-O37" secondAttribute="trailing" constant="16" id="ZEq-7d-VVC"/>
                             <constraint firstItem="60h-ad-RyV" firstAttribute="centerX" secondItem="t4h-Bx-bUD" secondAttribute="centerX" id="ehl-Iu-6t9"/>
-                            <constraint firstItem="anR-wC-W7F" firstAttribute="centerY" secondItem="60h-ad-RyV" secondAttribute="centerY" id="u6b-KV-j8l"/>
+                            <constraint firstItem="anR-wC-W7F" firstAttribute="top" secondItem="JXL-AG-O37" secondAttribute="bottom" constant="20" id="gnU-rZ-vtc"/>
                             <constraint firstItem="JXL-AG-O37" firstAttribute="leading" secondItem="t4h-Bx-bUD" secondAttribute="leading" constant="16" id="zVN-5c-yfu"/>
                         </constraints>
                     </view>
@@ -533,12 +533,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7N-YC-0ON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1291" y="38"/>
+            <point key="canvasLocation" x="1398" y="36"/>
         </scene>
     </scenes>
     <designables>
         <designable name="uvt-89-ptk">
-            <size key="intrinsicContentSize" width="278" height="56"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
     </designables>
     <resources>

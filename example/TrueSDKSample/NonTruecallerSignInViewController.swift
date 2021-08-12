@@ -9,6 +9,10 @@
 import UIKit
 import TrueSDK
 
+protocol NonTrueCallerDelegate {
+    func didReceiveNonTC(profileResponse : TCTrueProfile)
+}
+
 class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
 
     @IBOutlet weak var errorToast: ErrorToast!
@@ -22,6 +26,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     
     //Default india since the market now is only india
     let defaultCountryCode = "in"
+    var delegate: NonTrueCallerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,18 +54,20 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     private func verifyFields() -> Bool {
         guard otpField.text?.isEmpty == true,
               firstNameField.text?.isEmpty == true else {
-            showAlert(with: "Error", message: "Please check the input")
+            showAlert(with: "Error", message: "Please check the input", actionHandler: nil)
             return false
         }
         
         return true
     }
     
-    private func showAlert(with title: String, message: String) {
+    private func showAlert(with title: String, message: String, actionHandler: (() -> Void)?) {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { alertAction in
+            actionHandler?()
+        }))
         present(alert, animated: true, completion: nil)
     }
     
@@ -69,7 +76,11 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     func didReceive(_ profile: TCTrueProfile) {
         DispatchQueue.main.async { [weak self] in
             self?.showAlert(with: "Profile already verified",
-                      message: "Already verified profile with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")")
+                            message: "Already verified profile with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")",
+                            actionHandler: {
+                                self?.delegate?.didReceiveNonTC(profileResponse: profile)
+                                self?.dismiss(animated: true, completion: nil)
+                            })
         }
     }
     
@@ -90,7 +101,9 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
             self.phoneNumberView.isHidden = true
         case .verificationComplete:
             self.showAlert(with: "Sign up successful",
-                           message: "Your otp is validated and profile created.")
+                           message: "Your otp is validated and profile created.") { [weak self] in
+                self?.signUp()
+            }
         case .otpReceived, .verifiedBefore:
             break
         @unknown default:
