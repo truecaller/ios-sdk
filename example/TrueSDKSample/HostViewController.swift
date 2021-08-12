@@ -151,6 +151,24 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var userDataTableView: UITableView!
     @IBOutlet weak var userDataHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorToast: ErrorToast!
+    @IBOutlet weak var otpFlowButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
+    
+    var isUserLoggedIn: Bool = false {
+        didSet {
+            if isUserLoggedIn {
+                profileRequestButton.isHidden = true
+                otpFlowButton.isHidden = true
+                logOutButton.isHidden = false
+            } else {
+                profileRequestButton.isHidden = false
+                otpFlowButton.isHidden = false
+                logOutButton.isHidden = true
+                TCTrueSDK.sharedManager().delegate = self
+                TCTrueSDK.sharedManager().titleType = .default
+            }
+        }
+    }
     
     fileprivate var userDataModel: userDataModelType = [] {
         didSet {
@@ -262,6 +280,7 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         parseUserData(profile)
         userDataTableView.reloadData()
+        isUserLoggedIn = true
     }
     
     open func willRequestProfile(withNonce nonce: String) {
@@ -278,6 +297,13 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func didReceiveNonTC(profileResponse: TCTrueProfile) {
         errorToast.error = nil
         parseUserData(profileResponse)
+        userDataTableView.reloadData()
+        isUserLoggedIn = true
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        isUserLoggedIn = false
+        setEmptyUserData()
         userDataTableView.reloadData()
     }
 }
