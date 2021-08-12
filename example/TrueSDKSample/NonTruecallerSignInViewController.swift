@@ -78,8 +78,8 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     
     func didReceive(_ profile: TCTrueProfile) {
         DispatchQueue.main.async { [weak self] in
-            self?.showAlert(with: "Profile already verified",
-                            message: "Already verified profile with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")",
+            self?.showAlert(with: "Profile verified",
+                            message: "Profile verified with name: \(profile.firstName ?? "") lastName: \(profile.lastName ?? "") phone: \(profile.phoneNumber ?? "")",
                             actionHandler: {
                                 self?.delegate?.didReceiveNonTC(profileResponse: profile)
                                 self?.dismiss(animated: true, completion: nil)
