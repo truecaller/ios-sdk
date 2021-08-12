@@ -36,6 +36,9 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         
         otpView.isHidden = true
         phoneNumberView.isHidden = false
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func signUp() {
