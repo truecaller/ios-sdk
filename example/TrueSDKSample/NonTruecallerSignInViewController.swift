@@ -103,12 +103,9 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
             self.otpView.isHidden = false
             self.phoneNumberView.isHidden = true
         case .verificationComplete:
-            self.showAlert(with: "Sign up successful",
-                           message: "Your otp is validated and profile created.") { [weak self] in
-                self?.signUp()
-            }
+            break;
         case .otpReceived, .verifiedBefore:
-            break
+            break;
         @unknown default:
             break;
         }
