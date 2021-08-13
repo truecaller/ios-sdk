@@ -1,0 +1,16 @@
+//
+//  TrueSDKSample-Enterprise.xcconfig
+//  TrueSDKSample
+//
+//  Created by Ashutosh Roy on 12/08/21.
+//  Copyright © 2021 Aleksandar Mihailovski. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+//MARK: - Environment -
+APP_ENVIRONMENT = enterprise
+
+APP_KEY = I7ViZ490028736bba408881687123b4cec49f
+APP_LINK = https:/$()/si9f1dc18a1d0041efa219162d27d1c865.truecallerdevs.com
