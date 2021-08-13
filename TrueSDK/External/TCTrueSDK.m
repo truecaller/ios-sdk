@@ -284,6 +284,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 TCLog(@"Non truecaller flow - Verification Complete");
                 [self updateProfileDetails:response];
                 [_delegate verificationStatusChangedTo:TCVerificationStateVerificationComplete];
+                [self getProfileForResponse:response];
             }
         } else {
             TCLog(@"Non truecaller flow - Verification OTP Error");

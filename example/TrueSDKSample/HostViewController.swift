@@ -144,13 +144,31 @@ class ErrorToast: UIView {
 }
 
 //MARK: User profile display
-class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
+class HostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TCTrueSDKDelegate, TCTrueSDKViewDelegate, NonTrueCallerDelegate {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var profileRequestButton : TCProfileRequestButton!
     @IBOutlet weak var userDataTableView: UITableView!
     @IBOutlet weak var userDataHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorToast: ErrorToast!
+    @IBOutlet weak var otpFlowButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
+    
+    var isUserLoggedIn: Bool = false {
+        didSet {
+            if isUserLoggedIn {
+                profileRequestButton.isHidden = true
+                otpFlowButton.isHidden = true
+                logOutButton.isHidden = false
+            } else {
+                profileRequestButton.isHidden = false
+                otpFlowButton.isHidden = false
+                logOutButton.isHidden = true
+                TCTrueSDK.sharedManager().delegate = self
+                TCTrueSDK.sharedManager().titleType = .default
+            }
+        }
+    }
     
     fileprivate var userDataModel: userDataModelType = [] {
         didSet {
@@ -186,6 +204,13 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         controller.title = "Select Title"
         let navigationControlelr = UINavigationController(rootViewController: controller)
         present(navigationControlelr, animated: true, completion: nil)
+    }
+    
+    @IBAction func openNonTCFlow(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nonTcSignInViewController = storyboard.instantiateViewController(withIdentifier: "NonTruecallerSignInViewController") as! NonTruecallerSignInViewController
+        nonTcSignInViewController.delegate = self
+        present(nonTcSignInViewController, animated: true, completion: nil)
     }
 
     //MARK: - Private
@@ -255,6 +280,7 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         parseUserData(profile)
         userDataTableView.reloadData()
+        isUserLoggedIn = true
     }
     
     open func willRequestProfile(withNonce nonce: String) {
@@ -266,6 +292,19 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Response signature and signature algorithm can be fetched from profileResponse
         // Nonce can also be retrieved from response and checked against the one received in willRequestProfile method
         print("ProfileResponse payload: \(profileResponse.payload ?? "")")
+    }
+    
+    func didReceiveNonTC(profileResponse: TCTrueProfile) {
+        errorToast.error = nil
+        parseUserData(profileResponse)
+        userDataTableView.reloadData()
+        isUserLoggedIn = true
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        isUserLoggedIn = false
+        setEmptyUserData()
+        userDataTableView.reloadData()
     }
 }
 
