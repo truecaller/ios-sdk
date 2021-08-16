@@ -56,6 +56,7 @@
 		60FC74881E55E2F600665BB7 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		634AB7FB23BDD7A60063CBFD /* TitleSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSelectionTableViewController.swift; sourceTree = "<group>"; };
 		638EE239256475EE001B12B6 /* NonTruecallerSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonTruecallerSignInViewController.swift; sourceTree = "<group>"; };
+		752004E626CA7EE100407B41 /* TrueSDKSampleEnterprise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrueSDKSampleEnterprise.entitlements; sourceTree = "<group>"; };
 		752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Release.xcconfig"; sourceTree = "<group>"; };
 		752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Enterprise.xcconfig"; sourceTree = "<group>"; };
 		752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		60DE88F51E044F170061C060 /* TrueSDKSample */ = {
 			isa = PBXGroup;
 			children = (
+				752004E626CA7EE100407B41 /* TrueSDKSampleEnterprise.entitlements */,
 				752800B126C58E3600C5CA7E /* Configuration */,
 				6049DF781E0ACE940005230D /* TrueSDKSample.entitlements */,
 				60DE88F61E044F170061C060 /* AppDelegate.swift */,
@@ -164,7 +166,7 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = B74A3WDYVP;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -349,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TrueSDKSample/TrueSDKSample.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = B74A3WDYVP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -358,6 +361,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.truesdktest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Truesdk example app";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -431,16 +435,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TrueSDKSample/TrueSDKSample.entitlements;
-				DEVELOPMENT_TEAM = B74A3WDYVP;
+				CODE_SIGN_ENTITLEMENTS = TrueSDKSample/TrueSDKSampleEnterprise.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = WJY9NT2DWK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TrueSDKSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tc.truesdktest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.truesoftware.TrueHostEnterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "TrueSDK Host App Enterprise";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

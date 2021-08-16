@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appLink = Bundle.main.infoDictionary?["APP_LINK"] as? String ?? ""
         
         TCTrueSDK.sharedManager().setup(withAppKey: appKey, appLink: appLink)
+        
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
