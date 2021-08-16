@@ -23,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          SET THE APP_LINK VALUE IN THE ENTITLEMENTS FILE AS WELL!!!
          UPDATE THE APPID (BUNDLE IDENTIFIER) IN YOUR PROJECT SETTINGS!!!
          */
-        TCTrueSDK.sharedManager().setup(withAppKey: "I7ViZ490028736bba408881687123b4cec49f", appLink: "https://si9f1dc18a1d0041efa219162d27d1c865.truecallerdevs.com")
+        let appKey = Bundle.main.infoDictionary?["APP_KEY"] as? String ?? ""
+        let appLink = Bundle.main.infoDictionary?["APP_LINK"] as? String ?? ""
+        
+        TCTrueSDK.sharedManager().setup(withAppKey: appKey, appLink: appLink)
         
         return true
     }

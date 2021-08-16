@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APP_ENVIRONMENT</key>
+	<string>${APP_ENVIRONMENT}</string>
+	<key>APP_KEY</key>
+	<string>${APP_KEY}</string>
+	<key>APP_LINK</key>
+	<string>${APP_LINK}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -20,8 +26,6 @@
 	<string>1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>truesdk</string>
@@ -52,5 +56,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

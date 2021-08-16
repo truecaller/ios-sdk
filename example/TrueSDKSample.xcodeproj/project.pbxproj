@@ -21,6 +21,9 @@
 		60FC748A1E55E2F700665BB7 /* TrueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC74881E55E2F600665BB7 /* TrueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		634AB7FC23BDD7A60063CBFD /* TitleSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AB7FB23BDD7A60063CBFD /* TitleSelectionTableViewController.swift */; };
 		638EE23A256475EE001B12B6 /* NonTruecallerSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EE239256475EE001B12B6 /* NonTruecallerSignInViewController.swift */; };
+		752800B526C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */; };
+		752800B626C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */; };
+		752800B726C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +56,10 @@
 		60FC74881E55E2F600665BB7 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		634AB7FB23BDD7A60063CBFD /* TitleSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSelectionTableViewController.swift; sourceTree = "<group>"; };
 		638EE239256475EE001B12B6 /* NonTruecallerSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonTruecallerSignInViewController.swift; sourceTree = "<group>"; };
+		752004E626CA7EE100407B41 /* TrueSDKSampleEnterprise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrueSDKSampleEnterprise.entitlements; sourceTree = "<group>"; };
+		752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Release.xcconfig"; sourceTree = "<group>"; };
+		752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Enterprise.xcconfig"; sourceTree = "<group>"; };
+		752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +94,8 @@
 		60DE88F51E044F170061C060 /* TrueSDKSample */ = {
 			isa = PBXGroup;
 			children = (
+				752004E626CA7EE100407B41 /* TrueSDKSampleEnterprise.entitlements */,
+				752800B126C58E3600C5CA7E /* Configuration */,
 				6049DF781E0ACE940005230D /* TrueSDKSample.entitlements */,
 				60DE88F61E044F170061C060 /* AppDelegate.swift */,
 				60DE88F81E044F170061C060 /* HostViewController.swift */,
@@ -110,6 +119,16 @@
 				60FC74881E55E2F600665BB7 /* TrueSDK.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		752800B126C58E3600C5CA7E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */,
+				752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */,
+				752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +166,7 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = B74A3WDYVP;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -181,9 +200,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				609770FD1E23B34E00EC2DF3 /* TrueSDKSample.entitlements in Resources */,
+				752800B726C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig in Resources */,
 				60DE89011E044F170061C060 /* LaunchScreen.storyboard in Resources */,
 				60DE88FE1E044F170061C060 /* Assets.xcassets in Resources */,
 				60DE88FC1E044F170061C060 /* Main.storyboard in Resources */,
+				752800B626C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig in Resources */,
+				752800B526C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +251,7 @@
 /* Begin XCBuildConfiguration section */
 		60DE89031E044F170061C060 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -280,6 +303,7 @@
 		};
 		60DE89041E044F170061C060 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -327,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TrueSDKSample/TrueSDKSample.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = B74A3WDYVP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -336,6 +361,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.truesdktest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Truesdk example app";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -360,6 +386,73 @@
 			};
 			name = Release;
 		};
+		752800B826C58F8800C5CA7E /* Enterprise */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Enterprise;
+		};
+		752800B926C58F8800C5CA7E /* Enterprise */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TrueSDKSample/TrueSDKSampleEnterprise.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = WJY9NT2DWK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = TrueSDKSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.truesoftware.TrueHostEnterprise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "TrueSDK Host App Enterprise";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Enterprise;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -368,6 +461,7 @@
 			buildConfigurations = (
 				60DE89031E044F170061C060 /* Debug */,
 				60DE89041E044F170061C060 /* Release */,
+				752800B826C58F8800C5CA7E /* Enterprise */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -377,6 +471,7 @@
 			buildConfigurations = (
 				60DE89061E044F170061C060 /* Debug */,
 				60DE89071E044F170061C060 /* Release */,
+				752800B926C58F8800C5CA7E /* Enterprise */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
