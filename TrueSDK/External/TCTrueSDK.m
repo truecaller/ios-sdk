@@ -34,6 +34,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, strong) DisclaimerView *disclaimerView;
 
 @end
 
@@ -202,18 +203,18 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     NSInteger bottomPadding = 0;
     
-    UIView *view = [[DisclaimerView alloc] init];
-    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    view.clipsToBounds = YES;
-    [controller.view addSubview:view];
+    self.disclaimerView = [[DisclaimerView alloc] init];
+    [self.disclaimerView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
+    self.disclaimerView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.disclaimerView.clipsToBounds = YES;
+    [controller.view addSubview:self.disclaimerView];
     
-    [view.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
-    [view.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
+    [self.disclaimerView.leftAnchor constraintEqualToAnchor:controller.view.leftAnchor].active = YES;
+    [self.disclaimerView.rightAnchor constraintEqualToAnchor:controller.view.rightAnchor].active = YES;
     if (@available(iOS 11.0, *)) {
-        [view.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
+        [self.disclaimerView.bottomAnchor constraintEqualToAnchor:controller.view.safeAreaLayoutGuide.bottomAnchor constant:bottomPadding].active = YES;
     } else {
-        [view.bottomAnchor constraintEqualToAnchor:controller.view.bottomAnchor constant:bottomPadding].active = YES;
+        [self.disclaimerView.bottomAnchor constraintEqualToAnchor:controller.view.bottomAnchor constant:bottomPadding].active = YES;
     }
 }
 
@@ -243,6 +244,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                     [self getProfileForResponse:response];
                     [_delegate verificationStatusChangedTo:TCVerificationStateVerifiedBefore];
                 }
+                [self hideDisclaimer];
             } else {
                 TCLog(@"Non truecaller flow - Request OTP error");
                 [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
@@ -310,4 +312,9 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     return  _loginCodeResponse.tokenTtl;
 }
 
+- (void)hideDisclaimer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.disclaimerView.hidden = YES;
+    });
+}
 @end
