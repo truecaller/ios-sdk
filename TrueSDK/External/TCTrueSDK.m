@@ -245,7 +245,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 }
             } else {
                 TCLog(@"Non truecaller flow - Request OTP error");
-                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
             }
         }];
 }
@@ -262,7 +262,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
             [self.delegate didReceiveTrueProfile:profile];
         } else {
             TCLog(@"Non truecaller flow - Get profile Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
         }
     }];
 }
@@ -288,7 +288,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
             }
         } else {
             TCLog(@"Non truecaller flow - Verification OTP Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithError:error]];
+            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
         }
     }];
 }
