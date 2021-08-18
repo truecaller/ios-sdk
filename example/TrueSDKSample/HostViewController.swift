@@ -210,7 +210,8 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nonTcSignInViewController = storyboard.instantiateViewController(withIdentifier: "NonTruecallerSignInViewController") as! NonTruecallerSignInViewController
         nonTcSignInViewController.delegate = self
-        present(nonTcSignInViewController, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: nonTcSignInViewController)
+        present(navController, animated: true, completion: nil)
     }
 
     //MARK: - Private

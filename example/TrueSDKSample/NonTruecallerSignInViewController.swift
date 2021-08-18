@@ -31,6 +31,18 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close",
+                                                                     style: .plain,
+                                                                     target: self,
+                                                                     action: #selector(donePressed(_:)))
+        } else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back",
+                                                                    style: .plain,
+                                                                    target: self,
+                                                                    action: #selector(donePressed(_:)))
+        }
+        
         TCTrueSDK.sharedManager().delegate = self
         TCTrueSDK.sharedManager().viewDelegate = self
         
@@ -39,6 +51,10 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+    }
+    
+    @objc func donePressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func signUp() {
