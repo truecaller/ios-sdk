@@ -275,6 +275,12 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     _firstName = firstName;
     _lastName = lastName;
     
+    if (![self isValidInput]) {
+        TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeInvalidName];
+        [self.delegate didFailToReceiveTrueProfileWithError:error];
+        return;
+    }
+    
     TCVerifyCodeRequest *request = [[TCVerifyCodeRequest alloc] initWithappKey:self.appKey appLink:self.appLink];
     [request verifyLoginCodeForPhoneNumber:_phone
                                countryCode:_countryCode
@@ -293,6 +299,21 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
             [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
         }
     }];
+}
+
+- (BOOL)isValidInput {
+    if ((self.firstName.length == 0) ||
+        (self.firstName.length > 124) ||
+        (self.lastName.length > 124) ||
+        [self doesStringContainOnlyNumbers:self.firstName]) {
+        return false;
+    }
+    return true;
+}
+
+-(BOOL)doesStringContainOnlyNumbers: (NSString *)string {
+    NSCharacterSet *nonDigits = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
+    return ([string rangeOfCharacterFromSet:nonDigits].location == NSNotFound);
 }
 
 - (void)updateProfileDetails: (TCLoginCodeResponse *)response {
