@@ -67,6 +67,9 @@
         case TCTrueSDKErrorCodeViewDelegateNil:
             errorDescription = @"View delegate is nil. You have to set a view delegate";
             break;
+        case TCTrueSDKErrorCodeInvalidName:
+            errorDescription = @"Please provide a valid name";
+            break;
         default:
             break;
     }
