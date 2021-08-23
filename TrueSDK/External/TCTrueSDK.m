@@ -303,8 +303,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 
 - (BOOL)isValidInput {
     if ((self.firstName.length == 0) ||
-        (self.firstName.length > 124) ||
-        (self.lastName.length > 124) ||
+        (self.firstName.length > 128) ||
+        (self.lastName.length > 128) ||
         [self doesStringContainOnlyNumbers:self.firstName]) {
         return false;
     }
