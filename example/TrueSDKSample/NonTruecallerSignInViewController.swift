@@ -35,17 +35,10 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close",
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(donePressed(_:)))
-        } else {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back",
-                                                                    style: .plain,
-                                                                    target: self,
-                                                                    action: #selector(donePressed(_:)))
-        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(donePressed(_:)))
         
         TCTrueSDK.sharedManager().delegate = self
         TCTrueSDK.sharedManager().viewDelegate = self
@@ -138,8 +131,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
     }
     
-    @objc private func onTimerFires()
-    {
+    @objc private func onTimerFires() {
         timeLeft -= 1
         countdownLabel.text = "Code expires in \(timeLeft) seconds"
         if timeLeft <= 0 {

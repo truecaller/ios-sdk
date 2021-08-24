@@ -211,6 +211,7 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nonTcSignInViewController = storyboard.instantiateViewController(withIdentifier: "NonTruecallerSignInViewController") as! NonTruecallerSignInViewController
         nonTcSignInViewController.delegate = self
         let navController = UINavigationController(rootViewController: nonTcSignInViewController)
+        navController.modalPresentationStyle = .pageSheet
         present(navController, animated: true, completion: nil)
     }
 
