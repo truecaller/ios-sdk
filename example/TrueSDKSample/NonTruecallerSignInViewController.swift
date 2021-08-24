@@ -118,6 +118,9 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         case .otpInitiated:
             self.otpView.isHidden = false
             self.phoneNumberView.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                self?.showAlert(with: "OTP initiated", message: "OTP valid for \(String(describing: (TCTrueSDK.sharedManager().tokenTtl() ?? 0))) seconds from now", actionHandler: nil)
+            }
         case .verificationComplete:
             break;
         case .otpReceived, .verifiedBefore:
