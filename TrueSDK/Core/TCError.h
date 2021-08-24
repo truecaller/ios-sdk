@@ -27,7 +27,8 @@
  * @constant TCTrueSDKErrorCodeBadRequest Bad request. Internal error.
  * @constant TCTrueSDKErrorCodeVerificationFailed The response signature could not be verified. Internal error.
  * @constant TCTrueSDKErrorCodeRequestNonceMismatch The request's nonce does not match the nonce in response. Internal error.
- * @constant TCTrueSDKErrorCodeAppLinkMissing View delegate is Nil or not set
+ * @constant TCTrueSDKErrorCodeViewDelegateNil View delegate is Nil or not set
+ * @constant TCTrueSDKErrorCodeInvalidName Please provide a valid name
  */
 
 typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
     TCTrueSDKErrorCodeVerificationFailed, //
     TCTrueSDKErrorCodeRequestNonceMismatch, //
     TCTrueSDKErrorCodeViewDelegateNil, //
+    TCTrueSDKErrorCodeInvalidName, //
 };
 
 /*!
