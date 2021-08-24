@@ -23,11 +23,15 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     @IBOutlet weak var otpField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
+    @IBOutlet weak var countdownLabel: UILabel!
     
     //Default india since the market now is only india
     let defaultCountryCode = "in"
     var delegate: NonTrueCallerDelegate?
 
+    private var timer:Timer?
+    private var timeLeft = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,9 +122,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         case .otpInitiated:
             self.otpView.isHidden = false
             self.phoneNumberView.isHidden = true
-            DispatchQueue.main.async { [weak self] in
-                self?.showAlert(with: "OTP initiated", message: "OTP valid for \(String(describing: (TCTrueSDK.sharedManager().tokenTtl() ?? 0))) seconds from now", actionHandler: nil)
-            }
+            startTtlCountDown()
         case .verificationComplete:
             break;
         case .otpReceived, .verifiedBefore:
@@ -128,5 +130,26 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         @unknown default:
             break;
         }
+    }
+    
+    private func startTtlCountDown() {
+        guard let ttl = TCTrueSDK.sharedManager().tokenTtl() else { return }
+        timeLeft = ttl.intValue
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func onTimerFires()
+    {
+        timeLeft -= 1
+        countdownLabel.text = "Code expires in \(timeLeft) seconds"
+        if timeLeft <= 0 {
+            stopTtlCountdown()
+        }
+    }
+    
+    private func stopTtlCountdown() {
+        timer?.invalidate()
+        timer = nil
+        countdownLabel.text = ""
     }
 }
