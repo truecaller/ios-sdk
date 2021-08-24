@@ -23,13 +23,22 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     @IBOutlet weak var otpField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
+    @IBOutlet weak var countdownLabel: UILabel!
     
     //Default india since the market now is only india
     let defaultCountryCode = "in"
     var delegate: NonTrueCallerDelegate?
 
+    private var timer:Timer?
+    private var timeLeft = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(donePressed(_:)))
         
         TCTrueSDK.sharedManager().delegate = self
         TCTrueSDK.sharedManager().viewDelegate = self
@@ -39,6 +48,10 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+    }
+    
+    @objc func donePressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func signUp() {
@@ -102,6 +115,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         case .otpInitiated:
             self.otpView.isHidden = false
             self.phoneNumberView.isHidden = true
+            startTtlCountDown()
         case .verificationComplete:
             break;
         case .otpReceived, .verifiedBefore:
@@ -109,5 +123,25 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         @unknown default:
             break;
         }
+    }
+    
+    private func startTtlCountDown() {
+        guard let ttl = TCTrueSDK.sharedManager().tokenTtl() else { return }
+        timeLeft = ttl.intValue
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func onTimerFires() {
+        timeLeft -= 1
+        countdownLabel.text = "Code expires in \(timeLeft) seconds"
+        if timeLeft <= 0 {
+            stopTtlCountdown()
+        }
+    }
+    
+    private func stopTtlCountdown() {
+        timer?.invalidate()
+        timer = nil
+        countdownLabel.text = ""
     }
 }
