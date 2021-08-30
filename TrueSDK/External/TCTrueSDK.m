@@ -40,10 +40,11 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 
 @implementation TCTrueSDK
 
+static TCTrueSDK *sharedManagerInstance = nil;
+static dispatch_once_t onceToken;
+
 + (nonnull TCTrueSDK *)sharedManager
 {
-    static TCTrueSDK *sharedManagerInstance = nil;
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManagerInstance = [[self alloc] init];
     });
@@ -338,4 +339,12 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         self.disclaimerView.hidden = YES;
     });
 }
+
++ (void)clearInstance {
+    @synchronized(self) {
+        sharedManagerInstance = nil;
+        onceToken = 0;
+    }
+}
+
 @end
