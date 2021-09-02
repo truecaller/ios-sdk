@@ -302,18 +302,23 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 }
 
 - (BOOL)isValidInput {
-    if ((self.firstName.length == 0) ||
-        (self.firstName.length > 128) ||
+    
+    if ((self.firstName == nil) ||
+        (self.lastName == nil) ||
         (self.lastName.length > 128) ||
-        [self doesStringContainOnlyNumbers:self.firstName]) {
+        ![self isValidName:self.firstName]) {
         return false;
     }
     return true;
 }
 
--(BOOL)doesStringContainOnlyNumbers: (NSString *)string {
-    NSCharacterSet *nonDigits = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
-    return ([string rangeOfCharacterFromSet:nonDigits].location == NSNotFound);
+-(BOOL)isValidName: (NSString *)str {
+    /* min 1 char, max 128, at least 1 alphabet required with optional numeric and special chars,
+        cannot be all numeric or all special characters, but can be all alphabets */
+    
+    NSString *nameRegex = @"^(?=.*?[\\w&&[\\D]&&[^_]])[\\w\\W]{1,128}$";
+    NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
+    return [nameTest evaluateWithObject:str];
 }
 
 - (void)updateProfileDetails: (TCLoginCodeResponse *)response {
