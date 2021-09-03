@@ -13,7 +13,7 @@ protocol NonTrueCallerDelegate {
     func didReceiveNonTC(profileResponse : TCTrueProfile)
 }
 
-class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TCTrueSDKViewDelegate {
+class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TCTrueSDKViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var errorToast: ErrorToast!
     @IBOutlet weak var phoneNumberView: UIView!
@@ -48,6 +48,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        otpField.delegate = self
     }
     
     @objc func donePressed(_ sender: UIButton) {
@@ -142,6 +143,14 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     private func stopTtlCountdown() {
         timer?.invalidate()
         timer = nil
-        countdownLabel.text = ""
+        countdownLabel.text = "OTP expired!"
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard textField == otpField else { return true }
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 6
     }
 }

@@ -246,8 +246,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 }
                 [self hideDisclaimer];
             } else {
-                TCLog(@"Non truecaller flow - Request OTP error");
-                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+                [self processNetworkError:error];
             }
         }];
 }
@@ -263,8 +262,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
             TCLog(@"Non truecaller flow - Get profile Success");
             [self.delegate didReceiveTrueProfile:profile];
         } else {
-            TCLog(@"Non truecaller flow - Get profile Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            [self processNetworkError:error];
         }
     }];
 }
@@ -295,25 +293,29 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 [self getProfileForResponse:response];
             }
         } else {
-            TCLog(@"Non truecaller flow - Verification OTP Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            [self processNetworkError:error];
         }
     }];
 }
 
 - (BOOL)isValidInput {
-    if ((self.firstName.length == 0) ||
-        (self.firstName.length > 128) ||
+    
+    if ((self.firstName == nil) ||
+        (self.lastName == nil) ||
         (self.lastName.length > 128) ||
-        [self doesStringContainOnlyNumbers:self.firstName]) {
+        ![self isValidName:self.firstName]) {
         return false;
     }
     return true;
 }
 
--(BOOL)doesStringContainOnlyNumbers: (NSString *)string {
-    NSCharacterSet *nonDigits = [NSCharacterSet decimalDigitCharacterSet].invertedSet;
-    return ([string rangeOfCharacterFromSet:nonDigits].location == NSNotFound);
+-(BOOL)isValidName: (NSString *)str {
+    /* min 1 char, max 128, at least 1 alphabet required with optional numeric and special chars,
+        cannot be all numeric or all special characters, but can be all alphabets */
+    
+    NSString *nameRegex = @"^(?=.*?[\\w&&[\\D]&&[^_]])[\\w\\W]{1,128}$";
+    NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
+    return [nameTest evaluateWithObject:str];
 }
 
 - (void)updateProfileDetails: (TCLoginCodeResponse *)response {
@@ -337,5 +339,15 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     dispatch_async(dispatch_get_main_queue(), ^{
         self.disclaimerView.hidden = YES;
     });
+}
+
+-(void)processNetworkError: (NSError *)error {
+    if ([error code] == NSURLErrorNotConnectedToInternet || [error code] == NSURLErrorDataNotAllowed) {
+        TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeNetwork];
+        [self.delegate didFailToReceiveTrueProfileWithError:error];
+    } else {
+        TCLog(@"Non truecaller flow - Verification OTP Error");
+        [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+    }
 }
 @end
