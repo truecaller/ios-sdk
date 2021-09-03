@@ -246,8 +246,13 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 }
                 [self hideDisclaimer];
             } else {
-                TCLog(@"Non truecaller flow - Request OTP error");
-                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+                if ([error code] == NSURLErrorNotConnectedToInternet) {
+                    TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeNetwork];
+                    [self.delegate didFailToReceiveTrueProfileWithError:error];
+                } else {
+                    TCLog(@"Non truecaller flow - Request OTP error");
+                    [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+                }
             }
         }];
 }
@@ -263,8 +268,13 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
             TCLog(@"Non truecaller flow - Get profile Success");
             [self.delegate didReceiveTrueProfile:profile];
         } else {
-            TCLog(@"Non truecaller flow - Get profile Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            if ([error code] == NSURLErrorNotConnectedToInternet) {
+                TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeNetwork];
+                [self.delegate didFailToReceiveTrueProfileWithError:error];
+            } else {
+                TCLog(@"Non truecaller flow - Get profile Error");
+                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            }
         }
     }];
 }
@@ -295,8 +305,13 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                 [self getProfileForResponse:response];
             }
         } else {
-            TCLog(@"Non truecaller flow - Verification OTP Error");
-            [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            if ([error code] == NSURLErrorNotConnectedToInternet) {
+                TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeNetwork];
+                [self.delegate didFailToReceiveTrueProfileWithError:error];
+            } else {
+                TCLog(@"Non truecaller flow - Verification OTP Error");
+                [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
+            }
         }
     }];
 }
