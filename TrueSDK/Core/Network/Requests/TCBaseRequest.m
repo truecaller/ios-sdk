@@ -8,6 +8,7 @@
 
 #import "TCBaseRequest.h"
 #import <UIKit/UIKit.h>
+#import "TCUtils.h"
 
 @interface TCBaseRequest ()
 
@@ -39,6 +40,10 @@
     [request addValue:self.appLink forHTTPHeaderField:@"appLink"];
     [request setHTTPMethod:self.httpMethod];
     
+    NSString *sdkVersion = [TCUtils getSDKVersion];
+    [request addValue:sdkVersion forHTTPHeaderField:@"sdkVersion"];
+    [request addValue:@"native" forHTTPHeaderField:@"sdkVariant"];
+
     return request;
 }
 
