@@ -30,7 +30,7 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     var delegate: NonTrueCallerDelegate?
 
     private var timer:Timer?
-    private var timeLeft = 0
+    private var expiryTime: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,21 +128,22 @@ class NonTruecallerSignInViewController: UIViewController, TCTrueSDKDelegate, TC
     
     private func startTtlCountDown() {
         guard let ttl = TCTrueSDK.sharedManager().tokenTtl() else { return }
-        timeLeft = ttl.intValue
+        expiryTime = Date().addingTimeInterval(TimeInterval(ttl.intValue))
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
     }
     
     @objc private func onTimerFires() {
-        timeLeft -= 1
-        countdownLabel.text = "Code expires in \(timeLeft) seconds"
-        if timeLeft <= 0 {
+        guard let timeLeft = expiryTime?.timeIntervalSinceNow, timeLeft > 0 else {
             stopTtlCountdown()
+            return
         }
+        countdownLabel.text = "Code expires in \(Int(timeLeft)) seconds"
     }
     
     private func stopTtlCountdown() {
         timer?.invalidate()
         timer = nil
+        expiryTime = nil
         countdownLabel.text = "OTP expired!"
     }
     

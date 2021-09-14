@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
                           auth: (NSString *)auth;
 
 - (void)updateFirstName: (NSString *)firstName
-               lastName: (NSString *)lastname;
+               lastName: (NSString *)lastname
+      completionHandler: (void (^)(BOOL success))completion;
 
 @end
 
