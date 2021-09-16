@@ -33,7 +33,7 @@
 
 - (void)updateFirstName: (NSString *)firstName
                lastName: (NSString *)lastname
-      completionHandler: (void (^)(BOOL success))completion {
+      completionHandler: (TCUpdateProfileAPICompletionBlock)completion {
     NSDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setValue:firstName forKey:@"firstName"];
     [parameters setValue:lastname forKey:@"lastName"];
@@ -43,11 +43,7 @@
                                    completion:^(NSDictionary * _Nullable response,
                                                 NSError * _Nullable error) {
         NSLog(@"Update profile response - %@", response);
-        if (error == nil) {
-            completion(true);
-        } else {
-            completion(false);
-        }
+        completion(error);
     }];
 }
 

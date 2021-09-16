@@ -9,6 +9,8 @@
 #import "TCBaseRequest.h"
 #import <Foundation/Foundation.h>
 
+typedef void(^TCUpdateProfileAPICompletionBlock)(NSError * _Nullable error);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TCUpdateProfileRequest : TCBaseRequest
@@ -20,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateFirstName: (NSString *)firstName
                lastName: (NSString *)lastname
-      completionHandler: (void (^)(BOOL success))completion;
+      completionHandler: (TCUpdateProfileAPICompletionBlock)completion;
 
 @end
 

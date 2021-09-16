@@ -288,10 +288,12 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         if (error == nil) {
             if (response.accessToken != nil) {
                 TCLog(@"Non truecaller flow - Verification Complete");
-                [self updateProfileDetails:response completionHandler:^(BOOL success) {
-                    if (success) {
+                [self updateProfileDetails:response completionHandler:^(NSError * _Nullable error) {
+                    if (error == nil) {
                         [_delegate verificationStatusChangedTo:TCVerificationStateVerificationComplete];
                         [self getProfileForResponse:response];
+                    } else {
+                        [self processNetworkError:error];
                     }
                 }];
             }
@@ -321,7 +323,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     return [nameTest evaluateWithObject:str];
 }
 
-- (void)updateProfileDetails: (TCLoginCodeResponse *)response completionHandler: (void (^)(BOOL success))completion {
+- (void)updateProfileDetails: (TCLoginCodeResponse *)response completionHandler: (TCUpdateProfileAPICompletionBlock)completion {
     TCLog(@"Profile update call");
     TCUpdateProfileRequest *request = [[TCUpdateProfileRequest alloc] initWithappKey:self.appKey
                                                                              appLink:self.appLink
