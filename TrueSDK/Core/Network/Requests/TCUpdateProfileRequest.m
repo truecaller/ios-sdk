@@ -42,7 +42,6 @@
                                          auth:self.auth
                                    completion:^(NSDictionary * _Nullable response,
                                                 NSError * _Nullable error) {
-        NSLog(@"Update profile response - %@", response);
         completion(error);
     }];
 }
