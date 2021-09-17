@@ -32,17 +32,17 @@
 }
 
 - (void)updateFirstName: (NSString *)firstName
-               lastName: (NSString *)lastname {
+               lastName: (NSString *)lastname
+      completionHandler: (TCUpdateProfileAPICompletionBlock)completion {
     NSDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setValue:firstName forKey:@"firstName"];
     [parameters setValue:lastname forKey:@"lastName"];
-        
+    
     [self makeAuthorisedRequestWithParemeters:parameters
                                          auth:self.auth
                                    completion:^(NSDictionary * _Nullable response,
                                                 NSError * _Nullable error) {
-        NSLog(@"Update profile response - %@", response);
-        //Do nothing as of now
+        completion(error);
     }];
 }
 

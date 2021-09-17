@@ -164,8 +164,6 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 profileRequestButton.isHidden = false
                 otpFlowButton.isHidden = false
                 logOutButton.isHidden = true
-                TCTrueSDK.sharedManager().delegate = self
-                TCTrueSDK.sharedManager().titleType = .default
             }
         }
     }
@@ -190,8 +188,11 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         userDataTableView.delegate = self
         userDataHeightConstraint.constant = CGFloat(userDataModel.count) * propertyRowHeight
         
-        TCTrueSDK.sharedManager().delegate = self
         TCTrueSDK.sharedManager().titleType = .default
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        TCTrueSDK.sharedManager().delegate = self
     }
     
     override func viewWillLayoutSubviews() {
@@ -211,7 +212,7 @@ class HostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nonTcSignInViewController = storyboard.instantiateViewController(withIdentifier: "NonTruecallerSignInViewController") as! NonTruecallerSignInViewController
         nonTcSignInViewController.delegate = self
         let navController = UINavigationController(rootViewController: nonTcSignInViewController)
-        navController.modalPresentationStyle = .pageSheet
+        navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
     }
 
