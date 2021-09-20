@@ -26,6 +26,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *appLink;
 @property (nonatomic, strong) NSString *requestNonce;
+@property (nonatomic, strong) NSString *urlScheme;
 
 @property (nonatomic) BOOL userShownTruecallerFlow;
 @property (nonatomic, strong) TCLoginCodeResponse *loginCodeResponse;
@@ -57,6 +58,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.appLink = appLink;
     self.titleType = TitleTypeDefault;
     self.locale = @"en_US";
+    self.urlScheme = [NSString stringWithFormat:@"%@-truesdk://", appKey];
 }
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
@@ -165,6 +167,22 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
     
     return retValue;
 }
+
+-(BOOL)continueWithUrlScheme:(nonnull NSURL *)url {
+     BOOL retValue = NO;
+     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+     urlComponents.query = nil;
+     urlComponents.path = nil;
+     if ([urlComponents.string isEqualToString:self.urlScheme]) {
+         TCError *error = [url tryParseError];
+         if (error != nil) {
+             [self processError:error url:url];
+         }
+         retValue = YES;
+     }
+
+     return retValue;
+ }
 
 - (void)processError: (TCError *)tcError url: (NSURL *)url {
     TCLog(@"Error: %@", tcError);

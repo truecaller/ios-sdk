@@ -70,6 +70,9 @@
         case TCTrueSDKErrorCodeInvalidName:
             errorDescription = @"Please provide a valid name";
             break;
+        case TCTrueSDKErrorCodeUniversalLinkFailed:
+            errorDescription = @"Universal Link failed";
+            break;
         default:
             break;
     }

@@ -115,6 +115,8 @@
 continueUserActivity:(nonnull NSUserActivity *)userActivity
  restorationHandler:(nullable void (^)(NSArray * _Nullable restorableObjects))restorationHandler;
 
+-(BOOL)continueWithUrlScheme:(nonnull NSURL *)url;
+
 /*!
  * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.
  * @param phone Phone number you want to get the login code in.
