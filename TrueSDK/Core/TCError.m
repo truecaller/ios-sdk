@@ -71,7 +71,10 @@
             errorDescription = @"Please provide a valid name";
             break;
         case TCTrueSDKErrorCodeUniversalLinkFailed:
-            errorDescription = @"Universal Link failed";
+            errorDescription = @"Cannot open app because Universal Link failed";
+            break;
+        case TCTrueSDKErrorCodeUrlSchemeMissing:
+            errorDescription = @"The Url Scheme is a mandatory field. Please add Url Scheme to plist";
             break;
         default:
             break;

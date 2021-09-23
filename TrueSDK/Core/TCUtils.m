@@ -67,4 +67,18 @@
     return TrueSDKVersion;
 }
 
++ (BOOL)isURLSchemeAdded:(NSString *)scheme
+{
+  if (!scheme) {
+    return NO;
+  }
+  for (NSDictionary *urlType in [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"]) {
+    for (NSString *urlScheme in urlType[@"CFBundleURLSchemes"]) {
+      if ([urlScheme isEqualToString:scheme]) {
+        return YES;
+      }
+    }
+  }
+  return NO;
+}
 @end

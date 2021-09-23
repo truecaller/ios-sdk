@@ -29,5 +29,6 @@ typedef NS_ENUM(NSInteger, TitleType) {
 @property (nonatomic, strong, nullable) NSString *sdkVersion;
 @property (nonatomic, assign) enum TitleType titleType;
 @property (nonatomic, strong, nullable) NSString *locale;
+@property (nonatomic, strong, nullable) NSString *urlScheme;
 
 @end

@@ -26,7 +26,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *appLink;
 @property (nonatomic, strong) NSString *requestNonce;
-@property (nonatomic, strong) NSString *urlScheme;
 
 @property (nonatomic) BOOL userShownTruecallerFlow;
 @property (nonatomic, strong) TCLoginCodeResponse *loginCodeResponse;
@@ -58,7 +57,6 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     self.appLink = appLink;
     self.titleType = TitleTypeDefault;
     self.locale = @"en_US";
-    self.urlScheme = [NSString stringWithFormat:@"%@-truesdk://", appKey];
 }
 
 - (void)setupWithAppKey:(nonnull NSString *)appKey
@@ -109,6 +107,14 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         return;
     }
     
+    NSString *expectedUrlScheme = [NSString stringWithFormat:@"%@-truesdk", self.appKey];
+    
+    if (![TCUtils isURLSchemeAdded:expectedUrlScheme]) {
+        TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeUrlSchemeMissing];
+        [self.delegate didFailToReceiveTrueProfileWithError:error];
+        return;
+    }
+    
     NSString *requestNonce = self.requestNonce ?: [NSUUID UUID].UUIDString;
     
     if ([[TCTrueSDK sharedManager].delegate respondsToSelector:@selector(willRequestProfileWithNonce:)]) {
@@ -125,6 +131,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     profileRequest.requestNonce = requestNonce;
     profileRequest.titleType = self.titleType;
     profileRequest.locale = self.locale;
+    profileRequest.urlScheme = expectedUrlScheme;
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
     
     [TCUtils openUrl:url completionHandler:nil];

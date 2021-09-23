@@ -18,6 +18,7 @@ static NSString *kApiVersion = @"apiVersion";
 static NSString *kSdkVersion = @"sdkVersion";
 static NSString *kTitleType = @"titleType";
 static NSString *kLocale = @"locale";
+static NSString *kUrlScheme = @"urlScheme";
 
 @implementation TCTrueProfileRequest 
 
@@ -32,6 +33,7 @@ static NSString *kLocale = @"locale";
     [aCoder encodeObject:self.sdkVersion forKey:kSdkVersion];
     [aCoder encodeObject:@(self.titleType) forKey:kTitleType];
     [aCoder encodeObject:self.locale forKey:kLocale];
+    [aCoder encodeObject:self.urlScheme forKey:kUrlScheme];
 }
 
 -(instancetype) initWithCoder:(NSCoder *)aDecoder
@@ -47,6 +49,7 @@ static NSString *kLocale = @"locale";
         _sdkVersion = [aDecoder decodeObjectForKey:kSdkVersion];
         _titleType = [[aDecoder decodeObjectForKey:kTitleType] intValue];
         _locale = [aDecoder decodeObjectForKey:kLocale];
+        _urlScheme = [aDecoder decodeObjectForKey:kUrlScheme];
     }
     return self;
 }
