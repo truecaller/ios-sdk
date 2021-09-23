@@ -177,10 +177,11 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 
 -(BOOL)continueWithUrlScheme:(nonnull NSURL *)url {
      BOOL retValue = NO;
+    NSString *trueSdkUrlScheme = [NSString stringWithFormat:@"%@-truesdk://", self.appKey];
      NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
      urlComponents.query = nil;
      urlComponents.path = nil;
-     if ([urlComponents.string isEqualToString:self.urlScheme]) {
+     if ([urlComponents.string isEqualToString:trueSdkUrlScheme]) {
          TCError *error = [url tryParseError];
          if (error != nil) {
              [self processError:error url:url];
