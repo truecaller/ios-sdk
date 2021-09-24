@@ -49,4 +49,5 @@
  */
 + (NSString *)getSDKVersion;
 
++ (BOOL)isURLSchemeAdded:(NSString *)scheme;
 @end

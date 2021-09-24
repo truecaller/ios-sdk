@@ -107,6 +107,14 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         return;
     }
     
+    NSString *expectedUrlScheme = [NSString stringWithFormat:@"%@-truesdk", self.appKey];
+    
+    if (![TCUtils isURLSchemeAdded:expectedUrlScheme]) {
+        TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeUrlSchemeMissing];
+        [self.delegate didFailToReceiveTrueProfileWithError:error];
+        return;
+    }
+    
     NSString *requestNonce = self.requestNonce ?: [NSUUID UUID].UUIDString;
     
     if ([[TCTrueSDK sharedManager].delegate respondsToSelector:@selector(willRequestProfileWithNonce:)]) {
@@ -123,6 +131,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
     profileRequest.requestNonce = requestNonce;
     profileRequest.titleType = self.titleType;
     profileRequest.locale = self.locale;
+    profileRequest.urlScheme = expectedUrlScheme;
     NSURL *url = [TCTrueSDK buildTruecallerMessageWithItem:profileRequest forKey:kTrueProfileRequestKey];
     
     [TCUtils openUrl:url completionHandler:nil];
@@ -163,6 +172,22 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         }
     }
     
+    return retValue;
+}
+
+-(BOOL)continueWithUrlScheme:(nonnull NSURL *)url {
+    BOOL retValue = NO;
+    NSString *trueSdkUrlScheme = [NSString stringWithFormat:@"%@-truesdk://", self.appKey];
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+    urlComponents.query = nil;
+    urlComponents.path = nil;
+    if ([urlComponents.string isEqualToString:trueSdkUrlScheme]) {
+        TCError *error = [url tryParseError];
+        if (error != nil) {
+            [self processError:error url:url];
+        }
+        retValue = YES;
+    }
     return retValue;
 }
 

@@ -116,6 +116,12 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
  restorationHandler:(nullable void (^)(NSArray * _Nullable restorableObjects))restorationHandler;
 
 /*!
+ * @brief Call this method in application:openURL:options: of the App Delegate class.
+ * @return true if TrueSDK can handle the URL request
+ */
+-(BOOL)continueWithUrlScheme:(nonnull NSURL *)url;
+
+/*!
  * @brief Call this method in application:continueUserActivity:restorationHandler: of the App Delegate class.
  * @param phone Phone number you want to get the login code in.
  * @param countryCode Country code as String (eg: "in" for india "sv" for sweden) of the phone number passed.

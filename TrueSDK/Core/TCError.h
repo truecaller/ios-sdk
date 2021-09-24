@@ -29,6 +29,8 @@
  * @constant TCTrueSDKErrorCodeRequestNonceMismatch The request's nonce does not match the nonce in response. Internal error.
  * @constant TCTrueSDKErrorCodeViewDelegateNil View delegate is Nil or not set
  * @constant TCTrueSDKErrorCodeInvalidName Please provide a valid name
+ * @constant TCTrueSDKErrorCodeUniversalLinkFailed Cannot open app because Universal Link failed
+ * @constant TCTrueSDKErrorCodeUrlSchemeMissing Please add Url Scheme to plist.
  */
 
 typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
@@ -50,6 +52,8 @@ typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
     TCTrueSDKErrorCodeRequestNonceMismatch, //
     TCTrueSDKErrorCodeViewDelegateNil, //
     TCTrueSDKErrorCodeInvalidName, //
+    TCTrueSDKErrorCodeUniversalLinkFailed, //
+    TCTrueSDKErrorCodeUrlSchemeMissing, //
 };
 
 /*!
