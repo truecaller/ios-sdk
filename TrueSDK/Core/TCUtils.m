@@ -69,7 +69,7 @@
 
 + (BOOL)isURLSchemeAdded:(NSString *)scheme
 {
-  if (!scheme) {
+  if (scheme == nil) {
     return NO;
   }
   for (NSDictionary *urlType in [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"]) {
