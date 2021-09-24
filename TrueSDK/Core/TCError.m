@@ -74,7 +74,7 @@
             errorDescription = @"Cannot open app because Universal Link failed";
             break;
         case TCTrueSDKErrorCodeUrlSchemeMissing:
-            errorDescription = @"The Url Scheme is a mandatory field. Please add Url Scheme to plist";
+            errorDescription = @"Please add Url Scheme to plist";
             break;
         default:
             break;

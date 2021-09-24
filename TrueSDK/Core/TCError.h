@@ -30,7 +30,7 @@
  * @constant TCTrueSDKErrorCodeViewDelegateNil View delegate is Nil or not set
  * @constant TCTrueSDKErrorCodeInvalidName Please provide a valid name
  * @constant TCTrueSDKErrorCodeUniversalLinkFailed Cannot open app because Universal Link failed
- * @constant TCTrueSDKErrorCodeUrlSchemeMissing The Url Scheme is a mandatory field. Please add Url Scheme to plist
+ * @constant TCTrueSDKErrorCodeUrlSchemeMissing Please add Url Scheme to plist.
  */
 
 typedef NS_ENUM(NSUInteger, TCTrueSDKErrorCode) {
