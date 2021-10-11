@@ -48,16 +48,8 @@
 }
 
 - (NSMutableURLRequest *)makeAuthorisedRequestWithToken: (NSString *)token {
-    NSURL *url = [NSURL URLWithString:self.urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    
+    NSMutableURLRequest *request = [self makeRequestWithHeaders];
     [request addValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPMethod:self.httpMethod];
-    
     return request;
 }
 
