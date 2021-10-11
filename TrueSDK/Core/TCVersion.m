@@ -8,5 +8,5 @@
 
 #import "TCVersion.h"
 
-NSString *TrueSDKVersion = @"0.1";
+NSString *TrueSDKVersion = @"0.1.7";
 NSString *TrueSDKApiVersion = @"1.0";
