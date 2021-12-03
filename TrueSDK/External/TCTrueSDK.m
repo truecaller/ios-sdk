@@ -107,7 +107,7 @@ NSString *const kTCTruecallerAppURL = @"https://www.truecaller.com/userProfile";
         return;
     }
     
-    NSString *expectedUrlScheme = [NSString stringWithFormat:@"%@-truecallersdk", self.appKey];
+    NSString *expectedUrlScheme = [NSString stringWithFormat:@"truecallersdk-%@", self.appKey];
     
     if (![TCUtils isURLSchemeAdded:expectedUrlScheme]) {
         TCError *error = [TCError errorWithCode:TCTrueSDKErrorCodeUrlSchemeMissing];
@@ -177,7 +177,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 
 -(BOOL)continueWithUrlScheme:(nonnull NSURL *)url {
     BOOL retValue = NO;
-    NSString *trueSdkUrlScheme = [NSString stringWithFormat:@"%@-truecallersdk://", self.appKey];
+    NSString *trueSdkUrlScheme = [NSString stringWithFormat:@"truecallersdk-%@://", self.appKey];
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
     urlComponents.query = nil;
     urlComponents.path = nil;
