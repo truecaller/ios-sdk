@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>truecallersdk -$(APP_KEY)</string>
+				<string>truecallersdk-$(APP_KEY)</string>
 			</array>
 		</dict>
 	</array>
