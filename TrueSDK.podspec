@@ -25,9 +25,6 @@ Pod::Spec.new do |s|
   s.source_files  = "TrueSDK/*.{h,m}", "TrueSDK/**/*.{h,m}"
   s.public_header_files = "TrueSDK/*.{h}", "TrueSDK/**/*.{h}"
 
-  s.resources = [ "TrueSDK/**/Assets.xcassets"]
-
-  #TODO: Move to resource bundles
-  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/External/Languages/*" ] }
+  s.resource_bundles = { "TrueSDK" => ["TrueSDK/**/Assets.xcassets", "TrueSDK/External/Languages/*" ] }
 
 end
