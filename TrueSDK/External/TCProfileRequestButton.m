@@ -200,7 +200,13 @@
     
     if (imageName != nil) {
         NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
-        image = [UIImage imageNamed:imageName inBundle:frameworkBundle compatibleWithTraitCollection:nil];
+#ifdef SPM_SDK
+        NSURL *bundleUrl = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"TrueSDK_TrueSDK.bundle"];
+        NSBundle *bundle = [NSBundle bundleWithURL:bundleUrl];
+#else
+        NSBundle *bundle = frameworkBundle;
+#endif
+        image = [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
     }
     
     return image;
