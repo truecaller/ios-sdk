@@ -21,46 +21,47 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		02AE115A1E1E417B003E7A48 /* TCTrueProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B344C61E0CA05D00671AB9 /* TCTrueProfileRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02AE115B1E1E4180003E7A48 /* TCTrueProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B344C71E0CA05D00671AB9 /* TCTrueProfileRequest.m */; };
 		02B981F61E0D5E7D0016DFD2 /* TCProfileRequestButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B981F41E0D5E7D0016DFD2 /* TCProfileRequestButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B981F71E0D5E7D0016DFD2 /* TCProfileRequestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B981F51E0D5E7D0016DFD2 /* TCProfileRequestButton.m */; };
 		02B981F91E0D60120016DFD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B981F81E0D60120016DFD2 /* Assets.xcassets */; };
-		02D576801E266ECC00ABE908 /* TCTrueProfileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 02D5767E1E266ECC00ABE908 /* TCTrueProfileResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02D576821E266ECC00ABE908 /* TCTrueProfileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D5767F1E266ECC00ABE908 /* TCTrueProfileResponse.m */; };
-		262A41401E0BF2F70074A117 /* TCTrueProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 262A413E1E0BF2F70074A117 /* TCTrueProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		262A41421E0BF2F70074A117 /* TCTrueProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 262A413F1E0BF2F70074A117 /* TCTrueProfile.m */; };
-		262A41471E0C20060074A117 /* NSURL+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 262A41451E0C20060074A117 /* NSURL+TrueSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		262A41491E0C20060074A117 /* NSURL+TrueSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 262A41461E0C20060074A117 /* NSURL+TrueSDK.m */; };
-		2663E54D1E1BBA3B00620B5C /* TCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2663E54B1E1BBA3B00620B5C /* TCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2663E54F1E1BBA3B00620B5C /* TCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2663E54C1E1BBA3B00620B5C /* TCError.m */; };
-		266F5FC91E1B9E5700E7B90C /* TCTrueSDKLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 266F5FC81E1B9E5700E7B90C /* TCTrueSDKLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2694D3371E0AB5BF0066A991 /* TCTrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 2694D3351E0AB5BF0066A991 /* TCTrueSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2694D3381E0AB5BF0066A991 /* TCTrueSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694D3361E0AB5BF0066A991 /* TCTrueSDK.m */; };
-		600526101E082BBF00159A08 /* TCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6005260E1E082BBF00159A08 /* TCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		600526121E082BBF00159A08 /* TCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6005260F1E082BBF00159A08 /* TCUtils.m */; };
-		601A0F831E83F6CA00F4760E /* TCVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 601A0F811E83F6CA00F4760E /* TCVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		601A0F841E83F6CA00F4760E /* TCVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 601A0F821E83F6CA00F4760E /* TCVersion.m */; };
-		607094251E1CF8BE00692BB7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 607094271E1CF8BE00692BB7 /* Localizable.strings */; };
 		60DE88C61E044CC30061C060 /* TrueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DE88BC1E044CC30061C060 /* TrueSDK.framework */; };
 		60DE88CB1E044CC30061C060 /* TrueSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DE88CA1E044CC30061C060 /* TrueSDKTests.m */; };
 		60DE88CD1E044CC30061C060 /* TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 60DE88BF1E044CC30061C060 /* TrueSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63793E68255AD87400E41C02 /* TCBaseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793E66255AD87400E41C02 /* TCBaseRequest.h */; };
 		63793E69255AD87400E41C02 /* TCBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63793E67255AD87400E41C02 /* TCBaseRequest.m */; };
-		63793E72255B3C0000E41C02 /* TCLoginCodeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793E70255B3C0000E41C02 /* TCLoginCodeRequest.h */; };
 		63793E73255B3C0000E41C02 /* TCLoginCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63793E71255B3C0000E41C02 /* TCLoginCodeRequest.m */; };
-		63793E80255BF12200E41C02 /* TCLoginCodeResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793E7E255BF12200E41C02 /* TCLoginCodeResponse.h */; };
 		63793E81255BF12200E41C02 /* TCLoginCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 63793E7F255BF12200E41C02 /* TCLoginCodeResponse.m */; };
-		63793EC1255C378700E41C02 /* TCVerificationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793EBF255C378700E41C02 /* TCVerificationState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63793EEC255D8FA800E41C02 /* TCVerifyCodeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */; };
 		63793EED255D8FA800E41C02 /* TCVerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */; };
-		638EE22B2562DDE3001B12B6 /* TCUpdateProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */; };
 		638EE22C2562DDE3001B12B6 /* TCUpdateProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */; };
-		638EE24725653AD2001B12B6 /* TCGetProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 638EE24525653AD2001B12B6 /* TCGetProfileRequest.h */; };
 		638EE24825653AD2001B12B6 /* TCGetProfileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */; };
-		750ECADF26B8391A001DECFF /* NSDictionary+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */; };
 		750ECAE026B8391A001DECFF /* NSDictionary+TrueSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */; };
 		7573F4B226C2BAC7008FEC93 /* DisclaimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7573F4B126C2BAC7008FEC93 /* DisclaimerView.m */; };
+		F0257A612D787BA600D04280 /* TCTrueProfileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A582D787BA600D04280 /* TCTrueProfileResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A662D787BA600D04280 /* TCVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A5E2D787BA600D04280 /* TCVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A682D787BA600D04280 /* TCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A5B2D787BA600D04280 /* TCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A692D787BA600D04280 /* TCVerificationState.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A5C2D787BA600D04280 /* TCVerificationState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A6B2D787BA600D04280 /* TCError.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A522D787BA600D04280 /* TCError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A6D2D787BA600D04280 /* TCTrueProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A572D787BA600D04280 /* TCTrueProfileRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A6E2D787BA600D04280 /* TCTrueProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A562D787BA600D04280 /* TCTrueProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A6F2D787BA600D04280 /* NSURL+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A502D787BA600D04280 /* NSURL+TrueSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A702D787BA600D04280 /* TCTrueSDKLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F0257A592D787BA600D04280 /* TCTrueSDKLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0257A762D787BD700D04280 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0257A742D787BD700D04280 /* Localizable.strings */; };
+		F0ECE8732D78D27800BBA94D /* DisclaimerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8722D78D27800BBA94D /* DisclaimerView.h */; };
+		F0ECE8792D78D29E00BBA94D /* TCLoginCodeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8762D78D29E00BBA94D /* TCLoginCodeRequest.h */; };
+		F0ECE87A2D78D29E00BBA94D /* TCUpdateProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8772D78D29E00BBA94D /* TCUpdateProfileRequest.h */; };
+		F0ECE87B2D78D29E00BBA94D /* TCGetProfileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8752D78D29E00BBA94D /* TCGetProfileRequest.h */; };
+		F0ECE87C2D78D29E00BBA94D /* TCBaseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8742D78D29E00BBA94D /* TCBaseRequest.h */; };
+		F0ECE87D2D78D29E00BBA94D /* TCVerifyCodeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8782D78D29E00BBA94D /* TCVerifyCodeRequest.h */; };
+		F0ECE87F2D78D2AB00BBA94D /* TCLoginCodeResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE87E2D78D2AB00BBA94D /* TCLoginCodeResponse.h */; };
+		F0ECE8812D78D2BA00BBA94D /* NSDictionary+TrueSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = F0ECE8802D78D2BA00BBA94D /* NSDictionary+TrueSDK.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,52 +75,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02B344C61E0CA05D00671AB9 /* TCTrueProfileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueProfileRequest.h; sourceTree = "<group>"; };
 		02B344C71E0CA05D00671AB9 /* TCTrueProfileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTrueProfileRequest.m; sourceTree = "<group>"; };
 		02B981F41E0D5E7D0016DFD2 /* TCProfileRequestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCProfileRequestButton.h; sourceTree = "<group>"; };
 		02B981F51E0D5E7D0016DFD2 /* TCProfileRequestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCProfileRequestButton.m; sourceTree = "<group>"; };
 		02B981F81E0D60120016DFD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		02D5767E1E266ECC00ABE908 /* TCTrueProfileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueProfileResponse.h; sourceTree = "<group>"; };
 		02D5767F1E266ECC00ABE908 /* TCTrueProfileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTrueProfileResponse.m; sourceTree = "<group>"; };
-		262A413E1E0BF2F70074A117 /* TCTrueProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueProfile.h; sourceTree = "<group>"; };
 		262A413F1E0BF2F70074A117 /* TCTrueProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTrueProfile.m; sourceTree = "<group>"; };
-		262A41451E0C20060074A117 /* NSURL+TrueSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+TrueSDK.h"; sourceTree = "<group>"; };
 		262A41461E0C20060074A117 /* NSURL+TrueSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+TrueSDK.m"; sourceTree = "<group>"; };
-		2663E54B1E1BBA3B00620B5C /* TCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCError.h; sourceTree = "<group>"; };
 		2663E54C1E1BBA3B00620B5C /* TCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCError.m; sourceTree = "<group>"; };
-		266F5FC81E1B9E5700E7B90C /* TCTrueSDKLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueSDKLogger.h; sourceTree = "<group>"; };
 		2694D3351E0AB5BF0066A991 /* TCTrueSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTrueSDK.h; sourceTree = "<group>"; };
 		2694D3361E0AB5BF0066A991 /* TCTrueSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTrueSDK.m; sourceTree = "<group>"; };
-		6005260E1E082BBF00159A08 /* TCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCUtils.h; sourceTree = "<group>"; };
 		6005260F1E082BBF00159A08 /* TCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCUtils.m; sourceTree = "<group>"; };
-		601A0F811E83F6CA00F4760E /* TCVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVersion.h; sourceTree = "<group>"; };
 		601A0F821E83F6CA00F4760E /* TCVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVersion.m; sourceTree = "<group>"; };
-		6032857F1E1CFB0C00C34082 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		603285831E1D039400C34082 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		607094261E1CF8BE00692BB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60DE88BC1E044CC30061C060 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60DE88BF1E044CC30061C060 /* TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrueSDK.h; sourceTree = "<group>"; };
 		60DE88C51E044CC30061C060 /* TrueSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrueSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60DE88CA1E044CC30061C060 /* TrueSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrueSDKTests.m; sourceTree = "<group>"; };
 		60DE88CC1E044CC30061C060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60DE88E11E044D520061C060 /* TrueSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TrueSDK.plist; sourceTree = "<group>"; };
-		63793E66255AD87400E41C02 /* TCBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCBaseRequest.h; sourceTree = "<group>"; };
 		63793E67255AD87400E41C02 /* TCBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCBaseRequest.m; sourceTree = "<group>"; };
-		63793E70255B3C0000E41C02 /* TCLoginCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCLoginCodeRequest.h; sourceTree = "<group>"; };
 		63793E71255B3C0000E41C02 /* TCLoginCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCLoginCodeRequest.m; sourceTree = "<group>"; };
-		63793E7E255BF12200E41C02 /* TCLoginCodeResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCLoginCodeResponse.h; sourceTree = "<group>"; };
 		63793E7F255BF12200E41C02 /* TCLoginCodeResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCLoginCodeResponse.m; sourceTree = "<group>"; };
-		63793EBF255C378700E41C02 /* TCVerificationState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerificationState.h; sourceTree = "<group>"; };
-		63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerifyCodeRequest.h; sourceTree = "<group>"; };
 		63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCVerifyCodeRequest.m; sourceTree = "<group>"; };
-		638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCUpdateProfileRequest.h; sourceTree = "<group>"; };
 		638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCUpdateProfileRequest.m; sourceTree = "<group>"; };
-		638EE24525653AD2001B12B6 /* TCGetProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCGetProfileRequest.h; sourceTree = "<group>"; };
 		638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCGetProfileRequest.m; sourceTree = "<group>"; };
-		750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TrueSDK.h"; sourceTree = "<group>"; };
 		750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TrueSDK.m"; sourceTree = "<group>"; };
-		7573F4B026C2BAAE008FEC93 /* DisclaimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisclaimerView.h; sourceTree = "<group>"; };
 		7573F4B126C2BAC7008FEC93 /* DisclaimerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisclaimerView.m; sourceTree = "<group>"; };
+		F0257A502D787BA600D04280 /* NSURL+TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+TrueSDK.h"; sourceTree = "<group>"; };
+		F0257A522D787BA600D04280 /* TCError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCError.h; sourceTree = "<group>"; };
+		F0257A562D787BA600D04280 /* TCTrueProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCTrueProfile.h; sourceTree = "<group>"; };
+		F0257A572D787BA600D04280 /* TCTrueProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCTrueProfileRequest.h; sourceTree = "<group>"; };
+		F0257A582D787BA600D04280 /* TCTrueProfileResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCTrueProfileResponse.h; sourceTree = "<group>"; };
+		F0257A592D787BA600D04280 /* TCTrueSDKLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCTrueSDKLogger.h; sourceTree = "<group>"; };
+		F0257A5B2D787BA600D04280 /* TCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCUtils.h; sourceTree = "<group>"; };
+		F0257A5C2D787BA600D04280 /* TCVerificationState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerificationState.h; sourceTree = "<group>"; };
+		F0257A5E2D787BA600D04280 /* TCVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVersion.h; sourceTree = "<group>"; };
+		F0257A712D787BD700D04280 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0257A722D787BD700D04280 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0257A732D787BD700D04280 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0ECE8722D78D27800BBA94D /* DisclaimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisclaimerView.h; sourceTree = "<group>"; };
+		F0ECE8742D78D29E00BBA94D /* TCBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCBaseRequest.h; sourceTree = "<group>"; };
+		F0ECE8752D78D29E00BBA94D /* TCGetProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCGetProfileRequest.h; sourceTree = "<group>"; };
+		F0ECE8762D78D29E00BBA94D /* TCLoginCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCLoginCodeRequest.h; sourceTree = "<group>"; };
+		F0ECE8772D78D29E00BBA94D /* TCUpdateProfileRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCUpdateProfileRequest.h; sourceTree = "<group>"; };
+		F0ECE8782D78D29E00BBA94D /* TCVerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerifyCodeRequest.h; sourceTree = "<group>"; };
+		F0ECE87E2D78D2AB00BBA94D /* TCLoginCodeResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCLoginCodeResponse.h; sourceTree = "<group>"; };
+		F0ECE8802D78D2BA00BBA94D /* NSDictionary+TrueSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TrueSDK.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,9 +145,8 @@
 		262A41441E0C1FCF0074A117 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				262A41451E0C20060074A117 /* NSURL+TrueSDK.h */,
+				F0ECE8802D78D2BA00BBA94D /* NSDictionary+TrueSDK.h */,
 				262A41461E0C20060074A117 /* NSURL+TrueSDK.m */,
-				750ECADD26B8391A001DECFF /* NSDictionary+TrueSDK.h */,
 				750ECADE26B8391A001DECFF /* NSDictionary+TrueSDK.m */,
 			);
 			path = Categories;
@@ -155,7 +155,7 @@
 		2694D3341E0AB55E0066A991 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				607094121E1CF56E00692BB7 /* Languages */,
+				F0257A752D787BD700D04280 /* Resources */,
 				2694D3351E0AB5BF0066A991 /* TCTrueSDK.h */,
 				2694D3361E0AB5BF0066A991 /* TCTrueSDK.m */,
 				02B981F41E0D5E7D0016DFD2 /* TCProfileRequestButton.h */,
@@ -163,14 +163,6 @@
 				02B981F81E0D60120016DFD2 /* Assets.xcassets */,
 			);
 			path = External;
-			sourceTree = "<group>";
-		};
-		607094121E1CF56E00692BB7 /* Languages */ = {
-			isa = PBXGroup;
-			children = (
-				607094271E1CF8BE00692BB7 /* Localizable.strings */,
-			);
-			path = Languages;
 			sourceTree = "<group>";
 		};
 		60DE88B21E044CC30061C060 = {
@@ -214,23 +206,16 @@
 		60DE88E71E044E870061C060 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F0257A5F2D787BA600D04280 /* Include */,
 				752800AA26C3B84900C5CA7E /* Views */,
 				63793E5B255AD02100E41C02 /* Network */,
 				262A41441E0C1FCF0074A117 /* Categories */,
-				262A413E1E0BF2F70074A117 /* TCTrueProfile.h */,
 				262A413F1E0BF2F70074A117 /* TCTrueProfile.m */,
-				02D5767E1E266ECC00ABE908 /* TCTrueProfileResponse.h */,
 				02D5767F1E266ECC00ABE908 /* TCTrueProfileResponse.m */,
-				6005260E1E082BBF00159A08 /* TCUtils.h */,
 				6005260F1E082BBF00159A08 /* TCUtils.m */,
-				266F5FC81E1B9E5700E7B90C /* TCTrueSDKLogger.h */,
-				02B344C61E0CA05D00671AB9 /* TCTrueProfileRequest.h */,
 				02B344C71E0CA05D00671AB9 /* TCTrueProfileRequest.m */,
-				2663E54B1E1BBA3B00620B5C /* TCError.h */,
 				2663E54C1E1BBA3B00620B5C /* TCError.m */,
-				601A0F811E83F6CA00F4760E /* TCVersion.h */,
 				601A0F821E83F6CA00F4760E /* TCVersion.m */,
-				63793EBF255C378700E41C02 /* TCVerificationState.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -247,7 +232,7 @@
 		63793E7D255BF00700E41C02 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				63793E7E255BF12200E41C02 /* TCLoginCodeResponse.h */,
+				F0ECE87E2D78D2AB00BBA94D /* TCLoginCodeResponse.h */,
 				63793E7F255BF12200E41C02 /* TCLoginCodeResponse.m */,
 			);
 			path = Models;
@@ -256,15 +241,15 @@
 		63793EF1255D8FAF00E41C02 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				63793E66255AD87400E41C02 /* TCBaseRequest.h */,
+				F0ECE8742D78D29E00BBA94D /* TCBaseRequest.h */,
+				F0ECE8752D78D29E00BBA94D /* TCGetProfileRequest.h */,
+				F0ECE8762D78D29E00BBA94D /* TCLoginCodeRequest.h */,
+				F0ECE8772D78D29E00BBA94D /* TCUpdateProfileRequest.h */,
+				F0ECE8782D78D29E00BBA94D /* TCVerifyCodeRequest.h */,
 				63793E67255AD87400E41C02 /* TCBaseRequest.m */,
-				63793E70255B3C0000E41C02 /* TCLoginCodeRequest.h */,
 				63793E71255B3C0000E41C02 /* TCLoginCodeRequest.m */,
-				63793EEA255D8FA800E41C02 /* TCVerifyCodeRequest.h */,
 				63793EEB255D8FA800E41C02 /* TCVerifyCodeRequest.m */,
-				638EE2292562DDE3001B12B6 /* TCUpdateProfileRequest.h */,
 				638EE22A2562DDE3001B12B6 /* TCUpdateProfileRequest.m */,
-				638EE24525653AD2001B12B6 /* TCGetProfileRequest.h */,
 				638EE24625653AD2001B12B6 /* TCGetProfileRequest.m */,
 			);
 			path = Requests;
@@ -273,10 +258,34 @@
 		752800AA26C3B84900C5CA7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7573F4B026C2BAAE008FEC93 /* DisclaimerView.h */,
+				F0ECE8722D78D27800BBA94D /* DisclaimerView.h */,
 				7573F4B126C2BAC7008FEC93 /* DisclaimerView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F0257A5F2D787BA600D04280 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				F0257A502D787BA600D04280 /* NSURL+TrueSDK.h */,
+				F0257A522D787BA600D04280 /* TCError.h */,
+				F0257A562D787BA600D04280 /* TCTrueProfile.h */,
+				F0257A572D787BA600D04280 /* TCTrueProfileRequest.h */,
+				F0257A582D787BA600D04280 /* TCTrueProfileResponse.h */,
+				F0257A592D787BA600D04280 /* TCTrueSDKLogger.h */,
+				F0257A5B2D787BA600D04280 /* TCUtils.h */,
+				F0257A5C2D787BA600D04280 /* TCVerificationState.h */,
+				F0257A5E2D787BA600D04280 /* TCVersion.h */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		F0257A752D787BD700D04280 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F0257A742D787BD700D04280 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,25 +295,26 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				638EE24725653AD2001B12B6 /* TCGetProfileRequest.h in Headers */,
 				2694D3371E0AB5BF0066A991 /* TCTrueSDK.h in Headers */,
-				262A41401E0BF2F70074A117 /* TCTrueProfile.h in Headers */,
-				02D576801E266ECC00ABE908 /* TCTrueProfileResponse.h in Headers */,
-				63793EEC255D8FA800E41C02 /* TCVerifyCodeRequest.h in Headers */,
-				2663E54D1E1BBA3B00620B5C /* TCError.h in Headers */,
-				600526101E082BBF00159A08 /* TCUtils.h in Headers */,
-				63793E68255AD87400E41C02 /* TCBaseRequest.h in Headers */,
-				638EE22B2562DDE3001B12B6 /* TCUpdateProfileRequest.h in Headers */,
-				266F5FC91E1B9E5700E7B90C /* TCTrueSDKLogger.h in Headers */,
-				02AE115A1E1E417B003E7A48 /* TCTrueProfileRequest.h in Headers */,
-				63793EC1255C378700E41C02 /* TCVerificationState.h in Headers */,
-				262A41471E0C20060074A117 /* NSURL+TrueSDK.h in Headers */,
-				63793E72255B3C0000E41C02 /* TCLoginCodeRequest.h in Headers */,
+				F0257A6B2D787BA600D04280 /* TCError.h in Headers */,
+				F0257A6E2D787BA600D04280 /* TCTrueProfile.h in Headers */,
+				F0257A6D2D787BA600D04280 /* TCTrueProfileRequest.h in Headers */,
+				F0257A692D787BA600D04280 /* TCVerificationState.h in Headers */,
+				F0ECE8732D78D27800BBA94D /* DisclaimerView.h in Headers */,
+				F0257A662D787BA600D04280 /* TCVersion.h in Headers */,
+				F0257A612D787BA600D04280 /* TCTrueProfileResponse.h in Headers */,
+				F0257A6F2D787BA600D04280 /* NSURL+TrueSDK.h in Headers */,
+				F0ECE8792D78D29E00BBA94D /* TCLoginCodeRequest.h in Headers */,
+				F0ECE87A2D78D29E00BBA94D /* TCUpdateProfileRequest.h in Headers */,
+				F0ECE87F2D78D2AB00BBA94D /* TCLoginCodeResponse.h in Headers */,
+				F0ECE8812D78D2BA00BBA94D /* NSDictionary+TrueSDK.h in Headers */,
+				F0ECE87B2D78D29E00BBA94D /* TCGetProfileRequest.h in Headers */,
+				F0ECE87C2D78D29E00BBA94D /* TCBaseRequest.h in Headers */,
+				F0ECE87D2D78D29E00BBA94D /* TCVerifyCodeRequest.h in Headers */,
+				F0257A682D787BA600D04280 /* TCUtils.h in Headers */,
+				F0257A702D787BA600D04280 /* TCTrueSDKLogger.h in Headers */,
 				02B981F61E0D5E7D0016DFD2 /* TCProfileRequestButton.h in Headers */,
-				601A0F831E83F6CA00F4760E /* TCVersion.h in Headers */,
 				60DE88CD1E044CC30061C060 /* TrueSDK.h in Headers */,
-				750ECADF26B8391A001DECFF /* NSDictionary+TrueSDK.h in Headers */,
-				63793E80255BF12200E41C02 /* TCLoginCodeResponse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B981F91E0D60120016DFD2 /* Assets.xcassets in Resources */,
-				607094251E1CF8BE00692BB7 /* Localizable.strings in Resources */,
+				F0257A762D787BD700D04280 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,12 +484,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607094271E1CF8BE00692BB7 /* Localizable.strings */ = {
+		F0257A742D787BD700D04280 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				607094261E1CF8BE00692BB7 /* en */,
-				6032857F1E1CFB0C00C34082 /* hr */,
-				603285831E1D039400C34082 /* hi */,
+				F0257A712D787BD700D04280 /* en */,
+				F0257A722D787BD700D04280 /* hi */,
+				F0257A732D787BD700D04280 /* hr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -523,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -667,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

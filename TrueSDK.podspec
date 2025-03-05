@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/Truecaller"
 
   s.platform     = :ios
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "12.0"
 
   s.source       = { :git => "https://github.com/truecaller/ios-sdk.git", :tag => "v#{s.version}" }
   s.ios.weak_frameworks = "UIKit", "Foundation"
@@ -28,6 +28,6 @@ Pod::Spec.new do |s|
   s.resources = [ "TrueSDK/**/Assets.xcassets"]
 
   #TODO: Move to resource bundles
-  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/External/Languages/*" ] }
+  s.resource_bundles = { "TrueSDK" => [ "TrueSDK/External/Resources/*" ] }
 
 end

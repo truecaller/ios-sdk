@@ -17,13 +17,13 @@
 		60E9DA161E11D746002985BC /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9DA151E11D746002985BC /* LogViewController.swift */; };
 		60E9DA181E11D9CB002985BC /* HostLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9DA171E11D9CB002985BC /* HostLogs.swift */; };
 		60E9DA1A1E11E6FD002985BC /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9DA191E11E6FD002985BC /* LogTableViewCell.swift */; };
-		60FC74891E55E2F600665BB7 /* TrueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC74881E55E2F600665BB7 /* TrueSDK.framework */; };
-		60FC748A1E55E2F700665BB7 /* TrueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC74881E55E2F600665BB7 /* TrueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		634AB7FC23BDD7A60063CBFD /* TitleSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AB7FB23BDD7A60063CBFD /* TitleSelectionTableViewController.swift */; };
 		638EE23A256475EE001B12B6 /* NonTruecallerSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638EE239256475EE001B12B6 /* NonTruecallerSignInViewController.swift */; };
 		752800B526C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */; };
 		752800B626C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */; };
 		752800B726C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */; };
+		F08D6E102D78806500F83DA7 /* TrueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08D6E0F2D78806500F83DA7 /* TrueSDK.framework */; };
+		F08D6E112D78806500F83DA7 /* TrueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F08D6E0F2D78806500F83DA7 /* TrueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				60FC748A1E55E2F700665BB7 /* TrueSDK.framework in Embed Frameworks */,
+				F08D6E112D78806500F83DA7 /* TrueSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,13 +53,13 @@
 		60E9DA151E11D746002985BC /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		60E9DA171E11D9CB002985BC /* HostLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostLogs.swift; sourceTree = "<group>"; };
 		60E9DA191E11E6FD002985BC /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
-		60FC74881E55E2F600665BB7 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		634AB7FB23BDD7A60063CBFD /* TitleSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSelectionTableViewController.swift; sourceTree = "<group>"; };
 		638EE239256475EE001B12B6 /* NonTruecallerSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonTruecallerSignInViewController.swift; sourceTree = "<group>"; };
 		752004E626CA7EE100407B41 /* TrueSDKSampleEnterprise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrueSDKSampleEnterprise.entitlements; sourceTree = "<group>"; };
 		752800B226C58E3600C5CA7E /* TrueSDKSample-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Release.xcconfig"; sourceTree = "<group>"; };
 		752800B326C58E3600C5CA7E /* TrueSDKSample-Enterprise.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Enterprise.xcconfig"; sourceTree = "<group>"; };
 		752800B426C58E3600C5CA7E /* TrueSDKSample-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "TrueSDKSample-Debug.xcconfig"; sourceTree = "<group>"; };
+		F08D6E0F2D78806500F83DA7 /* TrueSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrueSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60FC74891E55E2F600665BB7 /* TrueSDK.framework in Frameworks */,
+				F08D6E102D78806500F83DA7 /* TrueSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 		60DE89081E044F5A0061C060 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				60FC74881E55E2F600665BB7 /* TrueSDK.framework */,
+				F08D6E0F2D78806500F83DA7 /* TrueSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -358,6 +358,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TrueSDKSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.truesdktest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,6 +379,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TrueSDKSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tc.truesdktest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +446,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TrueSDKSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.truesoftware.TrueHostEnterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";

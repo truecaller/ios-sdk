@@ -22,7 +22,11 @@ let package = Package(
             path: "TrueSDK/Core",
             publicHeadersPath: "Include",
             cSettings: [
-                .define("SPM_SDK")
+                .define("SPM_SDK"),
+                .headerSearchPath("Categories"),
+                .headerSearchPath("Network/Models"),
+                .headerSearchPath("Network/Requests"),
+                .headerSearchPath("Views")
             ]
         ),
         .target(
@@ -34,7 +38,12 @@ let package = Package(
             ],
             publicHeadersPath: "",
             cSettings: [
-                .define("SPM_SDK")
+                .define("SPM_SDK"),
+                .headerSearchPath("../Core/Network/Models"),
+                .headerSearchPath("../Core/Network/Requests"),
+                .headerSearchPath("../Core/Categories"),
+                .headerSearchPath("../Core/Views")
+                
             ]
         )
     ]
