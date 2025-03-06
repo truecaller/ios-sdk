@@ -259,9 +259,9 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                                     countryCode:countryCode
                                      completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
             if (error == nil) {
+                _loginCodeResponse = response;
                 TCLog(@"Non truecaller flow - Request OTP success");
                 if ([response.method isEqual:@"sms"]) {
-                    _loginCodeResponse = response;
                     TCLog(@"Non truecaller flow - OTP initiated");
                     [_delegate verificationStatusChangedTo:TCVerificationStateOTPInitiated];
                 } else if (response.accessToken != nil && [response.status intValue] == 1) {
@@ -311,6 +311,7 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
                          verificationToken:_loginCodeResponse.verificationToken
                                 completion:^(TCLoginCodeResponse * _Nullable response, NSError * _Nullable error) {
         if (error == nil) {
+            _loginCodeResponse = response;
             if (response.accessToken != nil) {
                 TCLog(@"Non truecaller flow - Verification Complete");
                 [self updateProfileDetails:response completionHandler:^(NSError * _Nullable error) {
