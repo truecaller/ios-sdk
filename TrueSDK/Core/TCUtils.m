@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "TCTrueSDKLogger.h"
 #import "TCVersion.h"
+#import <Foundation/Foundation.h>
 
 @implementation TCUtils
 
@@ -51,7 +52,12 @@
 + (NSBundle *)resourcesBundle
 {
     NSBundle *frameworkBundle = [NSBundle bundleForClass:[self class]];
-    NSURL *bundleUrl = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"TrueSDK.bundle"];
+#ifdef SPM_SDK
+    NSString *bundlePath = @"TrueSDK_TrueSDK.bundle";
+#else
+    NSString *bundlePath = @"TrueSDK.bundle";
+#endif
+    NSURL *bundleUrl = [frameworkBundle.resourceURL URLByAppendingPathComponent: bundlePath];
     NSBundle *bundle = [NSBundle bundleWithURL:bundleUrl];
     
     return bundle ?: frameworkBundle;
