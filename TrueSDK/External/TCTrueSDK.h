@@ -158,4 +158,8 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
 - (void)scene:(nonnull UIScene *)scene
 continueUserActivity:(nonnull NSUserActivity *)userActivity API_AVAILABLE(ios(13.0));
 
+
+- (void)updateFirstName: (nonnull NSString *)firstName
+               lastName: (nonnull NSString *)lastName;
+
 @end
