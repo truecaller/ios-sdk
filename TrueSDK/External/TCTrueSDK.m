@@ -381,4 +381,13 @@ continueUserActivity:(nonnull NSUserActivity *)userActivity
         [_delegate didFailToReceiveTrueProfileWithError: [TCError errorWithCode:TCTrueSDKErrorCodeInternal description:error.localizedDescription]];
     }
 }
+
+- (void)updateFirstName: (nonnull NSString *)firstName
+               lastName: (nonnull NSString *)lastName {
+    _firstName = firstName;
+    _lastName = lastName;
+
+    [self updateProfileDetails:self.loginCodeResponse completionHandler:nil];
+}
+
 @end
